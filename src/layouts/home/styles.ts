@@ -6,5 +6,6 @@ export const HomePage = styled.div`
     height: 95%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    overflow: hidden;
 `

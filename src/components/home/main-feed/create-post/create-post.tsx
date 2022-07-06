@@ -1,9 +1,15 @@
-import { CreatePostStyles } from "./styles";
+import { CreatePostStyles, CreatePostForm, ProfilePictureContainer, UserImage } from "./styles";
 
-const CreatePost = () => {
+const CreatePost = ({user}: any) => {
     return(
         <CreatePostStyles>
-            Create Post
+            <ProfilePictureContainer>
+                {user.ProfileImg ? <UserImage src={user.ProfileImg}/> : "No Image"}
+            </ProfilePictureContainer>
+            <CreatePostForm>
+                <input type="text" placeholder="What's On Your Mind?"></input>
+                <button>Post</button>
+            </CreatePostForm>
         </CreatePostStyles>
     )
 }

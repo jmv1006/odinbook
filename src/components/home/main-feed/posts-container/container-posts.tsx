@@ -1,4 +1,3 @@
-import { PostsContainerStyles } from "./styles";
 import Post from "./post/post";
 
 const PostsContainer = ({posts}: any) => {
@@ -8,9 +7,9 @@ const PostsContainer = ({posts}: any) => {
     );
     
     return(
-        <PostsContainerStyles>
+        <>
             {mappedPosts}
-        </PostsContainerStyles>
+        </>
     )
 }
 

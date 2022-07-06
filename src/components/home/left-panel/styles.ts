@@ -7,7 +7,7 @@ export const LeftPanelContainerStyles = styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    @media (max-width: 650px) {
+    @media (max-width: 1250px) {
         display: none;
     }
 `

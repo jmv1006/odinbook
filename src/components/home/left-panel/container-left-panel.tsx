@@ -1,9 +1,9 @@
 import { LeftPanelContainerStyles } from "./styles";
 
-const LeftPanelContainer = () => {
+const LeftPanelContainer = ({user}: any) => {
     return(
         <LeftPanelContainerStyles>
-            Left Panel
+            <h3>Hello, {user.DisplayName}</h3>
         </LeftPanelContainerStyles>
     )
 }

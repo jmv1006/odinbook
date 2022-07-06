@@ -1,9 +1,19 @@
 import styled from "styled-components";
 
-
 export const CreatePostStyles = styled.div`
-    border: 2px solid blue;
     width: 95%;
-    height: 10%;
-    padding: 1%;
+    min-height: 5rem;
+    border: 2px solid red;
+`
+
+export const CreatePostForm = styled.form`
+    border: 2px solid gray;
+`
+
+export const ProfilePictureContainer = styled.div`
+    width: 10%;
+`
+
+export const UserImage = styled.img`
+    width: 100%;
 `

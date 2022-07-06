@@ -2,15 +2,19 @@ import styled from "styled-components";
 
 
 export const MainFeedContainerStyles = styled.div`
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    overflow: auto;
-    gap: 1rem;
-    @media (max-width: 650px) {
+    @media (max-width: 1250px) {
+        width: 75%;
+    }
+    @media (max-width: 800px) {
         width: 100%;
     }
+    border: 1px solid black;
+    width: 50%;
+    height: 100%;
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: wheat;
+    overflow: auto;
 `
