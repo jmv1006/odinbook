@@ -1,14 +1,15 @@
-import LeftPanel from "../../components/home/left-panel/left-panel";
-import MainFeed from "../../components/home/main-feed/main-feed";
-import RightPanel from "../../components/home/right-panel/right-panel";
+import LeftPanelContainer from "../../components/home/left-panel/container-left-panel";
+import MainFeedContainer from "../../components/home/main-feed/container-main-feed";
+import RightPanelContainer from "../../components/home/right-panel/container-right-panel";
 import { HomePage } from "./styles";
+
 const HomePageLayout = () => {
 
     return(
         <HomePage>
-            <LeftPanel />
-            <MainFeed />
-            <RightPanel />
+            <LeftPanelContainer />
+            <MainFeedContainer />
+            <RightPanelContainer />
         </HomePage>
     )
 }
