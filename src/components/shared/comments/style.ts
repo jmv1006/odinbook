@@ -3,5 +3,8 @@ import styled from "styled-components";
 
 export const CommentsContainerStyle = styled.div`
     width: 100%;
-    border: 1px solid gray;
+    padding-top: .5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
 `

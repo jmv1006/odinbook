@@ -13,7 +13,7 @@ const CommentsContainer = ({ comments } : PropsComments) => {
     
     return(
         <CommentsContainerStyle>
-            <CommentList comments={comments.comments} amount={comments.amount}/>
+            <CommentList comments={comments.comments} amount={comments.amount} user={user}/>
             <CommentInput user={user}/>
         </CommentsContainerStyle>
     )

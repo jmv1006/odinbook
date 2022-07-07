@@ -31,6 +31,9 @@ export const PostBottomContainer = styled.div`
 export const PostInfoBar = styled.div`
     width: 100%;
     height: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
 `
 
 export const LikeAndCommentContainer = styled.div`

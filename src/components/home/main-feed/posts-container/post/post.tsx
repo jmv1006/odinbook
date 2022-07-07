@@ -65,15 +65,19 @@ const Post = ({post, user}: any) => {
             </PostTextContainer>
             <PostBottomContainer>
                 <PostInfoBar>
-                    Likes: {likes}, 
-                    Comments To Go Here
+                    <div>
+                        {likes} Likes
+                    </div>
+                    <div onClick={toggleComments}>
+                        {comments?.amount} Comments
+                    </div>
                 </PostInfoBar>
                 <LikeAndCommentContainer>
                     <div>
                         <button onClick={handlePostLike}>{userHasLiked ? "Unlike" : "Like"}</button>
                     </div>
                     <div onClick={toggleComments}>
-                        See Comments...
+                        Comment
                     </div>
                 </LikeAndCommentContainer>  
             </PostBottomContainer>

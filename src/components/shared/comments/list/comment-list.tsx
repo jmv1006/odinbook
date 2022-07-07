@@ -1,9 +1,9 @@
 import Comment from "./individual-comments/comment"
 
-const CommentList = ({comments} : any) => {
+const CommentList = ({comments, user} : any) => {
     
     const mappedComments = comments.map((comment: any) =>
-        <div>Comment</div>
+        <Comment key={comment.Id} comment={comment} user={user}/>
     )
     
     return(

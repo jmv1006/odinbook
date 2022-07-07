@@ -1,15 +1,12 @@
 import styled from "styled-components";
 
 
-export const CommentsContainerStyle = styled.div`
-    width: 100%;
-    border: 1px solid gray;
-`
 export const CommentInputContainer = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    border-bottom: 1px solid gray;
 `
 
 export const CommentInputForm = styled.div`

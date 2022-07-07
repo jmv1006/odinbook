@@ -1,9 +1,16 @@
+import { IndividualComment, UserImgContainer, UserImg, CommentText } from "./style"
 
-const Comment = ({comment} : any) => {
+const Comment = ({comment, user} : any) => {
+
     return(
-        <div>
-            Comment
-        </div>
+        <IndividualComment>
+            <UserImgContainer>
+                <UserImg src={user.ProfileImg}/>
+            </UserImgContainer>
+            <CommentText>
+                {comment.Text}
+            </CommentText>
+        </IndividualComment>
     )
 }
 
