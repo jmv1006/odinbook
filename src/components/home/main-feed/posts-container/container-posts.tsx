@@ -1,9 +1,10 @@
 import Post from "./post/post";
 
-const PostsContainer = ({posts}: any) => {
+const PostsContainer = ({posts, user}: any) => {
 
+    
     const mappedPosts = posts.map((post: any) => 
-        <Post key={post.Id} post={post}/>
+        <Post key={post.Id} post={post} user={user}/>
     );
     
     return(

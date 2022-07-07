@@ -1,9 +1,17 @@
 import { RightPanelContainerStyles } from "./styles";
 
-const RightPanelContainer= () => {
+const RightPanelContainer= ({friends}: any) => {
+
+    const mappedFriends = friends.map((friend: any) => 
+        <li key={friend.Id}>{friend.DisplayName}</li>
+    );
+
     return(
         <RightPanelContainerStyles>
-            Right Panel
+            Your Friends:
+            <ul>
+                {mappedFriends}
+            </ul>
         </RightPanelContainerStyles>
     )
 }
