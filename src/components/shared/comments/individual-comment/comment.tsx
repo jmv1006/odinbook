@@ -1,7 +1,6 @@
 import { IndividualComment, UserImgContainer, UserImg, CommentText } from "./style"
 
 const Comment = ({comment, user} : any) => {
-
     return(
         <IndividualComment>
             <UserImgContainer>

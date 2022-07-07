@@ -21,9 +21,9 @@ function App() {
 
   return (
     <MainApp>
-      {!user && <AuthPageLayout setUser={setUser}/>}
-      {user && <Header />}
       <UserContext.Provider value={user}>
+        {!user && <AuthPageLayout setUser={setUser}/>}
+        {user && <Header />}
         <SocketContext.Provider value={socket}>
           {user && <Outlet />}
         </SocketContext.Provider>

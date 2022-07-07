@@ -1,17 +1,30 @@
+import { useState } from "react";
 import { RightPanelContainerStyles } from "./styles";
 
 const RightPanelContainer= ({friends}: any) => {
 
-    const mappedFriends = friends.map((friend: any) => 
-        <li key={friend.Id}>{friend.DisplayName}</li>
-    );
+
+    const [search, setSearch] = useState("");
+
+    const handleChange = (e: any) => {
+        setSearch(search => e.target.value);
+    };
+
+    const handleSearch = () => {
+        const result = friends.filter((friend:any) => friend.DisplayName.includes(search));
+
+        if(result.length === 0) return "No Friends Found";
+
+        return result.map((result: any) => 
+            <div key={result.Id}>{result.DisplayName}</div>
+        )
+    };
 
     return(
         <RightPanelContainerStyles>
-            Your Friends:
-            <ul>
-                {mappedFriends}
-            </ul>
+            <h3>Your Friends</h3>
+            <input type="text" placeholder="Search" value={search} onChange={handleChange}/>
+            <div>{handleSearch()}</div>
         </RightPanelContainerStyles>
     )
 }

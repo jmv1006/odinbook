@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const IndividualComment = styled.div`
     width: 100%;
-    min-height: 3rem;
+    min-height: 2.25rem;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -10,7 +10,7 @@ export const IndividualComment = styled.div`
 `
 
 export const UserImgContainer = styled.div`
-    width: 6%;
+    width: 4.25%;
     margin-left: .25rem;
 `
 

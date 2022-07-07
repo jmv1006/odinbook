@@ -2,16 +2,17 @@ import { useContext, useEffect, useState } from "react";
 import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer } from "./style";
 import useFetch from "../../../../../hooks/useFetch";
 import PostComments from "../../../../shared/comments/container-comments";
-import { SocketContext } from "../../../../../context/SocketContext";
+import { UserContext } from "../../../../../context/userContext";
+import { Link } from "react-router-dom";
 
 interface IComments {
     comments: Array<any>,
     amount: number
 };
 
-const Post = ({post, user}: any) => {
+const Post = ({post}: any) => {
 
-    const socket = useContext(SocketContext);
+    const user = useContext<any>(UserContext);
 
     const [likes, setLikes] = useState(0);
     const [comments, setComments] = useState<IComments | null>(null);
@@ -36,6 +37,15 @@ const Post = ({post, user}: any) => {
     }, [likesResponse]);
 
     const handlePostLike = async () => {
+        if(userHasLiked) {
+            setUserHasLiked(userHasLiked => false);
+            setLikes(likes - 1);
+        };
+        if(!userHasLiked) {
+            setUserHasLiked(userHasLiked => true);
+            setLikes(likes + 1);
+        };
+
         const res = await fetch(`/likes/post/${post.Id}/${user.Id}`, {
             method: 'POST',
             headers: {
@@ -51,14 +61,18 @@ const Post = ({post, user}: any) => {
     const toggleComments = () => {
         if(commentsAreToggled) return setCommentsAreToggled(false)
         setCommentsAreToggled(true)
-    }
+    };
 
+    const handlePostDate = () => {
+        const newDate = new Date(post.Date);
+        return newDate.toDateString();
+    };
 
     return(
         <PostStyles>
             <PostTopContainer>
-                <ProfilePhotoContainer>{post.Users.ProfileImg && <UserImage src={user.ProfileImg} />}</ProfilePhotoContainer>
-                <div>{post.Users.DisplayName}</div>
+                <ProfilePhotoContainer>{post.Users.ProfileImg && <UserImage src={post.Users.ProfileImg} />}</ProfilePhotoContainer>
+                <div><Link to={`/user/${post.Users.Id}`}>{post.Users.DisplayName}</Link></div>
             </PostTopContainer>
             <PostTextContainer>
                 {post.Text}
@@ -81,7 +95,7 @@ const Post = ({post, user}: any) => {
                     </div>
                 </LikeAndCommentContainer>  
             </PostBottomContainer>
-            {commentsAreToggled && <PostComments comments={comments}/>}
+            {commentsAreToggled && <PostComments comments={comments} postId={post.Id} reFetchComments={commentsReFetch}/>}
         </PostStyles>
     )
 }
