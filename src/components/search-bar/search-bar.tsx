@@ -1,10 +1,9 @@
 import { useContext, useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 import { UserContext } from "../../context/userContext"
 import { SearchBarContainer } from "./styles"
 
 const SearchBar = ({toggle} : any) => {
-    //What kinds of things can i search?
-    //users
     const user = useContext<any>(UserContext);
 
     const [results, setResults] = useState([])
@@ -31,14 +30,16 @@ const SearchBar = ({toggle} : any) => {
     const handleResults = () => {
         if(search === "") return
 
-        const result = results.filter((user:any) => user.DisplayName.includes(search));
+        const result = results.filter((user:any) => user.DisplayName.toUpperCase().includes(search.toUpperCase()))
 
         if(result.length === 0) return "Nothing Found";
 
         return result.map((result: any) => 
             <div key={result.Id}>
-                {result.DisplayName}
-                {result.DisplayName === user.DisplayName && " (Me)"}
+                <Link to={`/user/${result.Id}`}>
+                    {result.DisplayName}
+                    {result.DisplayName === user.DisplayName && " (Me)"}
+                </Link>
             </div>
         )
     }

@@ -39,7 +39,7 @@ const HomePageLayout = () => {
         
     return(
         <HomePage>
-            <HomePageContext.Provider value={{posts: posts, reFetchPosts: postsReFetch}}>
+            <HomePageContext.Provider value={{posts: posts, reFetchPosts: postsReFetch, postsLoading: postsAreLoading}}>
                 <LeftPanelContainer />
                 <MainFeedContainer />
                 <RightPanelContainer friends={friends}/>

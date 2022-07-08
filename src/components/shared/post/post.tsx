@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer } from "./style";
-import useFetch from "../../../../../hooks/useFetch";
-import PostComments from "../../../../shared/comments/container-comments";
-import { UserContext } from "../../../../../context/userContext";
+import useFetch from "../../../hooks/useFetch";
+import PostComments from "../comments/container-comments";
+import { UserContext } from "../../../context/userContext";
 import { Link } from "react-router-dom";
+import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer } from "./style";
 
 interface IComments {
     comments: Array<any>,

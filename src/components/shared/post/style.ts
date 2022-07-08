@@ -47,7 +47,7 @@ export const LikeAndCommentContainer = styled.div`
 `
 
 export const ProfilePhotoContainer = styled.div`
-    width: 6%;
+    max-width: 2.5rem;
 `
 
 export const UserImage = styled.img`
