@@ -4,7 +4,7 @@ const Comment = ({comment, user} : any) => {
     return(
         <IndividualComment>
             <UserImgContainer>
-                <UserImg src={user.ProfileImg}/>
+                {user.ProfileImg ? <UserImg src={user.ProfileImg}/> : <UserImg src="https://i.stack.imgur.com/l60Hf.png" />}
             </UserImgContainer>
             <CommentText>
                 {comment.Text}

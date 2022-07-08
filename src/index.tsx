@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import App from './main-app/App';
 import HomePageLayout from './layouts/home/home-page-layout';
 import UserPageLayout from './layouts/user-page/user-page-layout';
+import SearchPage from './components/search-page/search-page';
 import './index.css';
 
 const root = ReactDOM.createRoot(
@@ -16,6 +17,8 @@ root.render(
       <Route path='/' element={<App />}>
         <Route path='/' element={<HomePageLayout />} />
         <Route path='/user/:UserId' element={<UserPageLayout />} />
+        <Route path='/search' element={<SearchPage />} />
+        <Route path='/search/:SearchParams' element={<SearchPage />} />
       </Route>
     </Routes>
   </BrowserRouter>

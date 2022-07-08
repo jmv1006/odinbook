@@ -7,4 +7,26 @@ export const SearchBarContainer = styled.div`
     background-color: wheat;
     width: 60%;
     height: 40rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+`
+
+export const SearchResult = styled.div`
+    border: 2px solid blue;
+    width: 95%;
+    height: 2rem;
+
+`
+
+export const ResultsContainer = styled.div`
+    border: 1px solid red;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: .5rem;
 `

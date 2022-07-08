@@ -71,7 +71,7 @@ const Post = ({post}: any) => {
     return(
         <PostStyles>
             <PostTopContainer>
-                <ProfilePhotoContainer>{post.Users.ProfileImg && <UserImage src={post.Users.ProfileImg} />}</ProfilePhotoContainer>
+                <ProfilePhotoContainer>{post.Users.ProfileImg ? <UserImage src={post.Users.ProfileImg}/> : <UserImage src="https://i.stack.imgur.com/l60Hf.png" />}</ProfilePhotoContainer>
                 <div><Link to={`/user/${post.Users.Id}`}>{post.Users.DisplayName}</Link></div>
             </PostTopContainer>
             <PostTextContainer>

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/userContext"
-import { SearchBarContainer } from "./styles"
+import { ResultsContainer, SearchBarContainer, SearchResult } from "./styles"
 
 const SearchBar = ({toggle} : any) => {
     const user = useContext<any>(UserContext);
@@ -35,23 +35,24 @@ const SearchBar = ({toggle} : any) => {
         if(result.length === 0) return "Nothing Found";
 
         return result.map((result: any) => 
-            <div key={result.Id}>
+            <SearchResult key={result.Id}>
                 <Link to={`/user/${result.Id}`}>
                     {result.DisplayName}
                     {result.DisplayName === user.DisplayName && " (Me)"}
                 </Link>
-            </div>
+            </SearchResult>
         )
-    }
+    };
 
     return(
         <SearchBarContainer>
             Search Here
+            <Link to="/search">More...</Link>
             <input type="text" placeholder="Search..." value={search} onChange={handleChange} />
-            <button onClick={toggle}>X</button>
-            <div>
+            <ResultsContainer>
                 {handleResults()}
-            </div>
+            </ResultsContainer>
+            <button onClick={toggle}>X</button>
         </SearchBarContainer>
     )
 }
