@@ -6,8 +6,7 @@ export const CommentInputContainer = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-bottom: 0.25rem;
-    border-bottom: 1px solid gray;
+    padding-bottom: 0.5rem;
 `
 
 export const CommentInputForm = styled.form`

@@ -1,14 +1,24 @@
-import { MainFeedContainerStyles } from "./styles";
+import { MainFeedContainerStyles, NewPostInFeedNotification } from "./styles";
 import CreatePost from "./create-post/create-post";
 import { HomePageContext } from "../../../context/homePageContext";
 import { UserContext } from "../../../context/userContext";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import Post from "../../shared/post/post";
 
-const MainFeedContainer = () => {
-    //fetch posts and user socket stuff here
+type MainFeedContainerProps = {
+    timelineUpdate: boolean,
+    updateTimeline: () => void
+};
+
+const MainFeedContainer = ({ timelineUpdate, updateTimeline } : MainFeedContainerProps) => {
     const { posts, reFetchPosts, postsLoading } = useContext(HomePageContext);
     const user = useContext(UserContext);
+
+    const dummy = useRef<any>(null)
+
+    useEffect(() => {
+        dummy.current.scrollIntoView({behavior: 'smooth'})
+    }, [posts])
 
     const mappedPosts = posts.map((post: any) => 
         <Post key={post.Id} post={post} />
@@ -16,7 +26,9 @@ const MainFeedContainer = () => {
 
     return(
         <MainFeedContainerStyles>
+            <div ref={dummy} />
             <CreatePost user={user} reFetchPosts={reFetchPosts}/>
+            {timelineUpdate && <NewPostInFeedNotification onClick={updateTimeline}>New Update</NewPostInFeedNotification>}
             {posts.length > 0 && mappedPosts}
             {postsLoading && "Loading..."}
         </MainFeedContainerStyles>

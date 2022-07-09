@@ -7,9 +7,7 @@ export const RightPanelContainerStyles = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    @media (max-width: 1250px) {
-        width: 25%;
-    }
+    gap: .5rem;
     @media (max-width: 800px) {
         display: none;
     }

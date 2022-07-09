@@ -2,13 +2,22 @@ import styled from "styled-components";
 
 
 export const PostStyles = styled.div`
-    width: 95%;
-    border: 2px solid gray;
+    width: 93%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: .5rem;
+    padding-top: .75rem;
+    padding-left: .75rem;
+    padding-right: .75rem;
+    border-radius: .5rem;
 `
 
 export const PostTopContainer = styled.div`
+    width: 100%;
     height: 2.5rem;
-    margin-left: .25rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -16,9 +25,8 @@ export const PostTopContainer = styled.div`
 `
 
 export const PostTextContainer = styled.div`
-    width: 98%;
+    width: 100%;
     min-height: 2.5rem;
-    margin-left: .25rem;
 `
 
 export const PostBottomContainer = styled.div`
@@ -32,18 +40,18 @@ export const PostInfoBar = styled.div`
     height: 1.5rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: .5rem;
-    margin-left: .25rem;
+    color: gray;
 `
 
 export const LikeAndCommentContainer = styled.div`
     width: 100%;
-    height: 2rem;
+    height: 2.5rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
+    border-top: 2px solid #F0F2F5;
 `
 
 export const ProfilePhotoContainer = styled.div`

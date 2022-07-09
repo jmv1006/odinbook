@@ -4,18 +4,25 @@ import PostComments from "../comments/container-comments";
 import { UserContext } from "../../../context/userContext";
 import { Link } from "react-router-dom";
 import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer } from "./style";
+import IPost from '../../../interfaces/post';
+import IComment from '../../../interfaces/comment';
 
 interface IComments {
-    comments: Array<any>,
+    comments: Array<IComment>,
     amount: number
 };
 
-const Post = ({post}: any) => {
+type PostPropTypes = {
+    post: IPost
+};
+
+const Post = ({ post }: PostPropTypes) => {
 
     const user = useContext<any>(UserContext);
 
     const [likes, setLikes] = useState(0);
-    const [comments, setComments] = useState<IComments | null>(null);
+    const [comments, setComments] = useState<Array <IComment>>([]);
+    const [commentsAmount, setCommentsAmount] = useState(0);
     const [userHasLiked, setUserHasLiked] = useState(false);
     const [commentsAreToggled, setCommentsAreToggled] = useState(false);
 
@@ -23,7 +30,10 @@ const Post = ({post}: any) => {
     const {response: commentsResponse, isLoading: commentsAreLoading, reFetch: commentsReFetch} = useFetch(`/comments/${post.Id}`);
 
     useEffect(() => {
-        if(commentsResponse) setComments(commentsResponse)
+        if(commentsResponse){
+            setComments(commentsResponse.comments)
+            setCommentsAmount(commentsResponse.amount)
+        } 
     }, [commentsResponse]);
 
     useEffect(() => {
@@ -83,7 +93,7 @@ const Post = ({post}: any) => {
                         {likes} Likes
                     </div>
                     <div onClick={toggleComments}>
-                        {comments?.amount} Comments
+                        {commentsAmount} Comments
                     </div>
                 </PostInfoBar>
                 <LikeAndCommentContainer>
@@ -95,7 +105,7 @@ const Post = ({post}: any) => {
                     </div>
                 </LikeAndCommentContainer>  
             </PostBottomContainer>
-            {commentsAreToggled && <PostComments comments={comments} postId={post.Id} reFetchComments={commentsReFetch}/>}
+            {commentsAreToggled && <PostComments comments={comments} amount={commentsAmount} postId={post.Id} reFetchComments={commentsReFetch}/>}
         </PostStyles>
     )
 }

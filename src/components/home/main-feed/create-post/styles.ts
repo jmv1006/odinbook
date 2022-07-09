@@ -1,19 +1,32 @@
 import styled from "styled-components";
 
 export const CreatePostStyles = styled.div`
-    margin-top: 1.5rem;
     width: 95%;
     min-height: 5rem;
-    border: 2px solid red;
+    padding: .5rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: #FFFF;
+    border-radius: .5rem;
 `
 
 export const CreatePostForm = styled.form`
-    border: 2px solid gray;
     width: 85%;
     height: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`
+
+export const CreatePostTextInput = styled.input`
+    height: 86%;
+    width: 85%;
+`
+
+export const CreatePostBtn = styled.button`
+    height: 100%;
+    width: 14%;
 `
 
 export const ProfilePictureContainer = styled.div`

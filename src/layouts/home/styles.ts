@@ -8,4 +8,5 @@ export const HomePage = styled.div`
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background-color: #F0F2F5;
 `

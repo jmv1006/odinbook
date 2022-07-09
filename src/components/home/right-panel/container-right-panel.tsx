@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { RightPanelContainerStyles } from "./styles";
+import UserBar from "../../shared/user-bar/user-bar";
 
 const RightPanelContainer= ({friends}: any) => {
-
-
     const [search, setSearch] = useState("");
 
     const handleChange = (e: any) => {
@@ -16,7 +15,7 @@ const RightPanelContainer= ({friends}: any) => {
         if(result.length === 0) return "No Friends Found";
 
         return result.map((result: any) => 
-            <div key={result.Id}>{result.DisplayName}</div>
+            <UserBar key={result.Id} user={result} />
         )
     };
 
@@ -24,7 +23,7 @@ const RightPanelContainer= ({friends}: any) => {
         <RightPanelContainerStyles>
             <h3>Your Friends</h3>
             <input type="text" placeholder="Search" value={search} onChange={handleChange}/>
-            <div>{handleSearch()}</div>
+            {handleSearch()}
         </RightPanelContainerStyles>
     )
 }

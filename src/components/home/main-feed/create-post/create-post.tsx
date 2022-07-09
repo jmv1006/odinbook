@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { CreatePostStyles, CreatePostForm, ProfilePictureContainer, UserImage } from "./styles";
+import { CreatePostStyles, CreatePostForm, ProfilePictureContainer, UserImage, CreatePostTextInput, CreatePostBtn } from "./styles";
 import { SocketContext } from "../../../../context/SocketContext";
 
 const CreatePost = ({user, reFetchPosts}: any) => {
@@ -38,8 +38,8 @@ const CreatePost = ({user, reFetchPosts}: any) => {
                 {user.ProfileImg ? <UserImage src={user.ProfileImg}/> : "No Image"}
             </ProfilePictureContainer>
             <CreatePostForm onSubmit={handleCreatePost}>
-                <input type="text" placeholder="What's On Your Mind?" value={postText} onChange={handleChange} required></input>
-                <button type="submit">{isLoading ? "Posting..." : "Post"}</button>
+                <CreatePostTextInput type="text" placeholder="What's On Your Mind?" value={postText} onChange={handleChange} required />
+                <CreatePostBtn type="submit">{isLoading ? "Posting..." : "Post"}</CreatePostBtn>
             </CreatePostForm>
         </CreatePostStyles>
     )

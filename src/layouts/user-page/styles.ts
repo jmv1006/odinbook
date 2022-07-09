@@ -11,4 +11,5 @@ export const UserPageContainer = styled.div`
         align-items: center;
         justify-content: flex-start;
     }
+    background-color:  #F0F2F5;
 `

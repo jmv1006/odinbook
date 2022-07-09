@@ -21,6 +21,7 @@ const useFetch = (url: string | null) => {
 
         const resJSON = await res.json();
         setResponse(resJSON);
+        setIsLoading(false);
     }
 
     const reFetch = () => {

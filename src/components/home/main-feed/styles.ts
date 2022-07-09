@@ -8,12 +8,21 @@ export const MainFeedContainerStyles = styled.div`
     @media (max-width: 800px) {
         width: 100%;
     }
-    border: 1px solid black;
     width: 50%;
     height: 100%;
-    gap: 2rem;
+    gap: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: auto;
+`
+
+export const NewPostInFeedNotification = styled.button`
+    width: 10rem;
+    height: 2.5rem;
+    margin-top: .5rem;
+    position: absolute;
+    border: 2px solid blue;
+    background-color: blue;
+    color: white;
 `
