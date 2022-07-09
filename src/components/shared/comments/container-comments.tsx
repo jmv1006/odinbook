@@ -12,7 +12,7 @@ interface PropsComments {
 };
 
 const CommentsContainer = ({ comments, amount, postId, reFetchComments } : PropsComments) => {
-    const user = useContext<any>(UserContext);
+    const { user } = useContext<any>(UserContext);
 
     const mappedComments = comments.map((comment: any) =>
         <Comment key={comment.Id} comment={comment} user={comment.Users}/>

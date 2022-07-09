@@ -12,7 +12,7 @@ type MainFeedContainerProps = {
 
 const MainFeedContainer = ({ timelineUpdate, updateTimeline } : MainFeedContainerProps) => {
     const { posts, reFetchPosts, postsLoading } = useContext(HomePageContext);
-    const user = useContext(UserContext);
+    const { user } = useContext<any>(UserContext);
 
     const dummy = useRef<any>(null)
 

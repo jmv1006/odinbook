@@ -4,7 +4,7 @@ import { UserContext } from "../../context/userContext"
 import { ResultsContainer, SearchBarContainer, SearchResult } from "./styles"
 
 const SearchBar = ({toggle} : any) => {
-    const user = useContext<any>(UserContext);
+    const { user } = useContext<any>(UserContext);
 
     const [results, setResults] = useState([])
     const [search, setSearch] = useState("");

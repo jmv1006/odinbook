@@ -21,7 +21,6 @@ export const SearchResult = styled.div`
 `
 
 export const ResultsContainer = styled.div`
-    border: 1px solid red;
     width: 100%;
     height: 80%;
     display: flex;
@@ -29,4 +28,5 @@ export const ResultsContainer = styled.div`
     justify-content: flex-start;
     align-items: center;
     gap: .5rem;
+    overflow: auto;
 `

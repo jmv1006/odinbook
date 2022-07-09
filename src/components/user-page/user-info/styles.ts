@@ -3,16 +3,17 @@ import styled from "styled-components";
 
 export const UserInfoWrapper = styled.div`
     width: 25%;
-    height: 100%;
+    height: 97%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     gap: .5rem;
-    padding-top: 2%;
     @media (max-width: 850px) {
         width: 100%;
-        margin-bottom: 1rem;
+        height: 35%;
+        justify-content: space-around;
+        align-items: center;
     }
 `
 

@@ -1,9 +1,13 @@
 import { PostsWrapper, UserPagePostsWrapper } from "./styles";
 import Post from "../../shared/post/post";
+import { UserPageContext } from "../../../context/userPageContext";
+import { useContext } from "react";
 
-const UserPagePosts = ({posts} : any) => {
+const UserPagePosts = () => {
 
-    const mappedPosts = posts.map((post : any) =>
+    const { userPosts } = useContext<any>(UserPageContext);
+
+    const mappedPosts = userPosts.map((post : any) =>
         <Post key={post.Id} post={post} />
     );
 
@@ -11,6 +15,7 @@ const UserPagePosts = ({posts} : any) => {
         <UserPagePostsWrapper>
             <PostsWrapper>
                 {mappedPosts}
+                {mappedPosts.length === 0 && "User Has No Posts!"}
             </PostsWrapper>
         </UserPagePostsWrapper>
     )

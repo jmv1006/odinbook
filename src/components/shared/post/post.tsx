@@ -18,7 +18,7 @@ type PostPropTypes = {
 
 const Post = ({ post }: PostPropTypes) => {
 
-    const user = useContext<any>(UserContext);
+    const { user } = useContext<any>(UserContext);
 
     const [likes, setLikes] = useState(0);
     const [comments, setComments] = useState<Array <IComment>>([]);

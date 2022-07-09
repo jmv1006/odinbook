@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const UserPagePostsWrapper = styled.div`
     width: 75%;
-    height: 100%;
+    height: 98%;
     display: flex;
     justify-content: center;
     align-items: center;
     @media (max-width: 850px) {
-        width: 100%;
-        height: 80%;
+        width: 98%;
+        height: 65%;
     }
 `
 

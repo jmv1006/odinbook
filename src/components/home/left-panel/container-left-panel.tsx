@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { UserContext } from "../../../context/userContext";
 
 const LeftPanelContainer = () => {
-    const user = useContext<any>(UserContext);
+    const { user } = useContext<any>(UserContext);
 
     return(
         <LeftPanelContainerStyles>

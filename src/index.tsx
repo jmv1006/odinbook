@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom/client';
 import App from './main-app/App';
 import HomePageLayout from './layouts/home/home-page-layout';
 import UserPageLayout from './layouts/user-page/user-page-layout';
+import UserPagePosts from './components/user-page/posts/user-posts';
+import UserFriends from './components/user-page/friends/user-friends';
 import SearchPage from './components/search-page/search-page';
 import './index.css';
 
@@ -16,7 +18,10 @@ root.render(
     <Routes >
       <Route path='/' element={<App />}>
         <Route path='/' element={<HomePageLayout />} />
-        <Route path='/user/:UserId' element={<UserPageLayout />} />
+        <Route path='/user/:UserId' element={<UserPageLayout />}>
+            <Route path='/user/:UserId' element={<UserPagePosts />} />
+            <Route path='/user/:UserId/friends' element={<UserFriends />} />
+        </Route>
         <Route path='/search' element={<SearchPage />} />
         <Route path='/search/:SearchParams' element={<SearchPage />} />
       </Route>

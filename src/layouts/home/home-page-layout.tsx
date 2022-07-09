@@ -9,7 +9,7 @@ import useFetch from "../../hooks/useFetch";
 import { SocketContext } from "../../context/SocketContext";
 
 const HomePageLayout = () => {
-    const user = useContext<any>(UserContext);
+    const { user } = useContext<any>(UserContext);
     const socket = useContext(SocketContext);
 
     const {response: postsResponse, isLoading: postsAreLoading, reFetch:postsReFetch} = useFetch(`/posts/${user.Id}/timeline`);
