@@ -8,7 +8,6 @@ import { HomePageContext } from "../../context/homePageContext";
 import useFetch from "../../hooks/useFetch";
 import { SocketContext } from "../../context/SocketContext";
 
-
 const HomePageLayout = () => {
     const user = useContext<any>(UserContext);
     const socket = useContext(SocketContext);
