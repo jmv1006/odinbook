@@ -11,9 +11,10 @@ export const UserInfoWrapper = styled.div`
     gap: .5rem;
     @media (max-width: 850px) {
         width: 100%;
-        height: 35%;
-        justify-content: space-around;
+        height: 40%;
+        justify-content: flex-start;
         align-items: center;
+        gap: 1rem;
     }
 `
 
@@ -32,10 +33,16 @@ export const NameContainer = styled.div`
 `
 
 export const BioContainer = styled.div`
-    width: 85%;
+    width: 95%;
     min-height: 3.5rem;
     border: 2px solid red;
     text-align: center;
+`
+
+export const EditInfoBtn = styled.div`
+    text-align: right;
+    position: relative;
+    width: 95%;
 `
 /*
 @media (max-width: 850px) {

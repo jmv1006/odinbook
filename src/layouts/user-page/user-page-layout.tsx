@@ -41,7 +41,7 @@ const UserPageLayout = () => {
             <UserPageContainer>
                 {user && <UserInfo user={user}/>}
                 <Outlet />
-        </UserPageContainer>
+            </UserPageContainer>
         </UserPageContext.Provider>
     )
 };

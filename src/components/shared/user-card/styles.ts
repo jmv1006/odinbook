@@ -11,7 +11,6 @@ export const UserCardContainer = styled.div`
 `
 
 export const UserImgContainer = styled.div`
-    border: 2px solid orange;
     width: 95%;
     display: flex;
     justify-content: center;

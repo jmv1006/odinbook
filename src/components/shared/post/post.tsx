@@ -83,6 +83,7 @@ const Post = ({ post }: PostPropTypes) => {
             <PostTopContainer>
                 <ProfilePhotoContainer>{post.Users.ProfileImg ? <UserImage src={post.Users.ProfileImg}/> : <UserImage src="https://i.stack.imgur.com/l60Hf.png" />}</ProfilePhotoContainer>
                 <div><Link to={`/user/${post.Users.Id}`}>{post.Users.DisplayName}</Link></div>
+                {handlePostDate()}
             </PostTopContainer>
             <PostTextContainer>
                 {post.Text}

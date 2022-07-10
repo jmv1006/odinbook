@@ -12,7 +12,7 @@ export const CreatePostStyles = styled.div`
 `
 
 export const CreatePostForm = styled.form`
-    width: 85%;
+    width: 88%;
     height: 55%;
     display: flex;
     align-items: center;
@@ -30,7 +30,10 @@ export const CreatePostBtn = styled.button`
 `
 
 export const ProfilePictureContainer = styled.div`
-    width: 10%;
+    width: 3.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 export const UserImage = styled.img`

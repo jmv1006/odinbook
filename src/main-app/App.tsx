@@ -6,6 +6,7 @@ import { Outlet } from "react-router-dom";
 import Header from "../components/header/header";
 import { io } from "socket.io-client";
 import { SocketContext } from "../context/SocketContext";
+import { UserFriendsProvider } from "../context/userFriendsContext ";
 
 function App() {
   const [user, setUser] = useState<any>(null);
@@ -22,11 +23,15 @@ function App() {
   return (
     <MainApp>
       <UserContext.Provider value={{user: user, updateUser: setUser}}>
-        {!user && <AuthPageLayout setUser={setUser}/>}
-        {user && <Header />}
-        <SocketContext.Provider value={socket}>
-          {user && <Outlet />}
-        </SocketContext.Provider>
+          {!user && <AuthPageLayout setUser={setUser}/>}
+          {user && <Header />}
+          <SocketContext.Provider value={socket}>
+            {user && 
+              <UserFriendsProvider>
+                <Outlet />
+              </UserFriendsProvider>
+            }
+          </SocketContext.Provider>
       </UserContext.Provider>
     </MainApp>
   );

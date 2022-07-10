@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../context/userContext";
-import { BioContainer, NameContainer, ProfileImg, ProfileImgContainer, UserInfoWrapper } from "./styles";
+import { BioContainer, EditInfoBtn, NameContainer, ProfileImg, ProfileImgContainer, UserInfoWrapper } from "./styles";
 import IUser from "../../../interfaces/user";
 import UserPageNavBar from './../nav-bar/user-page-nav-bar';
 
@@ -14,15 +14,17 @@ const UserInfo = ({ user } : UserInfoPropTypes) => {
     const [isCurrentUser, setIsCurrentUser] = useState(false);
 
     useEffect(() => {
-        if(currentUser.Id === user.Id) setIsCurrentUser(currentUser => true)
-    }, [currentUser, user]);
+        if(currentUser.Id === user.Id) return setIsCurrentUser(currentUser => true)
+        setIsCurrentUser(false)
+    }, [user]);
 
 
     return(
         <UserInfoWrapper>
+            {isCurrentUser && <EditInfoBtn>Edit</EditInfoBtn>}
             {user.ProfileImg && <ProfileImgContainer><ProfileImg src={user.ProfileImg}/></ProfileImgContainer>}
             {!user.ProfileImg && <ProfileImgContainer><ProfileImg src="https://i.stack.imgur.com/l60Hf.png"/></ProfileImgContainer>}
-            <NameContainer>{user.DisplayName}</NameContainer>
+            <NameContainer>{user.Id === currentUser.Id ? `${user.DisplayName} (Me)` :  `${user.DisplayName}`}</NameContainer>
             <BioContainer>Bio Will Go Here</BioContainer>
             <UserPageNavBar />
         </UserInfoWrapper>

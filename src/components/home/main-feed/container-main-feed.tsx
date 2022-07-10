@@ -14,7 +14,7 @@ const MainFeedContainer = ({ timelineUpdate, updateTimeline } : MainFeedContaine
     const { posts, reFetchPosts, postsLoading } = useContext(HomePageContext);
     const { user } = useContext<any>(UserContext);
 
-    const dummy = useRef<any>(null)
+    const dummy = useRef<any>(null);
 
     useEffect(() => {
         dummy.current.scrollIntoView({behavior: 'smooth'})

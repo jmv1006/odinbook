@@ -6,7 +6,7 @@ import HomePageLayout from './layouts/home/home-page-layout';
 import UserPageLayout from './layouts/user-page/user-page-layout';
 import UserPagePosts from './components/user-page/posts/user-posts';
 import UserFriends from './components/user-page/friends/user-friends';
-import SearchPage from './components/search-page/search-page';
+import SearchPage from './layouts/search-page/search-page-layout';
 import './index.css';
 
 const root = ReactDOM.createRoot(

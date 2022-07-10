@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { CreatePostStyles, CreatePostForm, ProfilePictureContainer, UserImage, CreatePostTextInput, CreatePostBtn } from "./styles";
 import { SocketContext } from "../../../../context/SocketContext";
+import { Link } from "react-router-dom";
 
 const CreatePost = ({user, reFetchPosts}: any) => {
 
@@ -35,7 +36,7 @@ const CreatePost = ({user, reFetchPosts}: any) => {
     return(
         <CreatePostStyles>
             <ProfilePictureContainer>
-                {user.ProfileImg ? <UserImage src={user.ProfileImg}/> : "No Image"}
+                {user.ProfileImg ? <UserImage src={user.ProfileImg}/> : <UserImage src="https://i.stack.imgur.com/l60Hf.png"/>}
             </ProfilePictureContainer>
             <CreatePostForm onSubmit={handleCreatePost}>
                 <CreatePostTextInput type="text" placeholder="What's On Your Mind?" value={postText} onChange={handleChange} required />

@@ -1,18 +1,26 @@
 import { useContext } from "react"
+import { Link } from "react-router-dom"
 import { UserContext } from "../../../context/userContext"
 import { UserCardContainer, UserImg, UserImgContainer, UserNameContainer } from "./styles"
+import IUser from "../../../interfaces/user"
 
-const UserCard = ({user} : any) => {
-    const { user: currentUser}  = useContext<any>(UserContext)
+type UserCardPropTypes = {
+    user: IUser
+}
+
+const UserCard = ({user} : UserCardPropTypes) => {
+    const { user: currentUser}  = useContext<any>(UserContext);
 
     return(
         <UserCardContainer>
-            <UserImgContainer>
-                {user.ProfileImg ? <UserImg src={user.ProfileImg} /> : <UserImg src="https://i.stack.imgur.com/l60Hf.png" />}
-            </UserImgContainer>
-            <UserNameContainer>
-                {user.Id === currentUser.Id ? `${user.DisplayName} (Me)` : `${user.DisplayName}`}
-            </UserNameContainer>
+            <Link to={`/user/${user.Id}`}>
+                <UserImgContainer>
+                    {user.ProfileImg ? <UserImg src={user.ProfileImg} /> : <UserImg src="https://i.stack.imgur.com/l60Hf.png" />}
+                </UserImgContainer>
+                <UserNameContainer>
+                    {user.Id === currentUser.Id ? `${user.DisplayName} (Me)` : `${user.DisplayName}`}
+                </UserNameContainer>
+            </Link>
         </UserCardContainer>
     )
 }

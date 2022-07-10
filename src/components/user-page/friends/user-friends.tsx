@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { UserPageContext } from "../../../context/userPageContext"
 import { CardsContainer, UserFriendsContainer } from "./styles"
 import UserCard from "../../shared/user-card/user-card"
@@ -8,7 +8,7 @@ const UserFriends = () => {
 
     const mappedFriends = friends.map((friend: any) => 
         <UserCard key={friend.Id} user={friend} />
-    )
+    );
 
     return(
         <UserFriendsContainer>
