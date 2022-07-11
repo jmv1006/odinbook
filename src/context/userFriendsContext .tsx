@@ -15,7 +15,7 @@ const UserFriendsProvider = ({children} : any) => {
     }, [user, response])
 
     return(
-        <FriendsContext.Provider value={friends}>
+        <FriendsContext.Provider value={{friends: friends, reFetchFriends: reFetch}}>
             {children}
         </FriendsContext.Provider>
     )
@@ -24,8 +24,8 @@ const UserFriendsProvider = ({children} : any) => {
 
 
 const useFriends = () => {
-    const context = useContext(FriendsContext)
-    return context
+    const {friends, reFetchFriends} = useContext(FriendsContext)
+    return {friends, reFetchFriends}
 }
 
-export {UserFriendsProvider, useFriends}
+export {UserFriendsProvider, useFriends }

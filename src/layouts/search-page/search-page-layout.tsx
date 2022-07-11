@@ -21,9 +21,6 @@ const SearchPage = () => {
     return(
         <SearchPageContainer>
             {mappedUsers}
-            <div>
-                Users that I am not friends with; add friend request
-            </div>
         </SearchPageContainer>
     )
 }

@@ -3,6 +3,7 @@ import { UserContext } from "../../../context/userContext";
 import { BioContainer, EditInfoBtn, NameContainer, ProfileImg, ProfileImgContainer, UserInfoWrapper } from "./styles";
 import IUser from "../../../interfaces/user";
 import UserPageNavBar from './../nav-bar/user-page-nav-bar';
+import FriendLogic from '../../shared/friend-logic/friend-logic';
 
 type UserInfoPropTypes = {
     user: IUser
@@ -16,8 +17,7 @@ const UserInfo = ({ user } : UserInfoPropTypes) => {
     useEffect(() => {
         if(currentUser.Id === user.Id) return setIsCurrentUser(currentUser => true)
         setIsCurrentUser(false)
-    }, [user]);
-
+    }, [user, currentUser]);
 
     return(
         <UserInfoWrapper>
@@ -26,6 +26,7 @@ const UserInfo = ({ user } : UserInfoPropTypes) => {
             {!user.ProfileImg && <ProfileImgContainer><ProfileImg src="https://i.stack.imgur.com/l60Hf.png"/></ProfileImgContainer>}
             <NameContainer>{user.Id === currentUser.Id ? `${user.DisplayName} (Me)` :  `${user.DisplayName}`}</NameContainer>
             <BioContainer>Bio Will Go Here</BioContainer>
+            <FriendLogic user={user} />
             <UserPageNavBar />
         </UserInfoWrapper>
     )
