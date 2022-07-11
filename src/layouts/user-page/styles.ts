@@ -13,4 +13,5 @@ export const UserPageContainer = styled.div`
         justify-content: flex-start;
     }
     background-color:  #F0F2F5;
+    overflow-y: auto;
 `

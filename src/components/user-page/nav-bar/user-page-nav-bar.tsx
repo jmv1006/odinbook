@@ -10,7 +10,7 @@ const UserPageNavBar = () => {
         <UserPageNavBarContainer>
             <Link to={`/user/${user.Id}`}>Posts</Link>
             <Link to={`/user/${user.Id}/friends`}>Friends</Link>
-            <div>About</div>
+            <Link to={`/user/${user.Id}/about`}>About</Link>
         </UserPageNavBarContainer>
     )
 }

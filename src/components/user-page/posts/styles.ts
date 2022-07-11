@@ -8,7 +8,7 @@ export const UserPagePostsWrapper = styled.div`
     align-items: center;
     @media (max-width: 850px) {
         width: 98%;
-        height: 60%;
+        height: 55%;
     }
 `
 

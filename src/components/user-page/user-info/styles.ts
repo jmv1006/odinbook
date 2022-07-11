@@ -11,15 +11,14 @@ export const UserInfoWrapper = styled.div`
     gap: .5rem;
     @media (max-width: 850px) {
         width: 100%;
-        height: 40%;
-        justify-content: flex-start;
+        height: 45%;
+        justify-content: space-around;
         align-items: center;
-        gap: 1rem;
     }
 `
 
 export const ProfileImgContainer = styled.div`
-    width: 13rem;
+    width: 14rem;
 `
 export const ProfileImg = styled.img`
     width: 100%;

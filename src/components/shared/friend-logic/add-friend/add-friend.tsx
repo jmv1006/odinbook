@@ -7,7 +7,6 @@ import IUser from "../../../../interfaces/user";
 type AddFriendProps = {
     user: IUser
 }
-
 interface IFriendRequest {
     Id: string,
     From_uuid: string,
@@ -41,7 +40,7 @@ const AddFriend = ({user}: AddFriendProps) => {
         if(request) {
             if(request.From_uuid === currentUser.Id) {
                 //user sent it
-                return <h4>Request Sent</h4>
+                return <div>Friend Request Sent</div>
             }
             return (
                 <div>

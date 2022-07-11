@@ -5,7 +5,7 @@ export const UserFriendsContainer = styled.div`
     height: 98%;
     @media (max-width: 850px) {
         width: 98%;
-        height: 60%;
+        height: 55%;
     }
 `
 
