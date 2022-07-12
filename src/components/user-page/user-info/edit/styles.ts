@@ -44,3 +44,18 @@ export const ProfileImg = styled.img`
     width: 100%;
     border-radius: 10%;
 `
+
+export const EditBioTextArea = styled.textarea`
+    border: 2px solid red;
+    resize: none;
+    width: 60%;
+    height: 5rem;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1rem;
+`
+
+export const EditBioTextContainer = styled.div`
+    text-align: center;
+    width: 60%;
+    height: 2rem;
+`

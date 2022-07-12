@@ -20,6 +20,14 @@ function App() {
     }
   }, [user])
 
+  useEffect(() => {
+    if(socket) {
+      socket.on('notification',(info: any) => {
+        console.log(info)
+      })
+    }
+  }, [socket])
+
   return (
     <MainApp>
       <UserContext.Provider value={{user: user, updateUser: setUser}}>

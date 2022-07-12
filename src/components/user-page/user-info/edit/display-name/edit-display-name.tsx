@@ -21,9 +21,7 @@ const EditDisplayName = ({user, updateUser} : EditDisplayNameProps) => {
     };
 
     const handleSubmit = async (e: any) => {
-        e.preventDefault()
-        console.log(currentDisplayName)
-
+        e.preventDefault();
         const response = await fetch(`/users/${user.Id}`, {
             method: "PUT",
             headers: {
@@ -41,8 +39,8 @@ const EditDisplayName = ({user, updateUser} : EditDisplayNameProps) => {
         
         const responseJSON = await response.json();
 
-        await updateUser(responseJSON.updatedUser)
-        setIsEditing(false)
+        await updateUser((prevUser : any) => responseJSON.updatedUser)
+        setIsEditing(false);
     }
 
     return(

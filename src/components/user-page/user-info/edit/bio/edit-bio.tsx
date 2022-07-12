@@ -1,10 +1,13 @@
-import { useState } from "react"
-import { EditItemContainer, EditItemTitle } from "../styles"
+import { useContext, useState } from "react"
+import { UserPageContext } from "../../../../../context/userPageContext";
+import { EditBioTextArea, EditBioTextContainer, EditItemContainer, EditItemTitle } from "../styles"
 
 const EditBio = ({user, text} : any) => {
 
     const [bioText, setBioText] = useState(text);
+    const [isEditing, setIsEditing] = useState(false);
 
+    const {triggerReload} = useContext<any>(UserPageContext);
 
     const handleChange = (e: any) => {
         setBioText(e.target.value)
@@ -24,16 +27,22 @@ const EditBio = ({user, text} : any) => {
         }
         
         const responseJSON = await response.json();
-        console.log(responseJSON)
+        toggleEditing();
+        triggerReload();
     }
+
+    const toggleEditing = () => {
+        if(isEditing) return setIsEditing(isEditing => false)
+        setIsEditing(isEditing => true)
+    };
 
     return(
         <EditItemContainer>
             <EditItemTitle>Edit Bio</EditItemTitle>
-            <div>
-                <textarea value={bioText} onChange={handleChange}/>
-                <button onClick={handleSubmit}>Submit</button>
-            </div>
+                {isEditing && <EditBioTextArea value={bioText} onChange={handleChange}/>}
+                {isEditing && <button onClick={handleSubmit}>Submit</button>}
+                {!isEditing && <EditBioTextContainer>{bioText}</EditBioTextContainer>}
+                {!isEditing && <button onClick={toggleEditing}>Edit</button>}
         </EditItemContainer>
     )
 }

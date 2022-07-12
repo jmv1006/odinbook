@@ -8,14 +8,20 @@ import { UserContext } from "../../context/userContext";
 
 const UserPageLayout = () => {
     const params = useParams();
-    const userId = params.UserId;
 
     const { user: currentUser } = useContext<any>(UserContext);
 
-    const {response: userPostsResponse, isLoading: userPostsAreLoading, reFetch: userPostsReFetch} = useFetch(`/posts/${userId}`);
-    const {response: userInfoResponse, isLoading: userInfoIsLoading, reFetch: userInfoReFetch} = useFetch(`/users/${userId}`);
-    const {response: friendsResponse, isLoading: friendsLoading, reFetch: friendsReFetch} = useFetch(`/friendships/${userId}`);
-    const { response: profileInfoResponse } = useFetch(`/users/${params.UserId}/profile`);
+    //User's Posts
+    const {response: userPostsResponse } = useFetch(`/posts/${params.UserId}`);
+
+    //User's basic info such as name and ID
+    const {response: userInfoResponse, reFetch: userInfoReFetch } = useFetch(`/users/${params.UserId}`);
+
+    //User's friends
+    const {response: friendsResponse, reFetch: friendsReFetch } = useFetch(`/friendships/${params.UserId}`);
+
+    //User's profile info such as bio, birthday, interests, etc...
+    const { response: profileInfoResponse, reFetch: profileInfoReload } = useFetch(`/users/${params.UserId}/profile`);
 
     const [userPosts, setUserPosts] = useState([]);
     const [user, setUser] = useState(null);
@@ -44,8 +50,15 @@ const UserPageLayout = () => {
         }
     }, [friendsResponse]);
 
+    const triggerReload = () => {
+        profileInfoReload()
+        friendsReFetch()
+        userInfoReFetch()
+    }
+
     return(
-        <UserPageContext.Provider value={{user: user, userPosts: userPosts, friends: friends, userPageFriendsReload: friendsReFetch, isCurrentUser: isCurrentUser, profileInfo: profileInfo}}>
+        //TO-DO: Break context up into smaller parts OR refactor
+        <UserPageContext.Provider value={{user: user, userPosts: userPosts, friends: friends, isCurrentUser: isCurrentUser, profileInfo: profileInfo, triggerReload: triggerReload}}>
                 <UserPageContainer>
                     {user ?
                         <>

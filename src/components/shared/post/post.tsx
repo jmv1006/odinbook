@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer } from "./style";
 import IPost from '../../../interfaces/post';
 import IComment from '../../../interfaces/comment';
+import { SocketContext } from "../../../context/SocketContext";
 
 interface IComments {
     comments: Array<IComment>,
@@ -19,6 +20,7 @@ type PostPropTypes = {
 const Post = ({ post }: PostPropTypes) => {
 
     const { user } = useContext<any>(UserContext);
+    const socket = useContext(SocketContext);
 
     const [likes, setLikes] = useState(0);
     const [comments, setComments] = useState<Array <IComment>>([]);
@@ -64,7 +66,8 @@ const Post = ({ post }: PostPropTypes) => {
         });
 
         if(res.ok) {
-            likesReFetch()
+            likesReFetch();
+            socket.emit('notification', user.Id, 'like');
         };
     };
 
@@ -80,32 +83,38 @@ const Post = ({ post }: PostPropTypes) => {
 
     return(
         <PostStyles>
-            <PostTopContainer>
-                <ProfilePhotoContainer>{post.Users.ProfileImg ? <UserImage src={post.Users.ProfileImg}/> : <UserImage src="https://i.stack.imgur.com/l60Hf.png" />}</ProfilePhotoContainer>
-                <div><Link to={`/user/${post.Users.Id}`}>{post.Users.DisplayName}</Link></div>
-                {handlePostDate()}
-            </PostTopContainer>
-            <PostTextContainer>
-                {post.Text}
-            </PostTextContainer>
-            <PostBottomContainer>
-                <PostInfoBar>
-                    <div>
-                        {likes} Likes
-                    </div>
-                    <div onClick={toggleComments}>
-                        {commentsAmount} Comments
-                    </div>
-                </PostInfoBar>
-                <LikeAndCommentContainer>
-                    <div>
-                        <button onClick={handlePostLike}>{userHasLiked ? "Unlike" : "Like"}</button>
-                    </div>
-                    <div onClick={toggleComments}>
-                        Comment
-                    </div>
-                </LikeAndCommentContainer>  
-            </PostBottomContainer>
+            {likesResponse && commentsResponse ?
+                <>
+                <PostTopContainer>
+                    <ProfilePhotoContainer>{post.Users.ProfileImg ? <UserImage src={post.Users.ProfileImg}/> : <UserImage src="https://i.stack.imgur.com/l60Hf.png" />}</ProfilePhotoContainer>
+                    <div><Link to={`/user/${post.Users.Id}`}>{post.Users.DisplayName}</Link></div>
+                    {handlePostDate()}
+                </PostTopContainer>
+                <PostTextContainer>
+                    {post.Text}
+                </PostTextContainer>
+                <PostBottomContainer>
+                    <PostInfoBar>
+                        <div>
+                            {likes} Likes
+                        </div>
+                        <div onClick={toggleComments}>
+                            {commentsAmount} Comments
+                        </div>
+                    </PostInfoBar>
+                    <LikeAndCommentContainer>
+                        <div>
+                            <button onClick={handlePostLike}>{userHasLiked ? "Unlike" : "Like"}</button>
+                        </div>
+                        <div onClick={toggleComments}>
+                            Comment
+                        </div>
+                    </LikeAndCommentContainer>  
+                </PostBottomContainer>
+                </>
+            :
+            "Loading..."
+            }
             {commentsAreToggled && <PostComments comments={comments} amount={commentsAmount} postId={post.Id} reFetchComments={commentsReFetch}/>}
         </PostStyles>
     )
