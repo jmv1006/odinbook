@@ -1,5 +1,5 @@
 import { useState } from "react"
-import IUser from "../../../../../../interfaces/user"
+import IUser from "../../../../../interfaces/user"
 import { EditItemContainer, EditItemTitle } from "../styles"
 
 type EditDisplayNameProps = {

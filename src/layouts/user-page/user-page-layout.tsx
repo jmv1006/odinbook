@@ -15,11 +15,13 @@ const UserPageLayout = () => {
     const {response: userPostsResponse, isLoading: userPostsAreLoading, reFetch: userPostsReFetch} = useFetch(`/posts/${userId}`);
     const {response: userInfoResponse, isLoading: userInfoIsLoading, reFetch: userInfoReFetch} = useFetch(`/users/${userId}`);
     const {response: friendsResponse, isLoading: friendsLoading, reFetch: friendsReFetch} = useFetch(`/friendships/${userId}`);
-    
+    const { response: profileInfoResponse } = useFetch(`/users/${params.UserId}/profile`);
+
     const [userPosts, setUserPosts] = useState([]);
     const [user, setUser] = useState(null);
     const [friends, setFriends] = useState([]);
     const [isCurrentUser, setIsCurrentUser] = useState(false);
+    const [profileInfo, setProfileInfo] = useState(null);
 
     useEffect(() => {
         if(userPostsResponse) {
@@ -28,12 +30,13 @@ const UserPageLayout = () => {
     }, [userPostsResponse]);
 
     useEffect(() => {
-        if(userInfoResponse) {
+        if(userInfoResponse && profileInfoResponse) {
             setIsCurrentUser(currentUser => false)
             if(userInfoResponse.user.Id === currentUser.Id) setIsCurrentUser(isCurrentUser => true)
             setUser(user => userInfoResponse.user)
+            setProfileInfo(profileInfo => profileInfoResponse.info)
         }
-    }, [userInfoResponse]);
+    }, [userInfoResponse, profileInfoResponse]);
 
     useEffect(() => {
         if(friendsResponse) {
@@ -42,13 +45,17 @@ const UserPageLayout = () => {
     }, [friendsResponse]);
 
     return(
-        <UserPageContext.Provider value={{user: user, userPosts: userPosts, friends: friends, isCurrentUser: isCurrentUser}}>
-            {user ? 
+        <UserPageContext.Provider value={{user: user, userPosts: userPosts, friends: friends, isCurrentUser: isCurrentUser, profileInfo: profileInfo}}>
                 <UserPageContainer>
-                    {user && <UserInfo />}
-                    <Outlet />
+                    {user ?
+                        <>
+                            <UserInfo />
+                            <Outlet />
+                        </>
+                        :
+                        "Loading..."
+                    }
                 </UserPageContainer>
-            : null}
         </UserPageContext.Provider>
     )
 };
