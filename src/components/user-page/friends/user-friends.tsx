@@ -4,10 +4,10 @@ import { CardsContainer, UserFriendsContainer } from "./styles"
 import UserCard from "../../shared/user-card/user-card"
 
 const UserFriends = () => {
-    const {friends} = useContext<any>(UserPageContext);
+    const {friends, isCurrentUser} = useContext<any>(UserPageContext);
 
     const mappedFriends = friends.map((friend: any) => 
-        <UserCard key={friend.Id} user={friend} />
+        <UserCard key={friend.Id} user={friend} isCurrentUser={isCurrentUser}/>
     );
 
     return(

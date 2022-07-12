@@ -45,7 +45,7 @@ const UserPageLayout = () => {
     }, [friendsResponse]);
 
     return(
-        <UserPageContext.Provider value={{user: user, userPosts: userPosts, friends: friends, isCurrentUser: isCurrentUser, profileInfo: profileInfo}}>
+        <UserPageContext.Provider value={{user: user, userPosts: userPosts, friends: friends, userPageFriendsReload: friendsReFetch, isCurrentUser: isCurrentUser, profileInfo: profileInfo}}>
                 <UserPageContainer>
                     {user ?
                         <>
