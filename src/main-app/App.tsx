@@ -31,15 +31,16 @@ function App() {
   return (
     <MainApp>
       <UserContext.Provider value={{user: user, updateUser: setUser}}>
-          {!user && <AuthPageLayout setUser={setUser}/>}
-          {user && <Header />}
-          <SocketContext.Provider value={socket}>
-            {user && 
-              <UserFriendsProvider>
-                <Outlet />
-              </UserFriendsProvider>
-            }
-          </SocketContext.Provider>
+          {user ? 
+           <UserFriendsProvider>
+            <SocketContext.Provider value={socket}>
+              <Header />
+              <Outlet />
+            </SocketContext.Provider>
+          </UserFriendsProvider>
+          :
+          <AuthPageLayout setUser={setUser} />
+          }
       </UserContext.Provider>
     </MainApp>
   );

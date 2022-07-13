@@ -1,13 +1,13 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
-import { UserContext } from "../../context/userContext"
-import { ResultsContainer, SearchBarContainer, SearchResult } from "./styles"
+import { ResultsContainer, SearchBarContainer } from "./styles"
+import UserBar from "../shared/user-bar/user-bar";
 
 const SearchBar = ({toggle} : any) => {
-    const { user } = useContext<any>(UserContext);
 
     const [results, setResults] = useState([])
     const [search, setSearch] = useState("");
+
 
     useEffect(() => {
         fetchData()
@@ -24,7 +24,7 @@ const SearchBar = ({toggle} : any) => {
 
         const resJSON = await res.json();
 
-        setResults(resJSON.users)
+        setResults(results => resJSON.users)
     };
 
     const handleResults = () => {
@@ -32,15 +32,8 @@ const SearchBar = ({toggle} : any) => {
 
         const result = results.filter((user:any) => user.DisplayName.toUpperCase().includes(search.toUpperCase()))
 
-        if(result.length === 0) return "Nothing Found";
-
         return result.map((result: any) => 
-            <SearchResult key={result.Id}>
-                <Link to={`/user/${result.Id}`}>
-                    {result.DisplayName}
-                    {result.DisplayName === user.DisplayName && " (Me)"}
-                </Link>
-            </SearchResult>
+            <UserBar user={result} key={result.Id} />
         )
     };
 

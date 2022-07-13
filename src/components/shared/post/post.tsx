@@ -67,7 +67,7 @@ const Post = ({ post }: PostPropTypes) => {
 
         if(res.ok) {
             likesReFetch();
-            socket.emit('notification', user.Id, 'like');
+            socket.emit('notification', post.Users.Id, 'like', post.Id);
         };
     };
 

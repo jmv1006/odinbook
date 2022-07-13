@@ -6,14 +6,14 @@ import { SocketContext } from "./SocketContext";
 export const FriendsContext = createContext<any>([]);
 
 const UserFriendsProvider = ({children} : any) => {
-    const {user} = useContext<any>(UserContext)
+    const { user } = useContext<any>(UserContext)
     const socket = useContext(SocketContext);
 
     const {response, reFetch} = useFetch(`/friendships/${user.Id}`);
     const [friends, setFriends] = useState([]);
     
     useEffect(() => {
-        if(user && response) setFriends(response.friends)
+        if(user && response) setFriends(friends => response.friends)
     }, [user, response])
 
     useEffect(() => {
@@ -32,7 +32,7 @@ const UserFriendsProvider = ({children} : any) => {
 
 
 const useFriends = () => {
-    const {friends, reFetchFriends} = useContext(FriendsContext)
+    const {friends, reFetchFriends} = useContext<any>(FriendsContext)
     return {friends, reFetchFriends}
 }
 

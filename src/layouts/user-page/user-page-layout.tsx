@@ -54,7 +54,7 @@ const UserPageLayout = () => {
         profileInfoReload()
         friendsReFetch()
         userInfoReFetch()
-    }
+    };
 
     return(
         //TO-DO: Break context up into smaller parts OR refactor

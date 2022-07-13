@@ -14,13 +14,16 @@ const HomePageLayout = () => {
     const socket = useContext(SocketContext);
 
     const { friends } = useFriends();
-    const {response: postsResponse, isLoading: postsAreLoading, reFetch:postsReFetch} = useFetch(`/posts/${user.Id}/timeline`);
 
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState<any>([]);
     const [timelineUpdate, setTimelineUpdate] = useState(false);
 
+    const {response: postsResponse, isLoading: postsAreLoading, reFetch:postsReFetch} = useFetch(`/posts/${user.Id}/timeline`);
+
     useEffect(() => {
-        if(postsResponse) setPosts(postsResponse.posts);
+        if(postsResponse){
+            setPosts((posts: any) => [...posts, ...postsResponse.posts]);
+        } 
     }, [postsResponse])
 
 

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../../context/userContext";
 import { useFriends } from "../../../context/userFriendsContext ";
 import AddFriend from "./add-friend/add-friend";
@@ -10,7 +10,7 @@ const FriendLogic = ({user} : any) => {
     const { friends } = useFriends();
 
     const isUserFriend = () => {
-        const isFriend = friends.some((friend : any) => friend.Id === user.Id)
+        const isFriend = friends.some((friend : any) => friend.Id === user.Id);
         if(isFriend) return true
         return false
     };
