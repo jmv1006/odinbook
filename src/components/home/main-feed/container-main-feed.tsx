@@ -1,5 +1,5 @@
 import { MainFeedContainerStyles, NewPostInFeedNotification } from "./styles";
-import CreatePost from "./create-post/create-post";
+import CreatePost from "../../shared/create-post/create-post";
 import { HomePageContext } from "../../../context/homePageContext";
 import { UserContext } from "../../../context/userContext";
 import { useContext, useEffect, useRef } from "react";
@@ -30,6 +30,7 @@ const MainFeedContainer = ({ timelineUpdate, updateTimeline } : MainFeedContaine
             <CreatePost user={user} reFetchPosts={reFetchPosts}/>
             {timelineUpdate && <NewPostInFeedNotification onClick={updateTimeline}>New Update</NewPostInFeedNotification>}
             {posts.length > 0 && mappedPosts}
+            {posts.length === 0 && !postsLoading ? "No Posts To Show!" : null}
             {postsLoading && "Loading..."}
         </MainFeedContainerStyles>
     )

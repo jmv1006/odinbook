@@ -1,7 +1,7 @@
 import { SignUpForm } from "./styles";
 import { useState } from "react";
 
-const SignUpFormPage = ({setAccountCreated, setCreatedUser, setCreatingAccount} : any) => {
+const SignUpFormPage = ({setAccountCreated, setCreatedUser} : any) => {
 
     const [formValues, setFormValues] = useState({
         Email: "",
@@ -22,7 +22,6 @@ const SignUpFormPage = ({setAccountCreated, setCreatedUser, setCreatingAccount} 
     };
 
     const handleSubmit = async (e: any) => {
-        setCreatingAccount(true)
         e.preventDefault()
         const response = await fetch('/auth/sign-up', {
             method: "POST",
@@ -34,18 +33,16 @@ const SignUpFormPage = ({setAccountCreated, setCreatedUser, setCreatingAccount} 
 
         if(!response.ok) {
             setError(true)
-            setCreatingAccount(false)
-            return console.log("response error")
+            return
         }
         
         const resJSON = await response.json()
         setCreatedUser(resJSON.user)
-        setCreatingAccount(false)
         setAccountCreated(true)
     }
     return(
         <>
-            {error && "Oops! An error occured"}
+            {error && "There Was An Error Creating Your Account"}
             <SignUpForm onSubmit={handleSubmit}>
                 <label>Email</label>
                 <input type="email" name="Email" value={formValues.Email} onChange={handleChange} required/>

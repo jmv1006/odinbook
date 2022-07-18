@@ -1,10 +1,10 @@
-import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { UserPageContext } from "../../../context/userPageContext"
+import { useUserPageContext } from "../../../context/userPageContextRewrite"
 import { UserPageNavBarContainer } from "./styles"
 
 const UserPageNavBar = () => {
-    const { user } = useContext<any>(UserPageContext);
+    const { user } = useUserPageContext()
+
 
     return(
         <UserPageNavBarContainer>

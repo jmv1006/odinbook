@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { ProfileInfoContainer, ProfileInfoForm } from "./styles";
+import { BioTextArea, ProfileInfoContainer, ProfileInfoForm } from "./styles";
 
 const ProfileInfoSetUp = ({setUploadingInfo, createdUser, setUser} : any) => {
 
@@ -75,7 +75,7 @@ const ProfileInfoSetUp = ({setUploadingInfo, createdUser, setUser} : any) => {
             {error && "There was an error uploading your details! Your account has been created, so you can still LOG IN to access it."}
             <ProfileInfoForm onSubmit={submitData}>
                 <label>Bio: </label>
-                <textarea value={bioText} onChange={bioTextOnChange}/>
+                <BioTextArea value={bioText} onChange={bioTextOnChange}/>
                 <label>Profile Img: </label>
                 <input type="file" accept="image/*" onChange={fileChangeHandler}/>
                 <button type="submit">Submit</button>

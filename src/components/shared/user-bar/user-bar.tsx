@@ -15,9 +15,9 @@ const UserBar = ({user} : UserBarProps) => {
     };
 
     return(
-        <UserBarContainer onClick={navigateToUserPage}>
-            {user.ProfileImg && <UserImgContainer><UserImg src={user.ProfileImg}/></UserImgContainer>}
-            {!user.ProfileImg && <UserImgContainer><UserImg src="https://i.stack.imgur.com/l60Hf.png"/></UserImgContainer>}
+        <UserBarContainer>
+            {user.ProfileImg && <UserImgContainer onClick={navigateToUserPage}><UserImg src={user.ProfileImg}/></UserImgContainer>}
+            {!user.ProfileImg && <UserImgContainer onClick={navigateToUserPage}><UserImg src="https://i.stack.imgur.com/l60Hf.png"/></UserImgContainer>}
             {user.DisplayName}
             <FriendLogic user={user}/>
         </UserBarContainer>

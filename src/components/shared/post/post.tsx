@@ -4,20 +4,11 @@ import PostComments from "../comments/container-comments";
 import { UserContext } from "../../../context/userContext";
 import { Link } from "react-router-dom";
 import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer } from "./style";
-import IPost from '../../../interfaces/post';
 import IComment from '../../../interfaces/comment';
 import { SocketContext } from "../../../context/SocketContext";
+import DeletePostModal from "./delete/delete-post-modal";
 
-interface IComments {
-    comments: Array<IComment>,
-    amount: number
-};
-
-type PostPropTypes = {
-    post: IPost
-};
-
-const Post = ({ post }: PostPropTypes) => {
+const Post = ({ post }: any) => {
 
     const { user } = useContext<any>(UserContext);
     const socket = useContext(SocketContext);
@@ -28,8 +19,10 @@ const Post = ({ post }: PostPropTypes) => {
     const [userHasLiked, setUserHasLiked] = useState(false);
     const [commentsAreToggled, setCommentsAreToggled] = useState(false);
 
-    const {response: likesResponse, isLoading: likesAreLoading, reFetch: likesReFetch} = useFetch(`/likes/post/${post.Id}`);
-    const {response: commentsResponse, isLoading: commentsAreLoading, reFetch: commentsReFetch} = useFetch(`/comments/${post.Id}`);
+    const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
+
+    const {response: likesResponse, reFetch: likesReFetch} = useFetch(`/likes/post/${post.Id}`);
+    const {response: commentsResponse, reFetch: commentsReFetch} = useFetch(`/comments/${post.Id}`);
 
     useEffect(() => {
         if(commentsResponse){
@@ -81,6 +74,16 @@ const Post = ({ post }: PostPropTypes) => {
         return newDate.toDateString();
     };
 
+    const isCurrentUser = () => {
+        if(post.Users.Id === user.Id) return true
+        return false
+    };
+
+    const toggleDeleteModal = () => {
+        if(deleteModalIsOpen) return setDeleteModalIsOpen(deleteModalIsOpen => false)
+        setDeleteModalIsOpen(deleteModalIsOpen => true)
+    }
+    
     return(
         <PostStyles>
             {likesResponse && commentsResponse ?
@@ -89,6 +92,8 @@ const Post = ({ post }: PostPropTypes) => {
                     <ProfilePhotoContainer>{post.Users.ProfileImg ? <UserImage src={post.Users.ProfileImg}/> : <UserImage src="https://i.stack.imgur.com/l60Hf.png" />}</ProfilePhotoContainer>
                     <div><Link to={`/user/${post.Users.Id}`}>{post.Users.DisplayName}</Link></div>
                     {handlePostDate()}
+                    {isCurrentUser() && <button onClick={toggleDeleteModal}>X</button>}
+                    {deleteModalIsOpen && <DeletePostModal toggle={toggleDeleteModal}/>}
                 </PostTopContainer>
                 <PostTextContainer>
                     {post.Text}

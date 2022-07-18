@@ -18,7 +18,7 @@ export const UserImgContainer = styled.div`
 `
 
 export const UserImg = styled.img`
-    width: 13rem;
+    width: 10rem;
 `
 
 export const UserNameContainer = styled.div`

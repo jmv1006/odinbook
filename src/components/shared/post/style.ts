@@ -56,6 +56,9 @@ export const LikeAndCommentContainer = styled.div`
 
 export const ProfilePhotoContainer = styled.div`
     max-width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
 export const UserImage = styled.img`

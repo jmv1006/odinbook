@@ -10,7 +10,7 @@ type UserCardPropTypes = {
     isCurrentUser: boolean
 }
 
-const UserCard = ({user, isCurrentUser} : UserCardPropTypes) => {
+const UserCard = ({user, isCurrentUser } : UserCardPropTypes) => {
     const { user: currentUser}  = useContext<any>(UserContext);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -22,7 +22,7 @@ const UserCard = ({user, isCurrentUser} : UserCardPropTypes) => {
     return(
         <UserCardContainer>
                 {isCurrentUser && <button onClick={toggleDeleteModal}>X</button>}
-                {isOpen && <DeleteFriendModal toggle={toggleDeleteModal} user={user} currentUser={currentUser}/>}
+                {isOpen && <DeleteFriendModal toggle={toggleDeleteModal} user={user} currentUser={currentUser} />}
             <Link to={`/user/${user.Id}`}>
                 <UserImgContainer>
                     {user.ProfileImg ? <UserImg src={user.ProfileImg} /> : <UserImg src="https://i.stack.imgur.com/l60Hf.png" />}

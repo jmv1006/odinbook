@@ -1,5 +1,5 @@
-import { useContext, useState } from "react"
-import { UserPageContext } from "../../../../../context/userPageContext";
+import { useState } from "react"
+import { useUserPageContext } from "../../../../../context/userPageContextRewrite";
 import { EditBioTextArea, EditBioTextContainer, EditItemContainer, EditItemTitle } from "../styles"
 
 const EditBio = ({user, text} : any) => {
@@ -7,7 +7,7 @@ const EditBio = ({user, text} : any) => {
     const [bioText, setBioText] = useState(text);
     const [isEditing, setIsEditing] = useState(false);
 
-    const {triggerReload} = useContext<any>(UserPageContext);
+    const {triggerReload} = useUserPageContext()
 
     const handleChange = (e: any) => {
         setBioText(e.target.value)

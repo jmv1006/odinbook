@@ -1,13 +1,11 @@
 import { useState } from "react"
 import SignUpFormPage from "./form";
-import { SignUpModal } from "./styles"
+import { ExitBtnContainer, SignUpModal, SignUpTitle, SignUpTopContainer } from "./styles"
 import ProfileInfoSetUp from "./profile-info";
 
 const SignUp = ({toggle, setUser} : any) => {
 
     const [accountCreated, setAccountCreated] = useState(false);
-
-    const [creatingAccount, setCreatingAccount] = useState(false);
 
     const [uploadingProfileInfo, setUploadingProfileInfo] = useState(false);
 
@@ -15,8 +13,14 @@ const SignUp = ({toggle, setUser} : any) => {
 
     return(
         <SignUpModal>
-            {!accountCreated && !creatingAccount ?
-                <SignUpFormPage setAccountCreated={setAccountCreated} setCreatingAccount={setCreatingAccount} setCreatedUser={setCreatedUser}/>
+            <SignUpTopContainer>
+                <ExitBtnContainer>
+                    <button onClick={toggle}>X</button>
+                </ExitBtnContainer>
+                <SignUpTitle>Sign Up</SignUpTitle>
+            </SignUpTopContainer>
+            {!accountCreated ?
+                <SignUpFormPage setAccountCreated={setAccountCreated}  setCreatedUser={setCreatedUser}/>
                 :
                 null
             }
@@ -25,9 +29,7 @@ const SignUp = ({toggle, setUser} : any) => {
                 :
                 null
             }
-            {creatingAccount && "Creating New Account..."}
             {uploadingProfileInfo && "Uploading Details..."}
-            <button onClick={toggle}>X</button>
         </SignUpModal>
     )
 }

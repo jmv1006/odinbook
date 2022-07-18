@@ -4,7 +4,7 @@ import { EditInfoTitle, EditUserInfoContainer, ProfileImg, ProfileImgContainer }
 import EditProfilePicture from './profile-picture/edit-profile-picture';
 import EditDisplayName from './display-name/edit-display-name';
 import EditBio from './bio/edit-bio';
-import { UserPageContext } from "../../../../context/userPageContext";
+import { useUserPageContext } from "../../../../context/userPageContextRewrite";
 
 type EditUserInfoProps = {
     toggle: () => void,
@@ -13,7 +13,7 @@ type EditUserInfoProps = {
 const EditUserInfo = ({toggle} : EditUserInfoProps) => {
     const { user, updateUser } = useContext<any>(UserContext);
 
-    const { profileInfo } = useContext<any>(UserPageContext);
+    const { profileInfo } = useUserPageContext();
 
     return(
         <EditUserInfoContainer>

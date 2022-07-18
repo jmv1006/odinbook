@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react"
+import { SocketContext } from "../../../../context/SocketContext";
 import { UserContext } from "../../../../context/userContext";
 import { useFriends } from "../../../../context/userFriendsContext ";
 import useFetch from "../../../../hooks/useFetch";
 import IUser from "../../../../interfaces/user";
-
 type AddFriendProps = {
     user: IUser
 }
@@ -18,6 +18,8 @@ const AddFriend = ({user}: AddFriendProps) => {
     const {user: currentUser} = useContext<any>(UserContext);
     const {reFetchFriends} = useFriends();
 
+    const socket = useContext(SocketContext);
+
     const [btnText, setBtnText] = useState('Add Friend');
 
     const [requestExists, setRequestExists] = useState(false);
@@ -27,6 +29,7 @@ const AddFriend = ({user}: AddFriendProps) => {
 
     useEffect(() => {
         if(response){
+            console.log(response)
             if(response.exists) {
                 setRequest(response.request)
                 setRequestExists(true)
@@ -82,6 +85,7 @@ const AddFriend = ({user}: AddFriendProps) => {
             return
         }
         reFetchFriends();
+        socket.emit('notification', user.Id, 'friend-update', null)
     }
 
     const declineRequest = async () => {
@@ -96,6 +100,7 @@ const AddFriend = ({user}: AddFriendProps) => {
             return
         }
         reFetch();
+        socket.emit('notification', user.Id, 'friend-update', null)
     }
 
 

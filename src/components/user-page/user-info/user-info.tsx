@@ -1,12 +1,12 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { BioContainer, NameContainer, ProfileImg, ProfileImgContainer, UserInfoWrapper } from "./styles";
 import UserPageNavBar from './../nav-bar/user-page-nav-bar';
 import FriendLogic from '../../shared/friend-logic/friend-logic';
-import { UserPageContext } from "../../../context/userPageContext";
 import EditUserInfo from "./edit/edit-user-info";
+import { useUserPageContext } from "../../../context/userPageContextRewrite";
 
 const UserInfo = () => {
-    const {isCurrentUser, user, profileInfo} = useContext<any>(UserPageContext);
+    const {isCurrentUser, user, profileInfo} = useUserPageContext();
 
     const [isOpen, setIsOpen] = useState(false);
 

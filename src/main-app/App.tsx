@@ -20,24 +20,16 @@ function App() {
     }
   }, [user])
 
-  useEffect(() => {
-    if(socket) {
-      socket.on('notification',(info: any) => {
-        console.log(info)
-      })
-    }
-  }, [socket])
-
   return (
     <MainApp>
       <UserContext.Provider value={{user: user, updateUser: setUser}}>
           {user ? 
-           <UserFriendsProvider>
             <SocketContext.Provider value={socket}>
-              <Header />
-              <Outlet />
+              <UserFriendsProvider>
+                <Header />
+                <Outlet />
+              </UserFriendsProvider>
             </SocketContext.Provider>
-          </UserFriendsProvider>
           :
           <AuthPageLayout setUser={setUser} />
           }

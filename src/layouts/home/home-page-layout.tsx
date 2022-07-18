@@ -22,7 +22,7 @@ const HomePageLayout = () => {
 
     useEffect(() => {
         if(postsResponse){
-            setPosts((posts: any) => [...posts, ...postsResponse.posts]);
+            setPosts((posts: any) => postsResponse.posts);
         } 
     }, [postsResponse])
 

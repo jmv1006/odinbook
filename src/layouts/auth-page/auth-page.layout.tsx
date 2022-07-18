@@ -13,10 +13,15 @@ const AuthPageLayout = ({setUser}: any) => {
 
     return(
         <div>
-            <h3>Auth Page Here</h3>
-            <SignIn setUser={setUser}/>
-            <div onClick={toggleOpen}>Sign Up Button</div>
-            {isOpen && <SignUp toggle={toggleOpen} setUser={setUser}/>}
+            {!isOpen ?
+                <>
+                    <h3>Auth Page Here</h3>
+                    <SignIn setUser={setUser}/>
+                    <button onClick={toggleOpen}>Sign Up</button>
+                </>
+                :
+                <SignUp toggle={toggleOpen} setUser={setUser}/>
+            }
         </div>
     )
 }

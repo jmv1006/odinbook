@@ -6,5 +6,6 @@ export const CommentsContainerStyle = styled.div`
     padding-top: .5rem;
     display: flex;
     flex-direction: column;
-    gap: .25rem;
+    gap: .65rem;
+
 `

@@ -1,30 +1,36 @@
-import { HeaderContainer } from "./styles";
+import { HeaderContainer, HeaderLeftSide, HeaderRightSide, HeaderTitle } from "./styles";
 import SearchBar from "../search-bar/search-bar";
 import { useState } from "react";
-import Notifications from "../notifications/notifications";
 import { Link } from "react-router-dom";
+import HeaderDropDown from "../header-dropdown/header-dropdown";
 
 const Header = () => {
     const [searchIsToggled, setSearchIsToggled] = useState(false);
-    const [notificationsToggled, setNotificationsToggled] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+
+
 
     const toggleSearchBar = () => {
         if(searchIsToggled) return setSearchIsToggled(searchIsToggled => false)
         setSearchIsToggled(searchIsToggled => true)
     };
 
-    const toggleNotifications = () => {
-        if(notificationsToggled) return setNotificationsToggled(notificationsToggled => false)
-        setNotificationsToggled(notificationsToggled => true)
-    }
+    const toggleIsOpen = () => {
+        if(isOpen) return setIsOpen(isOpen => false)
+        setIsOpen(isOpen => true)
+    };
 
     return(
         <HeaderContainer>
-            <Link to="/">Header</Link>
-            {!searchIsToggled && <button onClick={toggleSearchBar}>Search</button>}
-            {searchIsToggled && <SearchBar toggle={toggleSearchBar}/>}
-            {notificationsToggled && <Notifications toggle={toggleNotifications}/>}
-            {!notificationsToggled && <button onClick={toggleNotifications}>Bell</button>}
+            <HeaderLeftSide>
+                <Link to="/"><HeaderTitle>Odinbook</HeaderTitle></Link>
+                {!searchIsToggled && <button onClick={toggleSearchBar}>Q</button>}
+                {searchIsToggled && <SearchBar toggle={toggleSearchBar}/>}
+            </HeaderLeftSide>
+            <HeaderRightSide>
+                <button onClick={toggleIsOpen}>...</button>
+                {isOpen && <HeaderDropDown toggle={toggleIsOpen}/>}
+            </HeaderRightSide>
         </HeaderContainer>
     )
 }

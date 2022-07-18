@@ -1,4 +1,4 @@
-import { IndividualComment, UserImgContainer, UserImg, CommentText } from "./style"
+import { IndividualComment, UserImgContainer, UserImg, CommentText, NameAndTextContainer, Name } from "./style"
 
 const Comment = ({comment, user} : any) => {
     return(
@@ -6,9 +6,12 @@ const Comment = ({comment, user} : any) => {
             <UserImgContainer>
                 {user.ProfileImg ? <UserImg src={user.ProfileImg}/> : <UserImg src="https://i.stack.imgur.com/l60Hf.png" />}
             </UserImgContainer>
-            <CommentText>
-                {comment.Text}
-            </CommentText>
+            <NameAndTextContainer>
+                <Name>{user.DisplayName}</Name>
+                <CommentText>
+                    {comment.Text}
+                </CommentText>
+            </NameAndTextContainer>
         </IndividualComment>
     )
 }

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useUserPageContext } from "../../../../../context/userPageContextRewrite"
 import IUser from "../../../../../interfaces/user"
 import { EditItemContainer, EditItemTitle } from "../styles"
 
@@ -9,7 +10,9 @@ type EditDisplayNameProps = {
 const EditDisplayName = ({user, updateUser} : EditDisplayNameProps) => {
 
     const [currentDisplayName, setCurrentDisplayName] = useState(user.DisplayName);
-    const [isEditing, setIsEditing] = useState(false);
+    const [isEditing, setIsEditing] = useState(false); 
+
+    const {triggerReload} = useUserPageContext();
 
     const handleChange = (e: any) => {
         setCurrentDisplayName(currentDisplayName => e.target.value)
@@ -41,6 +44,7 @@ const EditDisplayName = ({user, updateUser} : EditDisplayNameProps) => {
 
         await updateUser((prevUser : any) => responseJSON.updatedUser)
         setIsEditing(false);
+        triggerReload();
     }
 
     return(

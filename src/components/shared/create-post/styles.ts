@@ -38,4 +38,5 @@ export const ProfilePictureContainer = styled.div`
 
 export const UserImage = styled.img`
     width: 100%;
+    cursor: pointer;
 `

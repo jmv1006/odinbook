@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { CreatePostStyles, CreatePostForm, ProfilePictureContainer, UserImage, CreatePostTextInput, CreatePostBtn } from "./styles";
-import { SocketContext } from "../../../../context/SocketContext";
-import { Link } from "react-router-dom";
+import { SocketContext } from "../../../context/SocketContext";
+import { useNavigate } from "react-router-dom";
 
 const CreatePost = ({user, reFetchPosts}: any) => {
+    const navigate = useNavigate();
 
     const socket = useContext(SocketContext);
     const [postText, setPostText] = useState('');
@@ -33,10 +34,14 @@ const CreatePost = ({user, reFetchPosts}: any) => {
         //Post Successfully Created REFETCH!!!!!
     };
 
+    const navigateToUserPage = () => {
+        navigate(`/user/${user.Id}`)
+    }
+
     return(
         <CreatePostStyles>
             <ProfilePictureContainer>
-                {user.ProfileImg ? <UserImage src={user.ProfileImg}/> : <UserImage src="https://i.stack.imgur.com/l60Hf.png"/>}
+                {user.ProfileImg ? <UserImage src={user.ProfileImg} onClick={() => navigateToUserPage()}/> : <UserImage src="https://i.stack.imgur.com/l60Hf.png"/>}
             </ProfilePictureContainer>
             <CreatePostForm onSubmit={handleCreatePost}>
                 <CreatePostTextInput type="text" placeholder="What's On Your Mind?" value={postText} onChange={handleChange} required />

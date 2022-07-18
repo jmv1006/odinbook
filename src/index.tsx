@@ -6,6 +6,7 @@ import HomePageLayout from './layouts/home/home-page-layout';
 import UserPageLayout from './layouts/user-page/user-page-layout';
 import UserPagePosts from './components/user-page/posts/user-posts';
 import UserFriends from './components/user-page/friends/user-friends';
+import FriendRequests from './components/user-page/friends/requests/friend-requests';
 import SearchPage from './layouts/search-page/search-page-layout';
 import './index.css';
 
@@ -21,6 +22,7 @@ root.render(
         <Route path='/user/:UserId' element={<UserPageLayout />}>
             <Route path='/user/:UserId' element={<UserPagePosts />} />
             <Route path='/user/:UserId/friends' element={<UserFriends />} />
+            <Route path='/user/:UserId/friends/requests' element={<FriendRequests />} />
         </Route>
         <Route path='/search' element={<SearchPage />} />
         <Route path='/search/:SearchParams' element={<SearchPage />} />
