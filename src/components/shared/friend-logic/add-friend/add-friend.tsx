@@ -29,7 +29,6 @@ const AddFriend = ({user}: AddFriendProps) => {
 
     useEffect(() => {
         if(response){
-            console.log(response)
             if(response.exists) {
                 setRequest(response.request)
                 setRequestExists(true)
@@ -43,7 +42,12 @@ const AddFriend = ({user}: AddFriendProps) => {
         if(request) {
             if(request.From_uuid === currentUser.Id) {
                 //user sent it
-                return <div>Friend Request Sent</div>
+                return (
+                    <>
+                        <div>Friend Request Sent</div>
+                        <button onClick={declineRequest}>Cancel</button>
+                    </>
+                )
             }
             return (
                 <div>

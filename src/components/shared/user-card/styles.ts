@@ -24,4 +24,6 @@ export const UserImg = styled.img`
 export const UserNameContainer = styled.div`
     width: 95%;
     text-align: center;
+    color: black;
+    text-decoration: none;
 `

@@ -1,7 +1,7 @@
 import { CardsContainer, UserFriendsContainer } from "./styles"
 import UserCard from "../../shared/user-card/user-card"
 import { useUserPageContext } from "../../../context/userPageContextRewrite"
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const UserFriends = () => {
     const params = useParams();

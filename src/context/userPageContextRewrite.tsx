@@ -23,10 +23,16 @@ const UserPageProvider = ({ children }: any) => {
     //User's profile info such as bio, birthday, interests, etc...
     const { response: profileInfoResponse, reFetch: profileInfoReload } = useFetch(`/users/${params.UserId}/profile`);
 
+
+    
     const [userPosts, setUserPosts] = useState([]);
+
     const [user, setUser] = useState(null);
+
     const [friends, setFriends] = useState([]);
+
     const [isCurrentUser, setIsCurrentUser] = useState(false);
+
     const [profileInfo, setProfileInfo] = useState(null);
 
     useEffect(() => {

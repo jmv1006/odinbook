@@ -1,46 +1,51 @@
-import { useContext, useEffect, useState } from "react"
-import { UserContext } from "../../../../context/userContext"
-import { FriendRequestsContainer } from "./styles"
-import useFetch from "../../../../hooks/useFetch"
-import { useUserPageContext } from "../../../../context/userPageContextRewrite"
-import { useNavigate, useParams } from "react-router-dom"
+import { RequestsContainer } from "./styles"
+import useFetch from "../../../../hooks/useFetch";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../../../context/userContext";
+import IUser from "../../../../interfaces/user";
+import UserCard from "../../../shared/user-card/user-card";
+import SentRequests from "./sent/sent-requests";
+
+interface Request {
+    Id: string,
+    From_uuid: string,
+    Is_Accepted: boolean,
+    To_uuid: string,
+    Users_UsersTofriend_requests_From_uuid: IUser
+};
 
 const FriendRequests = () => {
-    const navigate = useNavigate();
-    const params = useParams();
 
     const {user} = useContext<any>(UserContext);
 
-    const {isCurrentUser} = useUserPageContext();
+    const {response} = useFetch(`/friend-requests/recieved/${user.Id}`)
 
-    const {response: recievedRequestsResponse} = useFetch(`/friend-requests/recieved/${user.Id}`)
+    const [recievedRequests, setRecievedRequests] = useState<Array<Request>>([]);
 
-    const {response: sentRequestsResponse} = useFetch(`/friend-requests/sent/${user.Id}`)
-
-    const [recievedRequests, setRecievedRequests] = useState([]);
-    const [sentRequests, setSentRequests] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        if(!isCurrentUser) navigate(`/user/${params.UserId}`)
-    }, [isCurrentUser])
+        if(response) setRecievedRequests(recievedRequests => response.requests)
+    }, [response])
 
-    useEffect(() => {
-        if(recievedRequestsResponse) setRecievedRequests(recievedRequestsResponse.requests)
-    }, [recievedRequestsResponse])
+    const mappedRequests = recievedRequests.map((request: Request) => 
+        <UserCard user={request.Users_UsersTofriend_requests_From_uuid} isCurrentUser={false} />
+    );
 
-    useEffect(() => {
-        if(sentRequestsResponse) setSentRequests(sentRequestsResponse.requests)
-    }, [sentRequestsResponse]);
-
-    const mappedSentRequests = sentRequests.map((request: any) => 
-        <div key={request.Id}>Request</div>
-    )
+    const toggleSentRequestsModal = () => {
+        if(isOpen) return setIsOpen(isOpen => false)
+        setIsOpen(isOpen => true)
+    }
 
     return(
-        <FriendRequestsContainer>
-            <div>Recieved Requests: {recievedRequests.length}</div>
-            <div>Sent Requests: {mappedSentRequests}</div>
-        </FriendRequestsContainer>
+        <RequestsContainer>
+            <div>
+                {mappedRequests.length === 0 && "No Requests!"}
+                {mappedRequests}
+            </div>
+            {isOpen && <SentRequests toggle={toggleSentRequestsModal} />}
+            <button onClick={toggleSentRequestsModal}>Sent Requests</button>
+        </RequestsContainer>
     )
 }
 

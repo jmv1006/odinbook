@@ -82,7 +82,7 @@ const Post = ({ post }: any) => {
     const toggleDeleteModal = () => {
         if(deleteModalIsOpen) return setDeleteModalIsOpen(deleteModalIsOpen => false)
         setDeleteModalIsOpen(deleteModalIsOpen => true)
-    }
+    };
     
     return(
         <PostStyles>
