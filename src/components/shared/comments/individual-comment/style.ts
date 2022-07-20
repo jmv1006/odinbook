@@ -6,25 +6,22 @@ export const IndividualComment = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: .5rem;
-
 `
 
 export const UserImgContainer = styled.div`
-    width: 4.25%;
-    margin-left: .25rem;
-    height: 100%;
-
+    width: 3rem;
 `
 
 export const UserImg = styled.img`
-    margin-top: .1rem;
-    width: 100%;
+    width: 2rem;
+    height: 2rem;
+    clip-path: circle();
+    object-fit: cover;
 `
 
 
 export const NameAndTextContainer = styled.div`
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -39,4 +36,6 @@ export const Name = styled.div`
 export const CommentText = styled.div`
     background-color: lightgray;
     padding: 0.25rem;
+    max-width: 95%;
+    overflow-wrap: break-word;
 `

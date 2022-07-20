@@ -16,12 +16,15 @@ export const CommentInputForm = styled.form`
 `
 
 export const UserImageContainer = styled.div`
-    width: 5.5%;
+    width: 5%;
     display: flex;
 `
 
 export const UserImage = styled.img`
-    width: 100%;
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: cover;
+    clip-path: circle();
 `
 
 export const TextInputBox = styled.input`

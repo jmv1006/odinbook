@@ -5,7 +5,7 @@ export const SentRequestsModal = styled.div`
     position: absolute;
     top: 30%;
     left: 50%;
-    width: 30rem;
+    width: 65%;
     height: 35%;
     transform: translate(-50%, 0);
     display: flex;

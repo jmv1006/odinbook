@@ -13,18 +13,13 @@ export const UserPagePostsWrapper = styled.div`
 `
 
 export const PostsWrapper = styled.div`
-    width: 100%;
-    height: 100%;
+    width: 95%;
+    height: 95%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     gap: 1rem;
     align-items: center;
     overflow: auto;
-`
 
-/*
-  @media (max-width: 850px) {
-        width: 100%;
-    }
-    */
+`

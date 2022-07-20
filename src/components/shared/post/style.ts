@@ -55,12 +55,15 @@ export const LikeAndCommentContainer = styled.div`
 `
 
 export const ProfilePhotoContainer = styled.div`
-    max-width: 2.5rem;
+    max-width: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
 `
 
 export const UserImage = styled.img`
-    width: 100%;
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: cover;
+    border-radius: 50%;
 `

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const UserFriendsContainer = styled.div`
     width: 75%;
-    height: 98%;
+    height: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,12 +11,11 @@ export const UserFriendsContainer = styled.div`
         width: 98%;
         height: 55%;
     }
-    overflow-y: auto;
 `
 
 export const CardsContainer = styled.div`
     width: 95%;
-    height: 80%;
+    height: 90%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -24,4 +23,5 @@ export const CardsContainer = styled.div`
     flex-wrap: wrap;
     gap: 1.5rem;
     border: 2px solid blue;
+    overflow-y: auto;
 `

@@ -1,13 +1,16 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../context/userContext";
 import { useFriends } from "../../../context/userFriendsContext ";
 import AddFriend from "./add-friend/add-friend";
+import DeleteFriendModal from "./delete-modal/delete-friend-modal";
 
 const FriendLogic = ({user} : any) => {
 
     const { user: currentUser } = useContext<any>(UserContext);
 
     const { friends } = useFriends();
+
+    const [isOpen, setIsOpen] = useState(false);
 
     const isUserFriend = () => {
         const isFriend = friends.some((friend : any) => friend.Id === user.Id);
@@ -20,11 +23,18 @@ const FriendLogic = ({user} : any) => {
         return false
     }
 
+    const toggleDeleteFriendModal = () => {
+        if(isOpen) return setIsOpen(isOpen => false)
+        setIsOpen(isOpen => true)
+    }
+
 
     return (
         <>
-            {isUserFriend() &&  <div>Friend</div>}
-            {isCurrentUser() && <div>(Me)</div>}
+            {isUserFriend() &&  <strong>Friend</strong>}
+            {isUserFriend() && <button onClick={toggleDeleteFriendModal}>Remove Friend</button>}
+            {isOpen && <DeleteFriendModal toggle={toggleDeleteFriendModal} user={user} currentUser={currentUser} />}
+            {isCurrentUser() && <strong>(Me)</strong>}
             {!isCurrentUser() && !isUserFriend() ? <AddFriend user={user}/> : null}
         </>
     )

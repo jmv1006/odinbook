@@ -18,11 +18,13 @@ export const UserInfoWrapper = styled.div`
 `
 
 export const ProfileImgContainer = styled.div`
-    width: 14rem;
+    width: 14.5rem;
 `
 export const ProfileImg = styled.img`
-    width: 100%;
-    border-radius: 10%;
+    width: 13.5rem;
+    height: 13.5rem;
+    object-fit: cover;
+    border-radius: 50%;
 `
 
 export const NameContainer = styled.div`
@@ -33,7 +35,7 @@ export const NameContainer = styled.div`
 
 export const BioContainer = styled.div`
     width: 95%;
-    min-height: 3.5rem;
+    min-height: 2.5rem;
     border: 2px solid red;
     text-align: center;
 `
@@ -43,6 +45,7 @@ export const EditInfoBtn = styled.div`
     position: relative;
     width: 95%;
 `
+
 /*
 @media (max-width: 850px) {
     display: none;

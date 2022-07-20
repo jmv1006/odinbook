@@ -19,6 +19,9 @@ export const UserImgContainer = styled.div`
 
 export const UserImg = styled.img`
     width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 50%;
 `
 
 export const UserNameContainer = styled.div`

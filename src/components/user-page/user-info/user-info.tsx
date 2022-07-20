@@ -22,7 +22,7 @@ const UserInfo = () => {
             <BioContainer>{profileInfo.Bio}</BioContainer>
             {isCurrentUser && <div onClick={toggleEditWindow}>Edit Btn Here</div>}
             {isOpen && <EditUserInfo toggle={toggleEditWindow} />}
-            {!isCurrentUser && <FriendLogic user={user} />}
+            {!isCurrentUser && <div><FriendLogic user={user} /></div>}
             <UserPageNavBar />
         </UserInfoWrapper>
     )

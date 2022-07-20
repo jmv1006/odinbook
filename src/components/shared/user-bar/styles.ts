@@ -4,10 +4,11 @@ export const UserBarContainer = styled.div`
     width: 95%;
     height: 2.5rem;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
     gap: .5rem;
     background-color: #FFFF;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid black;
 `
 
 export const UserImgContainer = styled.div`
@@ -16,5 +17,12 @@ export const UserImgContainer = styled.div`
 `
 
 export const UserImg = styled.img`
-    width: 100%;
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+    border-radius: 50%;
+`
+
+export const UserBarFriendLogic = styled.div`
+    display: flex;
 `

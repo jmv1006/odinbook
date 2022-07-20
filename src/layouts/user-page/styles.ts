@@ -14,4 +14,5 @@ export const UserPageContainer = styled.div`
     }
     background-color:  #F0F2F5;
     overflow-y: auto;
+    gap: .5rem;
 `

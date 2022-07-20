@@ -32,7 +32,7 @@ const DeleteFriendModal = ({toggle, user, currentUser } : any) => {
         <DeleteFriendModalContainer>
             {isLoading ? "Loading...":
                 <>
-                    <div>Are you sure you want to remove x as a friend?</div>
+                    <div>Are you sure you want to remove <strong>{user.DisplayName}</strong> as a friend?</div>
                     <button onClick={deleteFriendship}>Yes</button>
                     <button onClick={toggle}>No</button>
                 </>

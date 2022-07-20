@@ -7,7 +7,7 @@ export const DeleteFriendModalContainer = styled.div`
     left: 50%;
     transform: translate(-50%, 0);
     width: 30rem;
-    height: 15rem;
+    height: 5rem;
     padding: 1rem;
     display: flex;
     flex-direction: column;

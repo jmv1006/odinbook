@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { UserContext } from "../../../context/userContext"
 import { UserCardContainer, UserImg, UserImgContainer, UserNameContainer } from "./styles"
 import IUser from "../../../interfaces/user"
-import DeleteFriendModal from './delete-modal/delete-friend-modal';
+import DeleteFriendModal from '../friend-logic/delete-modal/delete-friend-modal';
 import FriendLogic from '../friend-logic/friend-logic';
 
 type UserCardPropTypes = {
@@ -22,8 +22,6 @@ const UserCard = ({user, isCurrentUser } : UserCardPropTypes) => {
 
     return(
         <UserCardContainer>
-                {isCurrentUser && <button onClick={toggleDeleteModal}>X</button>}
-                {isOpen && <DeleteFriendModal toggle={toggleDeleteModal} user={user} currentUser={currentUser} />}
             <Link to={`/user/${user.Id}`}>
                 <UserImgContainer>
                     {user.ProfileImg ? <UserImg src={user.ProfileImg} /> : <UserImg src="https://i.stack.imgur.com/l60Hf.png" />}

@@ -1,5 +1,5 @@
 import IUser from "../../../interfaces/user";
-import { UserBarContainer, UserImgContainer, UserImg } from './styles'
+import { UserBarContainer, UserImgContainer, UserImg, UserBarFriendLogic } from './styles'
 import FriendLogic from '../friend-logic/friend-logic';
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const UserBar = ({user} : UserBarProps) => {
             {user.ProfileImg && <UserImgContainer onClick={navigateToUserPage}><UserImg src={user.ProfileImg}/></UserImgContainer>}
             {!user.ProfileImg && <UserImgContainer onClick={navigateToUserPage}><UserImg src="https://i.stack.imgur.com/l60Hf.png"/></UserImgContainer>}
             {user.DisplayName}
-            <FriendLogic user={user}/>
+            <UserBarFriendLogic><FriendLogic user={user}/></UserBarFriendLogic>
         </UserBarContainer>
     )
 }

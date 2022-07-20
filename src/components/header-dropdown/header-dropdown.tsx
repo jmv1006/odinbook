@@ -18,7 +18,9 @@ const HeaderDropDown = ({toggle} : any) => {
                 Notifications
             </HeaderDropDownItem>
             <HeaderDropDownItem>
-                Friend Requests
+                <Link to={`/user/${user.Id}/friends/requests`} onClick={toggle}>
+                    Friend Requests
+                </Link>
             </HeaderDropDownItem>
         </HeaderDropDownContainer>
     )
