@@ -5,7 +5,11 @@ import { HeaderDropDownContainer, HeaderDropDownItem } from "./styles"
 
 const HeaderDropDown = ({toggle} : any) => {
 
-    const { user } = useContext<any>(UserContext);
+    const { user, updateUser } = useContext<any>(UserContext);
+
+    const SignOut = () => {
+        updateUser((user : any) => null)
+    };
 
     return(
         <HeaderDropDownContainer>
@@ -21,6 +25,9 @@ const HeaderDropDown = ({toggle} : any) => {
                 <Link to={`/user/${user.Id}/friends/requests`} onClick={toggle}>
                     Friend Requests
                 </Link>
+            </HeaderDropDownItem>
+            <HeaderDropDownItem onClick={SignOut}>
+                Sign Out
             </HeaderDropDownItem>
         </HeaderDropDownContainer>
     )

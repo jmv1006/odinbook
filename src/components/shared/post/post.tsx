@@ -101,10 +101,10 @@ const Post = ({ post }: any) => {
                 <PostBottomContainer>
                     <PostInfoBar>
                         <div>
-                            {likes} Likes
+                            {likes} {likes > 1 || likes === 0 ? "Likes" : "Like"}
                         </div>
                         <div onClick={toggleComments}>
-                            {commentsAmount} Comments
+                            {commentsAmount} {commentsAmount > 1 || commentsAmount === 0 ? "Comments" : "Comment"}
                         </div>
                     </PostInfoBar>
                     <LikeAndCommentContainer>

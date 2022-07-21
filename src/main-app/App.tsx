@@ -7,10 +7,16 @@ import Header from "../components/header/header";
 import { io } from "socket.io-client";
 import { SocketContext } from "../context/SocketContext";
 import { UserFriendsProvider } from "../context/userFriendsContext ";
+import useFetch from "../hooks/useFetch";
 
 function App() {
   const [user, setUser] = useState<any>(null);
   const [socket, setSocket] = useState<any>(null);
+  const {response: authorizationApproved} = useFetch(`/auth/token`);
+
+  useEffect(() => {
+    if(authorizationApproved) setUser((user: any) => authorizationApproved.user)
+  }, [authorizationApproved]);
 
   useEffect(() => {
     if(user) {

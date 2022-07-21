@@ -34,8 +34,10 @@ export const RequestsContainer = styled.div`
     width: 100%;
     height: 90%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     overflow-y: auto;
+    gap: .5rem;
 `
 
 export const CloseBtn = styled.button`

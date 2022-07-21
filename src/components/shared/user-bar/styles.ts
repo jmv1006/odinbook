@@ -4,7 +4,6 @@ export const UserBarContainer = styled.div`
     width: 95%;
     height: 2.5rem;
     display: flex;
-    gap: .5rem;
     background-color: #FFFF;
     align-items: center;
     justify-content: flex-start;
@@ -13,7 +12,7 @@ export const UserBarContainer = styled.div`
 
 export const UserImgContainer = styled.div`
     width: 2.5rem;
-    margin-left: .5rem;
+    margin-left: .25rem;
 `
 
 export const UserImg = styled.img`

@@ -17,6 +17,9 @@ export const UserImg = styled.img`
     height: 2rem;
     clip-path: circle();
     object-fit: cover;
+    :hover{
+        cursor: pointer;
+    }
 `
 
 
@@ -28,9 +31,13 @@ export const NameAndTextContainer = styled.div`
     justify-content: flex-start;
 `
 
-export const Name = styled.div`
+export const CommentName = styled.div`
     font-size: .85rem;
     color: gray;
+    :hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
 `
 
 export const CommentText = styled.div`

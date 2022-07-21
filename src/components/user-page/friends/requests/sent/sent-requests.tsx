@@ -27,7 +27,7 @@ const SentRequests = ({toggle} : any) => {
     }, [response])
 
     const mappedRequests = sentRequests.map((request: SentRequest) =>
-        <UserBar user={request.Users_UsersTofriend_requests_To_uuid} key={request.Id} />
+        <UserBar user={request.Users_UsersTofriend_requests_To_uuid} key={request.Id} includeFriendLogic={true}/>
     );
 
     return(

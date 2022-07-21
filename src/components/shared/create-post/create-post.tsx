@@ -41,7 +41,7 @@ const CreatePost = ({user, reFetchPosts}: any) => {
     return(
         <CreatePostStyles>
             <ProfilePictureContainer>
-                {user.ProfileImg ? <UserImage src={user.ProfileImg} onClick={() => navigateToUserPage()}/> : <UserImage src="https://i.stack.imgur.com/l60Hf.png"/>}
+                {user.ProfileImg && <UserImage src={user.ProfileImg} onClick={() => navigateToUserPage()}/>}
             </ProfilePictureContainer>
             <CreatePostForm onSubmit={handleCreatePost}>
                 <CreatePostTextInput type="text" placeholder="What's On Your Mind?" value={postText} onChange={handleChange} required />

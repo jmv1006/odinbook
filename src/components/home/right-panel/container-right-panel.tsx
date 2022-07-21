@@ -15,7 +15,7 @@ const RightPanelContainer= ({friends}: any) => {
         if(result.length === 0) return "No Friends Found";
 
         return result.map((result: any) => 
-            <UserBar key={result.Id} user={result} />
+            <UserBar key={result.Id} user={result} includeFriendLogic={false}/>
         )
     };
 

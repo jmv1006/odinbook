@@ -15,7 +15,7 @@ const SearchPage = () => {
 
 
     const mappedUsers = users.map((user: any) => 
-        <UserBar key={user.Id} user={user} />
+        <UserBar key={user.Id} user={user} includeFriendLogic={true}/>
     );
 
     return(

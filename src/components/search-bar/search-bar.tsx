@@ -33,7 +33,7 @@ const SearchBar = ({toggle} : any) => {
         const result = results.filter((user:any) => user.DisplayName.toUpperCase().includes(search.toUpperCase()))
 
         return result.map((result: any) => 
-            <UserBar user={result} key={result.Id} />
+            <UserBar user={result} key={result.Id} includeFriendLogic={false}/>
         )
     };
 
