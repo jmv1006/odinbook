@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BioContainer, NameContainer, ProfileImg, ProfileImgContainer, UserInfoWrapper } from "./styles";
+import { BioContainer, EditInfoBtn, NameContainer, ProfileImg, ProfileImgContainer, UserInfoWrapper } from "./styles";
 import UserPageNavBar from './../nav-bar/user-page-nav-bar';
 import FriendLogic from '../../shared/friend-logic/friend-logic';
 import EditUserInfo from "./edit/edit-user-info";
@@ -20,7 +20,7 @@ const UserInfo = () => {
             {user.ProfileImg ? <ProfileImgContainer><ProfileImg src={user.ProfileImg}/></ProfileImgContainer> : <ProfileImgContainer><ProfileImg src="https://i.stack.imgur.com/l60Hf.png"/></ProfileImgContainer>}
             {isCurrentUser ? <NameContainer>{user.DisplayName} (Me)</NameContainer> : <NameContainer>{user.DisplayName}</NameContainer>}
             <BioContainer>{profileInfo.Bio}</BioContainer>
-            {isCurrentUser && <div onClick={toggleEditWindow}>Edit Btn Here</div>}
+            {isCurrentUser && <EditInfoBtn onClick={toggleEditWindow}>Edit Profile</EditInfoBtn>}
             {isOpen && <EditUserInfo toggle={toggleEditWindow} />}
             {!isCurrentUser && <div><FriendLogic user={user} /></div>}
             <UserPageNavBar />

@@ -21,7 +21,7 @@ const MainFeedContainer = ({ timelineUpdate, updateTimeline } : MainFeedContaine
     }, [posts])
 
     const mappedPosts = posts.map((post: any) => 
-        <Post key={post.Id} post={post} />
+        <Post key={post.Id} post={post} cb={reFetchPosts}/>
     );
 
     return(

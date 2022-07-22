@@ -9,7 +9,7 @@ export const MainFeedContainerStyles = styled.div`
         width: 100%;
     }
     width: 50%;
-    height: 100%;
+    height: 98%;
     gap: 1rem;
     display: flex;
     flex-direction: column;

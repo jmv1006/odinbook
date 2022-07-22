@@ -3,13 +3,12 @@ import useFetch from "../../../hooks/useFetch";
 import PostComments from "../comments/container-comments";
 import { UserContext } from "../../../context/userContext";
 import { Link } from "react-router-dom";
-import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer, LikeContainer, LikeBtn, PostUserName, CommentContainer } from "./style";
+import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer, LikeContainer, LikeBtn, PostUserName, CommentContainer, PostTopLeft, PostTopRight } from "./style";
 import IComment from '../../../interfaces/comment';
 import { SocketContext } from "../../../context/SocketContext";
-import DeletePostModal from "./delete/delete-post-modal";
+import PostDropDown from "./dropdown/post-dropdown";
 
-const Post = ({ post }: any) => {
-
+const Post = ({ post, cb }: any) => {
     const { user } = useContext<any>(UserContext);
     const socket = useContext(SocketContext);
 
@@ -19,7 +18,7 @@ const Post = ({ post }: any) => {
     const [userHasLiked, setUserHasLiked] = useState(false);
     const [commentsAreToggled, setCommentsAreToggled] = useState(false);
 
-    const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
+    const [dropDownIsOpen, setDropDownIsOpen] = useState(false);
 
     const {response: likesResponse, reFetch: likesReFetch} = useFetch(`/likes/post/${post.Id}`);
     const {response: commentsResponse, reFetch: commentsReFetch} = useFetch(`/comments/${post.Id}`);
@@ -79,9 +78,9 @@ const Post = ({ post }: any) => {
         return false
     };
 
-    const toggleDeleteModal = () => {
-        if(deleteModalIsOpen) return setDeleteModalIsOpen(deleteModalIsOpen => false)
-        setDeleteModalIsOpen(deleteModalIsOpen => true)
+    const toggleDropDown = () => {
+        if(dropDownIsOpen) return setDropDownIsOpen(dropDownIsOpen => false)
+        setDropDownIsOpen(dropDownIsOpen => true)
     };
     
     return(
@@ -89,11 +88,15 @@ const Post = ({ post }: any) => {
             {likesResponse && commentsResponse ?
                 <>
                 <PostTopContainer>
-                    <ProfilePhotoContainer>{post.Users.ProfileImg ? <UserImage src={post.Users.ProfileImg}/> : <UserImage src="https://i.stack.imgur.com/l60Hf.png" />}</ProfilePhotoContainer>
-                    <Link to={`/user/${post.Users.Id}`}><PostUserName>{post.Users.DisplayName}</PostUserName></Link>
-                    {handlePostDate()}
-                    {isCurrentUser() && <button onClick={toggleDeleteModal}>X</button>}
-                    {deleteModalIsOpen && <DeletePostModal toggle={toggleDeleteModal}/>}
+                    <PostTopLeft>
+                        <ProfilePhotoContainer>{post.Users.ProfileImg ? <UserImage src={post.Users.ProfileImg}/> : <UserImage src="https://i.stack.imgur.com/l60Hf.png" />}</ProfilePhotoContainer>
+                        <Link to={`/user/${post.Users.Id}`}><PostUserName>{post.Users.DisplayName}</PostUserName></Link>
+                        {handlePostDate()}
+                    </PostTopLeft>
+                    <PostTopRight>
+                        {isCurrentUser() && <button onClick={toggleDropDown}>...</button>}
+                        {dropDownIsOpen && <PostDropDown toggle={toggleDropDown}/>}
+                    </PostTopRight>
                 </PostTopContainer>
                 <PostTextContainer>
                     {post.Text}
@@ -116,6 +119,7 @@ const Post = ({ post }: any) => {
                         </CommentContainer>
                     </LikeAndCommentContainer>  
                 </PostBottomContainer>
+                
                 </>
             :
             "Loading..."

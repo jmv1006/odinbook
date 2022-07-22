@@ -5,7 +5,12 @@ export const DeletePostModalContainer = styled.div`
     position: absolute;
     top: 30%;
     left: 50%;
-    width: 30rem;
-    height: 35%;
+    width: 20rem;
+    height: 15%;
     transform: translate(-50%, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
 `

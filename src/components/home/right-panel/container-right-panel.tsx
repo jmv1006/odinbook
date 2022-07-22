@@ -10,7 +10,7 @@ const RightPanelContainer= ({friends}: any) => {
     };
 
     const handleSearch = () => {
-        const result = friends.filter((friend:any) => friend.DisplayName.includes(search));
+        const result = friends.filter((friend:any) => friend.DisplayName.toUpperCase().includes(search.toUpperCase()));
 
         if(result.length === 0) return "No Friends Found";
 

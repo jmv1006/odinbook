@@ -17,11 +17,23 @@ export const PostStyles = styled.div`
 
 export const PostTopContainer = styled.div`
     width: 100%;
-    height: 2.5rem;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    gap: .5rem;
+`
+
+export const PostTopLeft = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .35rem;
+`
+
+export const PostTopRight = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
 `
 
 export const PostUserName = styled.div`

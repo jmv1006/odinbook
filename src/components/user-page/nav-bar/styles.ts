@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const UserPageNavBarContainer = styled.div`
-    border: 2px solid blue;
+    background-color: white;
     width: 95%;
     display: flex;
     justify-content: space-around;
@@ -9,4 +9,6 @@ export const UserPageNavBarContainer = styled.div`
     @media (min-width: 850px) {
         flex-direction: column;
     }
+    padding: .25rem;
+    border-radius: .25rem;
 `

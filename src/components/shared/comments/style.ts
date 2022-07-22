@@ -7,5 +7,4 @@ export const CommentsContainerStyle = styled.div`
     display: flex;
     flex-direction: column;
     gap: .65rem;
-
 `

@@ -40,10 +40,17 @@ export const BioContainer = styled.div`
     text-align: center;
 `
 
-export const EditInfoBtn = styled.div`
-    text-align: right;
-    position: relative;
-    width: 95%;
+export const EditInfoBtn = styled.button`
+    width: 40%;
+    background-color: #457b9d;
+    color: white;
+    border: none;
+    padding: .25rem;
+    border-radius: .25rem;
+    :hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
 `
 
 /*
