@@ -3,7 +3,7 @@ import useFetch from "../../../hooks/useFetch";
 import PostComments from "../comments/container-comments";
 import { UserContext } from "../../../context/userContext";
 import { Link } from "react-router-dom";
-import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer } from "./style";
+import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer, LikeContainer, LikeBtn, PostUserName, CommentContainer } from "./style";
 import IComment from '../../../interfaces/comment';
 import { SocketContext } from "../../../context/SocketContext";
 import DeletePostModal from "./delete/delete-post-modal";
@@ -90,7 +90,7 @@ const Post = ({ post }: any) => {
                 <>
                 <PostTopContainer>
                     <ProfilePhotoContainer>{post.Users.ProfileImg ? <UserImage src={post.Users.ProfileImg}/> : <UserImage src="https://i.stack.imgur.com/l60Hf.png" />}</ProfilePhotoContainer>
-                    <div><Link to={`/user/${post.Users.Id}`}>{post.Users.DisplayName}</Link></div>
+                    <Link to={`/user/${post.Users.Id}`}><PostUserName>{post.Users.DisplayName}</PostUserName></Link>
                     {handlePostDate()}
                     {isCurrentUser() && <button onClick={toggleDeleteModal}>X</button>}
                     {deleteModalIsOpen && <DeletePostModal toggle={toggleDeleteModal}/>}
@@ -103,17 +103,17 @@ const Post = ({ post }: any) => {
                         <div>
                             {likes} {likes > 1 || likes === 0 ? "Likes" : "Like"}
                         </div>
-                        <div onClick={toggleComments}>
+                        <CommentContainer onClick={toggleComments}>
                             {commentsAmount} {commentsAmount > 1 || commentsAmount === 0 ? "Comments" : "Comment"}
-                        </div>
+                        </CommentContainer>
                     </PostInfoBar>
                     <LikeAndCommentContainer>
-                        <div>
-                            <button onClick={handlePostLike}>{userHasLiked ? "Unlike" : "Like"}</button>
-                        </div>
-                        <div onClick={toggleComments}>
+                        <LikeContainer>
+                            <LikeBtn onClick={handlePostLike}>{userHasLiked ? "Unlike" : "Like"}</LikeBtn>
+                        </LikeContainer>
+                        <CommentContainer onClick={toggleComments}>
                             Comment
-                        </div>
+                        </CommentContainer>
                     </LikeAndCommentContainer>  
                 </PostBottomContainer>
                 </>

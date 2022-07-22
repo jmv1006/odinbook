@@ -24,6 +24,14 @@ export const PostTopContainer = styled.div`
     gap: .5rem;
 `
 
+export const PostUserName = styled.div`
+    text-decoration: none;
+    color: black;
+    :hover{
+        font-weight: bold;
+    }
+`
+
 export const PostTextContainer = styled.div`
     width: 100%;
     min-height: 2.5rem;
@@ -52,6 +60,28 @@ export const LikeAndCommentContainer = styled.div`
     justify-content: space-around;
     align-items: center;
     border-top: 2px solid #F0F2F5;
+`
+
+export const LikeContainer = styled.div`
+    width: 3rem;
+`
+export const LikeBtn = styled.button`
+    background-color: lightgray;
+    width: 100%;
+    border: none;
+    padding: .3rem;
+    border-radius: .2rem;
+    :hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+`
+
+export const CommentContainer = styled.div`
+    cursor: pointer;
+    :hover{
+        text-decoration: underline;
+    }
 `
 
 export const ProfilePhotoContainer = styled.div`

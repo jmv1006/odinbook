@@ -8,6 +8,10 @@ export const UserBarContainer = styled.div`
     align-items: center;
     justify-content: flex-start;
     border: 1px solid black;
+    :hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
 `
 
 export const UserImgContainer = styled.div`
