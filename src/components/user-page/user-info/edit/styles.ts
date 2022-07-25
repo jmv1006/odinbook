@@ -1,5 +1,6 @@
 import styled from "styled-components"
 
+/*
 export const EditUserInfoContainer = styled.div`
     background-color: wheat;
     position: fixed;
@@ -13,6 +14,29 @@ export const EditUserInfoContainer = styled.div`
     align-items: center;
     gap: .5rem;
     border: 2px solid blue;
+*/
+
+export const EditUserInfoContainer = styled.div`
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+export const EditUserInfoContentContainer = styled.div`
+    background-color: wheat;
+    position: fixed;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: .5rem;
 `
 
 export const EditInfoTitle = styled.div`
@@ -20,7 +44,6 @@ export const EditInfoTitle = styled.div`
     width: 100%;
     text-align: center;
     font-weight: bold;
-    border-bottom: 1px solid black;
 `
 
 export const EditItemContainer = styled.div`    

@@ -4,7 +4,7 @@ export const IndividualComment = styled.div`
     width: 100%;
     min-height: 2.25rem;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
 `
 
@@ -45,4 +45,5 @@ export const CommentText = styled.div`
     padding: 0.25rem;
     max-width: 95%;
     overflow-wrap: break-word;
+    border-radius: .5rem;
 `

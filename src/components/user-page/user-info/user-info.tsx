@@ -17,7 +17,7 @@ const UserInfo = () => {
 
     return(
         <UserInfoWrapper>
-            {user.ProfileImg ? <ProfileImgContainer><ProfileImg src={user.ProfileImg}/></ProfileImgContainer> : <ProfileImgContainer><ProfileImg src="https://i.stack.imgur.com/l60Hf.png"/></ProfileImgContainer>}
+            {user.ProfileImg && <ProfileImgContainer><ProfileImg src={user.ProfileImg}/></ProfileImgContainer>}
             {isCurrentUser ? <NameContainer>{user.DisplayName} (Me)</NameContainer> : <NameContainer>{user.DisplayName}</NameContainer>}
             <BioContainer>{profileInfo.Bio}</BioContainer>
             {isCurrentUser && <EditInfoBtn onClick={toggleEditWindow}>Edit Profile</EditInfoBtn>}

@@ -32,7 +32,7 @@ const CommentInput = ({ user, postId, reFetchComments } : any) => {
                 {user && <UserImage src={user.ProfileImg ? user.ProfileImg : "https://i.stack.imgur.com/l60Hf.png"} />}
             </UserImageContainer>
             <CommentInputForm onSubmit={handleSubmit}>
-                <TextInputBox type="text" placeholder="Your Comment" value={text} onChange={handleChange}/>
+                <TextInputBox type="text" placeholder="Your Comment" value={text} onChange={handleChange} maxLength={1000} required/>
                 <PostCommentBtn type="submit">Post</PostCommentBtn>
             </CommentInputForm>
         </CommentInputContainer>

@@ -13,7 +13,7 @@ const UserPagePosts = () => {
     const {triggerReload} = useUserPageContext();
 
     const mappedPosts = userPosts.map((post : any) =>
-        <Post key={post.Id} post={post} cb={triggerReload}/>
+        <Post key={post.Id} post={post} reload={triggerReload}/>
     );
 
     return(

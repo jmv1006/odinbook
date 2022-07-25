@@ -8,10 +8,10 @@ import IComment from '../../../interfaces/comment';
 import { SocketContext } from "../../../context/SocketContext";
 import PostDropDown from "./dropdown/post-dropdown";
 
-const Post = ({ post, cb }: any) => {
+const Post = ({ post, reload }: any) => {
     const { user } = useContext<any>(UserContext);
     const socket = useContext(SocketContext);
-
+    
     const [likes, setLikes] = useState(0);
     const [comments, setComments] = useState<Array <IComment>>([]);
     const [commentsAmount, setCommentsAmount] = useState(0);
@@ -32,7 +32,7 @@ const Post = ({ post, cb }: any) => {
 
     useEffect(() => {
         if(likesResponse){
-            setLikes(likesResponse.amount)
+            setLikes(likesResponse.amount);
             const likesArr = likesResponse.likes;
             const userInLikes = likesArr.find((like:any) => like.User === user.Id);
             if(userInLikes) return setUserHasLiked(true)
@@ -79,7 +79,10 @@ const Post = ({ post, cb }: any) => {
     };
 
     const toggleDropDown = () => {
-        if(dropDownIsOpen) return setDropDownIsOpen(dropDownIsOpen => false)
+        if(dropDownIsOpen) {
+            setDropDownIsOpen(dropDownIsOpen => false)
+            return
+        }
         setDropDownIsOpen(dropDownIsOpen => true)
     };
     
@@ -95,7 +98,7 @@ const Post = ({ post, cb }: any) => {
                     </PostTopLeft>
                     <PostTopRight>
                         {isCurrentUser() && <button onClick={toggleDropDown}>...</button>}
-                        {dropDownIsOpen && <PostDropDown toggle={toggleDropDown}/>}
+                        {dropDownIsOpen && <PostDropDown toggle={toggleDropDown} post={post} reload={reload}/>}
                     </PostTopRight>
                 </PostTopContainer>
                 <PostTextContainer>

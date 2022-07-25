@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
 export const PostDropDownContainer = styled.div`
-    border: 2px solid blue;
+    position: relative;
+`
+
+export const PostDropDownMenu = styled.div`
+    background-color: wheat;
+    position: absolute;
+    top: 100%; /* Bottom of button */
+    right: 0;
+    width: 15rem;
 `

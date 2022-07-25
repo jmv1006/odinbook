@@ -35,9 +35,9 @@ export const NameContainer = styled.div`
 
 export const BioContainer = styled.div`
     width: 95%;
-    min-height: 2.5rem;
-    border: 2px solid red;
+    max-height: 3rem;
     text-align: center;
+    overflow-y: auto;
 `
 
 export const EditInfoBtn = styled.button`
