@@ -125,7 +125,7 @@ const Post = ({ post, reload }: any) => {
                 
                 </>
             :
-            "Loading..."
+            "Loading Post..."
             }
             {commentsAreToggled && <PostComments comments={comments} amount={commentsAmount} postId={post.Id} reFetchComments={commentsReFetch}/>}
         </PostStyles>

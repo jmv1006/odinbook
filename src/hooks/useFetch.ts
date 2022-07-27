@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/userContext";
 
 const useFetch = (url: string | null) => {
+    const navigate = useNavigate();
     const {user} = useContext<any>(UserContext);
 
     const [response, setResponse] = useState<any>(null);
@@ -22,7 +24,9 @@ const useFetch = (url: string | null) => {
             if(user && res.status === 401) {
                 //session expired
                 window.location.reload()
+                return
             }
+            navigate('/error')
         }
 
 

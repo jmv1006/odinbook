@@ -8,6 +8,7 @@ import UserPagePosts from './components/user-page/posts/user-posts';
 import UserFriends from './components/user-page/friends/user-friends';
 import SearchPage from './layouts/search-page/search-page-layout';
 import FriendRequests from './components/user-page/friends/requests/friend-requests';
+import ErrorPage from './layouts/error-page/error-page';
 import './index.css';
 
 const root = ReactDOM.createRoot(
@@ -26,6 +27,7 @@ root.render(
         </Route>
         <Route path='/search' element={<SearchPage />} />
         <Route path='/search/:SearchParams' element={<SearchPage />} />
+        <Route path="/error" element={<ErrorPage />} />
       </Route>
     </Routes>
   </BrowserRouter>

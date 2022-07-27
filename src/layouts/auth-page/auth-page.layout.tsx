@@ -5,6 +5,7 @@ import SignUp from "../../components/auth/sign-up/sign-up";
 const AuthPageLayout = ({setUser}: any) => {
 
     const [isOpen, setIsOpen] = useState(false);
+    
 
     const toggleOpen = () => {
         if(isOpen) return setIsOpen(isOpen => false)
@@ -15,7 +16,7 @@ const AuthPageLayout = ({setUser}: any) => {
         <div>
             {!isOpen ?
                 <>
-                    <h3>Auth Page Here</h3>
+                    <h3>Odinbook</h3>
                     <SignIn setUser={setUser}/>
                     <button onClick={toggleOpen}>Sign Up</button>
                 </>
