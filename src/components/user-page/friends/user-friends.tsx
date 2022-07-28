@@ -8,7 +8,6 @@ const UserFriends = () => {
 
     const {friends, isCurrentUser} = useUserPageContext();
 
-
     const mappedFriends = friends.map((friend: any) => 
         <UserCard key={friend.Id} user={friend} isCurrentUser={isCurrentUser} />
     );
@@ -20,6 +19,7 @@ const UserFriends = () => {
             {isCurrentUser && <Link to={`/user/${params.UserId}/friends/requests`}>Requests</Link>}
             <CardsContainer>
                 {mappedFriends}
+                {friends.length === 0 && "User Has No Friends!"}
             </CardsContainer>
         </UserFriendsContainer>
     )

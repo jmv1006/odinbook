@@ -7,7 +7,7 @@ import Post from "../../shared/post/post";
 
 type MainFeedContainerProps = {
     timelineUpdate: boolean,
-    updateTimeline: () => void
+    updateTimeline: () => void,
 };
 
 const MainFeedContainer = ({ timelineUpdate, updateTimeline } : MainFeedContainerProps) => {

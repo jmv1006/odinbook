@@ -7,10 +7,13 @@ import UserPagePosts from "../components/user-page/posts/user-posts";
 
 import IUser from "../interfaces/user";
 import IPost from "../interfaces/post";
+import UserFriends from "../components/user-page/friends/user-friends";
 
 const UserPageTestContext = createContext<any>({});
 
 let userPosts: any = [];
+let userFriends: any = [];
+let isCurrentUser = true;
 
 const UserPageTestProvider = ({children}: any) => {
     return (
@@ -44,7 +47,7 @@ const mockUserInfo = {
 }
 
 jest.mock('../context/userPageContextRewrite', () => ({
-    useUserPageContext: () => ({user: mockUser, userPosts: userPosts, friends: [], isCurrentUser: true, profileInfo: mockUserInfo, triggerReload: jest.fn()})
+    useUserPageContext: () => ({user: mockUser, userPosts: userPosts, friends: userFriends, isCurrentUser: isCurrentUser, profileInfo: mockUserInfo, triggerReload: jest.fn()})
 }));
 
 describe("User Profile Information Component", () => {
@@ -126,5 +129,53 @@ describe("User Page Posts Component", () => {
         )
         expect(screen.getByText("Loading Post...")).toBeInTheDocument()
     })
+
+})
+
+describe("User Page Friends Component", () => {
+    it("renders without error", () => {
+        render(
+            <TestsContextProvider>
+                <UserPageTestProvider>
+                    <UserFriends />
+                </UserPageTestProvider>
+            </TestsContextProvider>
+        )
+    });
+
+    it("renders correct message when user has no friends", () => {
+        render(
+            <TestsContextProvider>
+                <UserPageTestProvider>
+                    <UserFriends />
+                </UserPageTestProvider>
+            </TestsContextProvider>
+        )
+
+        expect(screen.getByText("User Has No Friends!")).toBeInTheDocument()
+    });
+
+    it("renders friend card", () => {
+        userFriends.push(mockUser)
+        render(
+            <TestsContextProvider>
+                <UserPageTestProvider>
+                    <UserFriends />
+                </UserPageTestProvider>
+            </TestsContextProvider>
+        )
+        expect(screen.getByText(mockUser.DisplayName)).toBeInTheDocument()
+    });
+
+    it("renders requests button if user is current user", () => {
+        render(
+            <TestsContextProvider>
+                <UserPageTestProvider>
+                    <UserFriends />
+                </UserPageTestProvider>
+            </TestsContextProvider>
+        )
+        expect(screen.getByText("Requests")).toBeInTheDocument()
+    });
 
 })

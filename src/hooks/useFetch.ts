@@ -1,9 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/userContext";
 
 const useFetch = (url: string | null) => {
-    const navigate = useNavigate();
     const {user} = useContext<any>(UserContext);
 
     const [response, setResponse] = useState<any>(null);
@@ -26,7 +24,6 @@ const useFetch = (url: string | null) => {
                 window.location.reload()
                 return
             }
-            navigate('/error')
         }
 
 
