@@ -77,3 +77,4 @@ const useUserPageContext = () => {
 
 
 export { UserPageProvider, useUserPageContext }
+export default useUserPageContext

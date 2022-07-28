@@ -4,6 +4,7 @@ import { useUserPageContext } from "../../../context/userPageContextRewrite";
 import { useContext } from "react";
 import { UserContext } from "../../../context/userContext";
 import CreatePost from "../../shared/create-post/create-post";
+
 const UserPagePosts = () => {
 
     const { userPosts, isCurrentUser } = useUserPageContext()

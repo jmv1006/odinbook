@@ -14,7 +14,6 @@ const UserPageLayoutContainer = () => {
 };
 
 const UserPageLayout = () => {
-
     const {user} = useUserPageContext();
 
     return(

@@ -4,7 +4,9 @@ import TestsContextProvider from "../context/tests-wrapper";
 import '@testing-library/jest-dom';
 import MainFeedContainer from '../components/home/main-feed/container-main-feed';
 import LeftPanelContainer from '../components/home/left-panel/container-left-panel';
+import RightPanelContainer from "../components/home/right-panel/container-right-panel";
 import IPost from "../interfaces/post";
+import IUser from "../interfaces/user";
 
 import {HomePageContext} from '../context/homePageContext';
 
@@ -22,6 +24,13 @@ const mockPost: IPost = {
     }
 };
 
+const mockUser: IUser = {
+    Id: "12345",
+    DisplayName: "Test User",
+    Email: "testuser@gmail.com",
+    ProfileImg: "null.com",
+};
+
 describe('Home Page Layout', () => {
     it("renders without error", () => {
         render(
@@ -32,7 +41,7 @@ describe('Home Page Layout', () => {
     })
 });
 
-describe('Main Feed', () => {
+describe('Home Page Main Feed', () => {
     it("renders without error", () => {
         render(
             <TestsContextProvider>
@@ -42,7 +51,7 @@ describe('Main Feed', () => {
             </TestsContextProvider>
         );
    
-    })
+    });
 
     it("renders a post", () => {
         render(
@@ -64,5 +73,56 @@ describe('Main Feed', () => {
             </TestsContextProvider>
         );
         expect(screen.getByText("No Posts To Show!")).toBeInTheDocument()
+    })
+});
+
+describe('Home Page Friends Panel', () => {
+    it("renders without error", () => {
+        render(
+            <TestsContextProvider>
+                <RightPanelContainer friends={[]}/>
+            </TestsContextProvider>
+        );
+    })
+
+    it("renders correct text if user has no friends", () => {
+        render(
+            <TestsContextProvider>
+                <RightPanelContainer friends={[]}/>
+            </TestsContextProvider>
+        );
+
+        expect(screen.getByText("No Friends Found")).toBeInTheDocument()
+    })
+
+    it("renders friend bar for each friend", () => {
+        render(
+            <TestsContextProvider>
+                <RightPanelContainer friends={[mockUser]}/>
+            </TestsContextProvider>
+        );
+
+        expect(screen.getByText(mockUser.DisplayName)).toBeInTheDocument()
+    })
+});
+
+
+describe('Home Page Left-Side Panel', () => {
+    it("renders without error", () => {
+        render(
+            <TestsContextProvider>
+                <LeftPanelContainer />
+            </TestsContextProvider>
+        );
+    })
+
+    it("renders user display name", () => {
+        render(
+            <TestsContextProvider>
+                <LeftPanelContainer />
+            </TestsContextProvider>
+        );
+
+        expect(screen.getByText("Hello, " + mockUser.DisplayName)).toBeInTheDocument();
     })
 });
