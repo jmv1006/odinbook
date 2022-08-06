@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SignIn from "../../components/auth/sign-in";
+import SignIn from "../../components/auth/sign-in/sign-in";
 import SignUp from "../../components/auth/sign-up/sign-up";
 
 const AuthPageLayout = ({setUser}: any) => {

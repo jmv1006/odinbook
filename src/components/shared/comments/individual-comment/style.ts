@@ -47,3 +47,7 @@ export const CommentText = styled.div`
     overflow-wrap: break-word;
     border-radius: .5rem;
 `
+
+export const DeleteCommentBtn = styled.button`
+    
+`

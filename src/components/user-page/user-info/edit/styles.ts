@@ -14,7 +14,7 @@ export const EditUserInfoContainer = styled.div`
 `
 
 export const EditUserInfoContentContainer = styled.div`
-    background-color: wheat;
+    background-color: white;
     position: fixed;
     width: 65%;
     display: flex;
@@ -32,12 +32,12 @@ export const EditInfoTitle = styled.div`
 `
 
 export const EditItemContainer = styled.div`    
-    border: 2px solid red;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    border: 1px solid black;
+    padding: .25rem;
 `
 export const EditItemTitle = styled.div`
     text-align: center;
@@ -54,16 +54,17 @@ export const ProfileImg = styled.img`
 `
 
 export const EditBioTextArea = styled.textarea`
-    border: 2px solid red;
     resize: none;
     width: 60%;
     height: 5rem;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1rem;
+    overflow-y: auto;
 `
 
 export const EditBioTextContainer = styled.div`
     text-align: center;
     width: 60%;
-    height: 2rem;
+    height: 2.5rem;
+    overflow-y: auto;
 `

@@ -31,6 +31,7 @@ const ProfileInfoSetUp = ({setUploadingInfo, createdUser, setUser} : any) => {
             });
             if(!ImgUploadResponse.ok) {
                 setError(true)
+                console.log("error uploading profile image")
                 return
             }
         }
@@ -45,10 +46,10 @@ const ProfileInfoSetUp = ({setUploadingInfo, createdUser, setUser} : any) => {
 
         if(!ProfileInfoResponse.ok) {
             setError(true)
+            console.log("Error uploading Profile Info")
             return
         }
-        setUploadingInfo(false)
-        navigate('/')
+        
 
         const userResponse =  await fetch(`/users/${createdUser.Id}`, {
             method: "GET",

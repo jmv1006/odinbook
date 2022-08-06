@@ -11,11 +11,11 @@ export const EditPostModalContainer = styled.div`
 `
 
 export const EditPostModalContentContainer = styled.div`
-    background-color: wheat;
+    background-color: white;
     position: absolute;
     top: 30%;
     left: 50%;
-    width: 30rem;
+    width: 25rem;
     transform: translate(-50%, 0);
     display: flex;
     flex-direction: column;
@@ -23,6 +23,7 @@ export const EditPostModalContentContainer = styled.div`
     align-items: center;
     gap: .5rem;
     padding: .5rem;
+    border-radius: .25rem;
 `
 
 export const EditPostForm = styled.form`

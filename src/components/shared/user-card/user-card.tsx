@@ -11,14 +11,8 @@ type UserCardPropTypes = {
     isCurrentUser: boolean
 }
 
-const UserCard = ({user, isCurrentUser } : UserCardPropTypes) => {
-    const { user: currentUser}  = useContext<any>(UserContext);
+const UserCard = ({ user } : UserCardPropTypes) => {
     const [isOpen, setIsOpen] = useState(false);
-
-    const toggleDeleteModal = () => {
-        if(isOpen) return setIsOpen(isOpen => false)
-        setIsOpen(isOpen => true)
-    };
 
     return(
         <UserCardContainer>
