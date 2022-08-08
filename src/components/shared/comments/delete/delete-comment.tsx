@@ -1,8 +1,15 @@
 import { useState } from 'react';
 import {DeleteCommentModalContainer, DeleteCommentModalContentContainer} from './styles'
+import IComment from '../../../../interfaces/comment';
 
+type DeleteCommentProps = {
+    user: any, 
+    comment: IComment,
+    toggle: () => void,
+    reload: () => void
+};
 
-const DeleteComment = ({user, comment, toggle, reload} : any) => {
+const DeleteComment = ({user, comment, toggle, reload} : DeleteCommentProps) => {
 
     const [isDeleting, setIsDeleting] = useState(false);
 
@@ -30,7 +37,7 @@ const DeleteComment = ({user, comment, toggle, reload} : any) => {
             <DeleteCommentModalContentContainer>
                 {!isDeleting ? 
                 <>
-                    Are you Sure You Want To Delete Comment?
+                    Are you Sure You Want To Delete This Comment?
                     <button onClick={deleteCommentFromDb}>Yes</button>
                     <button onClick={toggle}>No</button>
                     <button onClick={toggle}>X</button>

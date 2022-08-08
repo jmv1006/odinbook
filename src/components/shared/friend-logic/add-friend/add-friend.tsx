@@ -44,7 +44,7 @@ const AddFriend = ({user}: AddFriendProps) => {
                 //user sent it
                 return (
                     <>
-                        <div>Friend Request Sent</div>
+                        <>Friend Request Sent</>
                         <button onClick={declineRequest}>Cancel</button>
                     </>
                 )

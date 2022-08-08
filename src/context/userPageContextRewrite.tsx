@@ -38,7 +38,7 @@ const UserPageProvider = ({ children }: any) => {
     useEffect(() => {
         if (userPostsResponse) {
             setUserPosts(userPosts => userPostsResponse.posts)
-        }
+        };
     }, [userPostsResponse]);
 
     useEffect(() => {
@@ -47,13 +47,13 @@ const UserPageProvider = ({ children }: any) => {
             if (userInfoResponse.user.Id === currentUser.Id) setIsCurrentUser(isCurrentUser => true)
             setUser(user => userInfoResponse.user)
             setProfileInfo(profileInfo => profileInfoResponse.info)
-        }
+        };
     }, [userInfoResponse, profileInfoResponse]);
 
     useEffect(() => {
         if (friendsResponse) {
             setFriends(user => friendsResponse.friends)
-        }
+        };
     }, [friendsResponse]);
 
     const triggerReload = () => {
