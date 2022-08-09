@@ -26,3 +26,24 @@ export const NewPostInFeedNotification = styled.button`
     background-color: blue;
     color: white;
 `
+
+export const SuggestedUsersContainer = styled.div`
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0.25rem;
+    background-color: white;
+    font-weight: bold;
+`
+
+export const SuggestedUsersBar = styled.div`
+    width: 98%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: auto;
+    gap: 5rem;
+    padding: 0.25rem;
+`

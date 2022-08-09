@@ -50,10 +50,10 @@ const AddFriend = ({user}: AddFriendProps) => {
                 )
             }
             return (
-                <div>
+                <>
                     <button onClick={acceptRequest}>Accept</button>
                     <button onClick={declineRequest}>Decline</button>
-                </div>
+                </>
             )
         }
     }
@@ -72,7 +72,6 @@ const AddFriend = ({user}: AddFriendProps) => {
         }
 
         const resJSON = await response.json()
-
         setRequestExists(requestExists => true)
         setRequest(request => resJSON.request)
     };

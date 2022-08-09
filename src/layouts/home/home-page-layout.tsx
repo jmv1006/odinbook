@@ -16,17 +16,24 @@ const HomePageLayout = () => {
     const { friends } = useFriends();
 
     const [posts, setPosts] = useState<any>([]);
+    const [suggestedFriends, setSuggestedFriends] = useState<any>([]);
 
     const [timelineUpdate, setTimelineUpdate] = useState(false);
 
     const {response: postsResponse, isLoading: postsAreLoading, reFetch:postsReFetch} = useFetch(`/posts/${user.Id}/timeline/`);
+    const {response: suggestedFriendsResponse} = useFetch(`/friendships/${user.Id}/suggested`);
 
     useEffect(() => {
         if(postsResponse){
-            //setPosts((posts : any) => [...posts, ...postsResponse.posts])
             setPosts((posts : any) => postsResponse.posts)
         } 
     }, [postsResponse])
+
+    useEffect(() => {
+        if(suggestedFriendsResponse){
+            setSuggestedFriends((suggestedFriends: any) => suggestedFriendsResponse.users);
+        } 
+    }, [suggestedFriendsResponse])
 
     useEffect(() => {
         if(socket) {
@@ -43,9 +50,9 @@ const HomePageLayout = () => {
         
     return(
         <HomePage>
-            <HomePageContext.Provider value={{posts: posts, reFetchPosts: postsReFetch, postsLoading: postsAreLoading}}>
+            <HomePageContext.Provider value={{posts: posts, reFetchPosts: postsReFetch, postsLoading: postsAreLoading, suggested:suggestedFriends}}>
                 <LeftPanelContainer />
-                <MainFeedContainer timelineUpdate={timelineUpdate} updateTimeline={updateTimeline} />
+                <MainFeedContainer timelineUpdate={timelineUpdate} updateTimeline={updateTimeline}/>
                 <RightPanelContainer friends={friends}/>
             </HomePageContext.Provider>
         </HomePage>

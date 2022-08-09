@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const UserCardContainer = styled.div`
-    border: 2px solid aqua;
     width: 14rem;
     height: 14rem;
     display: flex;

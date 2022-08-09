@@ -4,11 +4,17 @@ import PostComments from "../comments/container-comments";
 import { UserContext } from "../../../context/userContext";
 import { Link } from "react-router-dom";
 import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer, LikeContainer, LikeBtn, PostUserName, CommentContainer, PostTopLeft, PostTopRight } from "./style";
+import IPost from "../../../interfaces/post";
 import IComment from '../../../interfaces/comment';
 import { SocketContext } from "../../../context/SocketContext";
 import PostDropDown from "./dropdown/post-dropdown";
 
-const Post = ({ post, reload }: any) => {
+type postPropTypes = {
+    post: IPost,
+    reload: () => void;
+};
+
+const Post = ({ post, reload }: postPropTypes) => {
     const { user } = useContext<any>(UserContext);
     const socket = useContext(SocketContext);
     
@@ -130,6 +136,6 @@ const Post = ({ post, reload }: any) => {
             {commentsAreToggled && <PostComments comments={comments} amount={commentsAmount} postId={post.Id} reFetchComments={commentsReFetch}/>}
         </PostStyles>
     )
-}
+};
 
 export default Post;
