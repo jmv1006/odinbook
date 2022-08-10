@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { UserPageContainer } from "./styles";
+import { NonFriendInfo, UserPageContainer } from "./styles";
 import UserInfo from "../../components/user-page/user-info/user-info";
 import { UserPageProvider, useUserPageContext } from "../../context/userPageContextRewrite";
 import { useFriends } from "../../context/userFriendsContext ";
@@ -31,7 +31,7 @@ const UserPageLayout = () => {
             {user ?
                 <>
                    <UserInfo />
-                   {!isCurrentUser && !isUserFriend() ? "Add As A Friend To See Posts and Friends!" : <Outlet />}
+                   {!isCurrentUser && !isUserFriend() ? <NonFriendInfo>Only Friends Of This User Can See Their Posts & Friends.</NonFriendInfo> : <Outlet />}
                </>
             :
             null

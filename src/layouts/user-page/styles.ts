@@ -16,3 +16,13 @@ export const UserPageContainer = styled.div`
     overflow-y: auto;
     gap: .5rem;
 `
+
+export const NonFriendInfo = styled.div`
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 1.15rem;
+    font-weight: bold;
+    text-decoration: underline;
+`

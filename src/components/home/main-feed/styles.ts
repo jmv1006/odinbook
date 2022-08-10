@@ -38,6 +38,14 @@ export const SuggestedUsersContainer = styled.div`
     font-weight: bold;
 `
 
+export const SuggestedUsersTop= styled.div`
+    width: 98%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: .25rem;
+`
+
 export const SuggestedUsersBar = styled.div`
     width: 98%;
     display: flex;

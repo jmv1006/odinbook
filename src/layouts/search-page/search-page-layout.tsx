@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import useFetch from "../../hooks/useFetch"
-import { SearchPageContainer } from "./styles";
+import { SearchBarInput, SearchPageContainer, SearchPageTitle, SearchResultsContainer } from "./styles";
 import UserBar from "../../components/shared/user-bar/user-bar";
 
 const SearchPage = () => {
@@ -8,21 +8,44 @@ const SearchPage = () => {
     const {response: allUsersResponse, isLoading: allUsersLoading, reFetch: allUsersRefetch} = useFetch('/users/all');
 
     const [users, setUsers] = useState([]);
+    const [search, setSearch] = useState("");
 
     useEffect(() => {
         if(allUsersResponse) setUsers(users => allUsersResponse.users)
-    }, [allUsersResponse])
+    }, [allUsersResponse]);
 
 
-    const mappedUsers = users.map((user: any) => 
-        <UserBar key={user.Id} user={user} includeFriendLogic={true}/>
-    );
+
+    const handleChange = (e: any) => {
+        setSearch(search => e.target.value)
+    };
+
+    const handleResults = () => {
+        if(search === "") {
+            return users.map((user: any) => 
+            <UserBar key={user.Id} user={user} includeFriendLogic={true}/>
+        )};
+
+        const result = users.filter((user:any) => user.DisplayName.toUpperCase().includes(search.toUpperCase()))
+
+        if(result.length === 0) {
+            return "No Results"
+        }
+
+        return result.map((result: any) => 
+            <UserBar user={result} key={result.Id} includeFriendLogic={true}/>
+        )
+    };
 
     return(
         <SearchPageContainer>
-            {mappedUsers}
+            <SearchPageTitle>Search</SearchPageTitle>
+            <SearchBarInput type="text" placeholder="Search" onChange={handleChange}/>
+            <SearchResultsContainer>
+                {handleResults()}
+            </SearchResultsContainer>
         </SearchPageContainer>
     )
 }
 
-export default SearchPage
+export default SearchPage;

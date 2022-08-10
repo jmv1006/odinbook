@@ -39,12 +39,12 @@ const SearchBar = ({toggle} : any) => {
 
     return(
         <SearchBarContainer>
-            Search Here
-            <Link to="/search" onClick={() => toggle()}>More...</Link>
+            Search For Users
             <input type="text" placeholder="Search..." value={search} onChange={handleChange} />
             <ResultsContainer>
                 {handleResults()}
             </ResultsContainer>
+            <Link to="/search" onClick={() => toggle()}>More...</Link>
             <button onClick={toggle}>X</button>
         </SearchBarContainer>
     )
