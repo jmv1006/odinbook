@@ -16,7 +16,7 @@ const UserPageLayoutContainer = () => {
 };
 
 const UserPageLayout = () => {
-    const {user, isCurrentUser} = useUserPageContext();
+    const {user, isCurrentUser, loading} = useUserPageContext();
     const {friends} = useFriends();
 
     const isUserFriend = () => {
@@ -28,13 +28,13 @@ const UserPageLayout = () => {
 
     return(
         <UserPageContainer>
-            {user ?
+            {user && !loading ?
                 <>
                    <UserInfo />
                    {!isCurrentUser && !isUserFriend() ? <NonFriendInfo>Only Friends Of This User Can See Their Posts & Friends.</NonFriendInfo> : <Outlet />}
                </>
             :
-            null
+            "Loading..."
             }
         </UserPageContainer>
     )

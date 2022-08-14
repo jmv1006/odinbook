@@ -24,7 +24,6 @@ const MainFeedContainer = ({ timelineUpdate, updateTimeline } : MainFeedContaine
 
     useEffect(() => {
         if(suggested && suggested.length > 0) {
-            console.log(suggested)
             setSuggestedToggled(suggestedToggled => true)
         }
     }, [suggested])

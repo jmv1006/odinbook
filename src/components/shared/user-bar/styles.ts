@@ -10,7 +10,7 @@ export const UserBarContainer = styled.div`
     border: 1px solid black;
     :hover {
         cursor: pointer;
-        text-decoration: underline;
+        background-color: #f0f2f0;
     }
 `
 
@@ -28,4 +28,6 @@ export const UserImg = styled.img`
 
 export const UserBarFriendLogic = styled.div`
     display: flex;
+    margin-left: .5rem;
+    gap: .25rem;
 `

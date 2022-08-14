@@ -45,7 +45,7 @@ describe('Home Page Main Feed', () => {
     it("renders without error", () => {
         render(
             <TestsContextProvider>
-                <HomePageContext.Provider value={{posts: [], reFetchPosts: jest.fn(), postsLoading: true}}>
+                <HomePageContext.Provider value={{posts: [], reFetchPosts: jest.fn(), postsLoading: true, suggested: []}}>
                     <MainFeedContainer timelineUpdate={false} updateTimeline={jest.fn()}/>
                 </HomePageContext.Provider>
             </TestsContextProvider>
@@ -56,7 +56,7 @@ describe('Home Page Main Feed', () => {
     it("renders a post", () => {
         render(
             <TestsContextProvider>
-                <HomePageContext.Provider value={{posts: [mockPost], reFetchPosts: jest.fn(), postsLoading: false}}>
+                <HomePageContext.Provider value={{posts: [mockPost], reFetchPosts: jest.fn(), postsLoading: false, suggested: []}}>
                     <MainFeedContainer timelineUpdate={false} updateTimeline={jest.fn()}/>
                 </HomePageContext.Provider>
             </TestsContextProvider>
@@ -67,7 +67,7 @@ describe('Home Page Main Feed', () => {
     it("renders correct message when no posts in timeline", () => {
         render(
             <TestsContextProvider>
-                <HomePageContext.Provider value={{posts: [], reFetchPosts: jest.fn(), postsLoading: false}}>
+                <HomePageContext.Provider value={{posts: [], reFetchPosts: jest.fn(), postsLoading: false, suggested: []}}>
                     <MainFeedContainer timelineUpdate={false} updateTimeline={jest.fn()}/>
                 </HomePageContext.Provider>
             </TestsContextProvider>

@@ -12,16 +12,16 @@ const UserPageProvider = ({ children }: any) => {
     const { user: currentUser } = useContext<any>(UserContext);
 
     //User's Posts
-    const { response: userPostsResponse, reFetch: userPostsReFetch } = useFetch(`/posts/${params.UserId}`);
+    const { response: userPostsResponse, reFetch: userPostsReFetch, isLoading: postsLoading } = useFetch(`/posts/${params.UserId}`);
 
     //User's basic info such as name and ID
-    const { response: userInfoResponse, reFetch: userInfoReFetch } = useFetch(`/users/${params.UserId}`);
+    const { response: userInfoResponse, reFetch: userInfoReFetch, isLoading: infoLoading } = useFetch(`/users/${params.UserId}`);
 
     //User's friends
-    const { response: friendsResponse, reFetch: friendsReFetch } = useFetch(`/friendships/${params.UserId}`);
+    const { response: friendsResponse, reFetch: friendsReFetch, isLoading: friendsLoading } = useFetch(`/friendships/${params.UserId}`);
 
     //User's profile info such as bio, birthday, interests, etc...
-    const { response: profileInfoResponse, reFetch: profileInfoReload } = useFetch(`/users/${params.UserId}/profile`);
+    const { response: profileInfoResponse, reFetch: profileInfoReload, isLoading: profileLoading} = useFetch(`/users/${params.UserId}/profile`);
 
 
     
@@ -34,6 +34,8 @@ const UserPageProvider = ({ children }: any) => {
     const [isCurrentUser, setIsCurrentUser] = useState(false);
 
     const [profileInfo, setProfileInfo] = useState(null);
+
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         if (userPostsResponse) {
@@ -56,6 +58,11 @@ const UserPageProvider = ({ children }: any) => {
         };
     }, [friendsResponse]);
 
+    useEffect(() => {
+        if(infoLoading || friendsLoading || postsLoading || profileLoading) return setLoading(loading => true)
+        return setLoading(loading => false)
+    }, [infoLoading, friendsLoading, postsLoading, profileLoading])
+
     const triggerReload = () => {
         profileInfoReload()
         friendsReFetch()
@@ -64,7 +71,7 @@ const UserPageProvider = ({ children }: any) => {
     };
 
     return (
-        <UserPageContextRewrite.Provider value={{ user: user, userPosts: userPosts, friends: friends, isCurrentUser: isCurrentUser, profileInfo: profileInfo, triggerReload: triggerReload }}>
+        <UserPageContextRewrite.Provider value={{ user: user, userPosts: userPosts, friends: friends, isCurrentUser: isCurrentUser, profileInfo: profileInfo, triggerReload: triggerReload, loading: loading }}>
             {children}
         </UserPageContextRewrite.Provider>
     )

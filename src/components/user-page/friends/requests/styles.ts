@@ -12,5 +12,4 @@ export const RequestsContainer = styled.div`
         height: 55%;
     }
     overflow-y: auto;
-    border: 2px solid red;
 `
