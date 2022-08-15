@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { EditPostForm, EditPostModalContainer, EditPostModalContentContainer, EditPostTextArea } from "./styles"
 
-const EditPost = ({post, toggle, reload} : any) => {
+const EditPost = ({post, toggle} : any) => {
 
     const [postText, setPostText] = useState(post.Text);
 
@@ -25,7 +25,6 @@ const EditPost = ({post, toggle, reload} : any) => {
         }
         
         toggle()
-        reload()
     }
 
     return(

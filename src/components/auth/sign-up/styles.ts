@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const SignUpModal = styled.div`
     position: fixed;
-    background-color: wheat;
     top: 20%;
     left: 50%;
     transform: translate(-50%, 0);

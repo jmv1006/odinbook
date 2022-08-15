@@ -3,7 +3,7 @@ import DeletePostModal from "../delete/delete-post-modal";
 import EditPost from "../edit/edit-post";
 import { useState } from "react";
 
-const PostDropDown = ({post, reload} : any) => {
+const PostDropDown = ({post } : any) => {
 
     const [deleteToggled, setDeleteToggled] = useState(false)
     const [editToggled, setEditToggled] = useState(false);
@@ -23,8 +23,8 @@ const PostDropDown = ({post, reload} : any) => {
             <PostDropDownMenu>
                 <div onClick={toggleEditModal}>Edit Post</div>
                 <div onClick={toggleDeleteModal}>Delete Post</div>
-                {deleteToggled && <DeletePostModal toggle = {toggleDeleteModal} post={post} onDelete={reload}/>}
-                {editToggled && <EditPost toggle={toggleEditModal} post={post} reload={reload}/>}
+                {deleteToggled && <DeletePostModal toggle = {toggleDeleteModal} post={post}/>}
+                {editToggled && <EditPost toggle={toggleEditModal} post={post} />}
             </PostDropDownMenu>
         </PostDropDownContainer>
     )

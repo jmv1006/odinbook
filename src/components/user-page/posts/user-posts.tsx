@@ -13,16 +13,18 @@ const UserPagePosts = () => {
 
     const {triggerReload} = useUserPageContext();
 
+    /*
     const mappedPosts = userPosts.map((post : any) =>
-        <Post key={post.Id} post={post} reload={triggerReload}/>
+        <Post key={post.Id} post={post} />
     );
+    */
 
     return(
         <UserPagePostsWrapper>
             <PostsWrapper>
                 {isCurrentUser && <CreatePost user={currentUser} reFetchPosts={triggerReload} />}
-                {mappedPosts}
-                {mappedPosts.length === 0 && "User Has No Posts!"}
+                {/*mappedPosts}
+                {mappedPosts.length === 0 && "User Has No Posts!" */}
             </PostsWrapper>
         </UserPagePostsWrapper>
     )

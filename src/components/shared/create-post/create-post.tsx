@@ -3,7 +3,7 @@ import { CreatePostStyles, CreatePostForm, ProfilePictureContainer, UserImage, C
 import { SocketContext } from "../../../context/SocketContext";
 import { useNavigate } from "react-router-dom";
 
-const CreatePost = ({user, reFetchPosts}: any) => {
+const CreatePost = ({user, addPost}: any) => {
     const navigate = useNavigate();
 
     const socket = useContext(SocketContext);
@@ -26,12 +26,12 @@ const CreatePost = ({user, reFetchPosts}: any) => {
         })
         
         if(!res.ok) return setIsLoading(false)
+        const responseJSON = await res.json();
 
         setIsLoading(false);
         setPostText("");
         socket.emit('post', user.Id);
-        reFetchPosts();
-        //Post Successfully Created REFETCH!!!!!
+        addPost(responseJSON.createdPost)
     };
 
     const navigateToUserPage = () => {

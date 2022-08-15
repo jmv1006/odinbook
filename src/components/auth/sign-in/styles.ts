@@ -8,7 +8,6 @@ export const SignInForm = styled.form`
 `
 
 export const SignInErrorMsg = styled.div`
-height: 1.25rem;
     color: red;
     text-align: center;
 `

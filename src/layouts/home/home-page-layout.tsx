@@ -8,6 +8,7 @@ import { HomePageContext } from "../../context/homePageContext";
 import useFetch from "../../hooks/useFetch";
 import { SocketContext } from "../../context/SocketContext";
 import { useFriends } from "../../context/userFriendsContext ";
+import IPost from "../../interfaces/post";
 
 const HomePageLayout = () => {
     const { user } = useContext<any>(UserContext);
@@ -17,23 +18,24 @@ const HomePageLayout = () => {
 
     const [posts, setPosts] = useState<any>([]);
     const [suggestedFriends, setSuggestedFriends] = useState<any>([]);
-
     const [timelineUpdate, setTimelineUpdate] = useState(false);
+    const [paginationPage, setPaginationPage] = useState(0);
 
-    const {response: postsResponse, isLoading: postsAreLoading, reFetch:postsReFetch} = useFetch(`/posts/${user.Id}/timeline/`);
+    const {response: postsResponse, isLoading: postsAreLoading, reFetch:postsReFetch} = useFetch(`/posts/${user.Id}/timeline/paginated?page=${paginationPage}&limit=10`);
     const {response: suggestedFriendsResponse} = useFetch(`/friendships/${user.Id}/suggested`);
 
     useEffect(() => {
         if(postsResponse){
-            setPosts((posts : any) => postsResponse.posts)
+            //setPosts((posts : any) => postsResponse.posts)
+            setPosts((posts: any) => [...posts, ...postsResponse.posts])
         } 
-    }, [postsResponse])
+    }, [postsResponse]);
 
     useEffect(() => {
         if(suggestedFriendsResponse){
             setSuggestedFriends((suggestedFriends: any) => suggestedFriendsResponse.users);
         } 
-    }, [suggestedFriendsResponse])
+    }, [suggestedFriendsResponse]);
 
     useEffect(() => {
         if(socket) {
@@ -43,16 +45,25 @@ const HomePageLayout = () => {
         };
     }, [socket]);
 
+    useEffect(() => {
+        console.log(posts)
+    }, [posts])
+
     const updateTimeline = async () => {
         await postsReFetch();
         setTimelineUpdate(timelineUpdate => false)
     };
+
+    const addPostToTimeline = (post: IPost) => {
+        setPosts((posts: any) => [post, ...posts])
+    };
+
         
     return(
         <HomePage>
             <HomePageContext.Provider value={{posts: posts, reFetchPosts: postsReFetch, postsLoading: postsAreLoading, suggested:suggestedFriends}}>
                 <LeftPanelContainer />
-                <MainFeedContainer timelineUpdate={timelineUpdate} updateTimeline={updateTimeline}/>
+                <MainFeedContainer timelineUpdate={timelineUpdate} addPostToTimeline={addPostToTimeline} setPaginationPage={setPaginationPage} />
                 <RightPanelContainer friends={friends}/>
             </HomePageContext.Provider>
         </HomePage>

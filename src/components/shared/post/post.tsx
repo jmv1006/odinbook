@@ -10,11 +10,10 @@ import { SocketContext } from "../../../context/SocketContext";
 import PostDropDown from "./dropdown/post-dropdown";
 
 type postPropTypes = {
-    post: IPost,
-    reload: () => void;
+    post: IPost
 };
 
-const Post = ({ post, reload }: postPropTypes) => {
+const Post = ({ post }: postPropTypes) => {
     const { user } = useContext<any>(UserContext);
     const socket = useContext(SocketContext);
     
@@ -104,7 +103,7 @@ const Post = ({ post, reload }: postPropTypes) => {
                     </PostTopLeft>
                     <PostTopRight>
                         {isCurrentUser() && <button onClick={toggleDropDown}>...</button>}
-                        {dropDownIsOpen && <PostDropDown toggle={toggleDropDown} post={post} reload={reload}/>}
+                        {dropDownIsOpen && <PostDropDown toggle={toggleDropDown} post={post} />}
                     </PostTopRight>
                 </PostTopContainer>
                 <PostTextContainer>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SignIn from "../../components/auth/sign-in/sign-in";
 import SignUp from "../../components/auth/sign-up/sign-up";
+import { SignUpButton } from "./styles";
 
 const AuthPageLayout = ({setUser}: any) => {
 
@@ -16,9 +17,9 @@ const AuthPageLayout = ({setUser}: any) => {
         <div>
             {!isOpen ?
                 <>
-                    <h3>Odinbook</h3>
+                    <h2>Odinbook</h2>
                     <SignIn setUser={setUser}/>
-                    <button onClick={toggleOpen}>Sign Up</button>
+                    <SignUpButton onClick={toggleOpen}>Sign Up</SignUpButton>
                 </>
                 :
                 <SignUp toggle={toggleOpen} setUser={setUser}/>
