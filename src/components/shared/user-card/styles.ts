@@ -7,6 +7,9 @@ export const UserCardContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    :hover {
+        background-color: #f0f2f0;
+    }
 `
 
 export const UserImgContainer = styled.div`

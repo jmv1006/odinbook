@@ -14,12 +14,12 @@ const HeaderDropDown = ({toggle} : any) => {
     return(
         <HeaderDropDownContainer>
             <HeaderDropDownItem>
-                <Link to={`/user/${user.Id}`} onClick={toggle}>
+                <Link to={`/user/${user.Id}`} onClick={toggle} style={{ textDecoration: 'none', color: "black" }}>
                     My Profile
                 </Link>
             </HeaderDropDownItem>
             <HeaderDropDownItem>
-                <Link to={`/user/${user.Id}/friends/requests`} onClick={toggle}>
+                <Link to={`/user/${user.Id}/friends/requests`} onClick={toggle} style={{ textDecoration: 'none', color: "black" }}>
                     Friend Requests
                 </Link>
             </HeaderDropDownItem>

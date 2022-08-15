@@ -40,7 +40,7 @@ export const PostUserName = styled.div`
     text-decoration: none;
     color: black;
     :hover{
-        font-weight: bold;
+        text-decoration: underline;
     }
 `
 

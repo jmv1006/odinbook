@@ -26,7 +26,7 @@ describe("Post Component", () => {
         )
     });
 
-    it("renders post text", () => {
+    it("renders loading when post is mounting", () => {
         render(
             <TestsContextProvider>
                 <Post post={mockPost} reload={jest.fn()}/>

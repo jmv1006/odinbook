@@ -1,4 +1,4 @@
-import { HeaderContainer, HeaderLeftSide, HeaderRightSide, HeaderTitle } from "./styles";
+import { DropdownButton, HeaderContainer, HeaderLeftSide, HeaderRightSide, HeaderTitle } from "./styles";
 import SearchBar from "../search-bar/search-bar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -23,12 +23,12 @@ const Header = () => {
     return(
         <HeaderContainer>
             <HeaderLeftSide>
-                <Link to="/"><HeaderTitle>Odinbook</HeaderTitle></Link>
+                <Link to="/" style={{ textDecoration: 'none', color: "black" }}><HeaderTitle>Odinbook</HeaderTitle></Link>
                 {!searchIsToggled && <button onClick={toggleSearchBar}>Q</button>}
                 {searchIsToggled && <SearchBar toggle={toggleSearchBar}/>}
             </HeaderLeftSide>
             <HeaderRightSide>
-                <button onClick={toggleIsOpen}>...</button>
+                <DropdownButton onClick={toggleIsOpen}>...</DropdownButton>
                 {isOpen && <HeaderDropDown toggle={toggleIsOpen}/>}
             </HeaderRightSide>
         </HeaderContainer>

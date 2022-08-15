@@ -14,7 +14,6 @@ export const HeaderContainer = styled.div`
 export const HeaderTitle = styled.div`
     font-size: 1.5rem;
     color: black;
-    text-decoration: underline;
     :hover{
         text-decoration: underline;
     }
@@ -28,4 +27,16 @@ export const HeaderRightSide = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
+`
+
+export const DropdownButton = styled.button`
+    font-size: 1.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    :hover{
+        cursor: pointer;
+    }
 `

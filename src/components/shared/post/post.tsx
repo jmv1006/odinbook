@@ -99,7 +99,7 @@ const Post = ({ post, reload }: postPropTypes) => {
                 <PostTopContainer>
                     <PostTopLeft>
                         <ProfilePhotoContainer>{post.Users.ProfileImg ? <UserImage src={post.Users.ProfileImg}/> : <UserImage src="https://i.stack.imgur.com/l60Hf.png" />}</ProfilePhotoContainer>
-                        <Link to={`/user/${post.Users.Id}`}><PostUserName>{post.Users.DisplayName}</PostUserName></Link>
+                        <Link to={`/user/${post.Users.Id}`} style={{ textDecoration: 'none', color: "black" }}><PostUserName>{post.Users.DisplayName}</PostUserName></Link>
                         {handlePostDate()}
                     </PostTopLeft>
                     <PostTopRight>

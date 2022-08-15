@@ -16,7 +16,7 @@ const UserCard = ({ user } : UserCardPropTypes) => {
 
     return(
         <UserCardContainer>
-            <Link to={`/user/${user.Id}`}>
+            <Link to={`/user/${user.Id}`} style={{ textDecoration: 'none', color: "black" }}>
                 <UserImgContainer>
                     {user.ProfileImg ? <UserImg src={user.ProfileImg} /> : <UserImg src="https://i.stack.imgur.com/l60Hf.png" />}
                 </UserImgContainer>

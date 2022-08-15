@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderDropDownContainer = styled.div`
-    background-color: wheat;
+    background-color: #F0F2F5;
     position: absolute;
     top: 3.8%;
     right: 1;
@@ -15,10 +15,15 @@ export const HeaderDropDownContainer = styled.div`
 `
 
 export const HeaderDropDownItem = styled.div`
-    border: 2px solid green;
     width: 100%;
     height: 2.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: black;
+    text-decoration: none;
+    :hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
 `

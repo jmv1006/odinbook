@@ -28,13 +28,13 @@ const EditProfilePicture = ({user} : any) => {
                 body: formData
             });
             if(!ImgUploadResponse.ok) {
+                console.log(ImgUploadResponse)
                 setIsLoading(isLoading => false)
                 return
             }
-            
+
             const resJSON = await ImgUploadResponse.json()
             setIsLoading(isLoading => false)
-            console.log(resJSON.updatedUser)
             updateUser((prev: any) => resJSON.updatedUser)
             triggerReload();
         }
