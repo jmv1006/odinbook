@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useUserPageContext } from "../../../../../context/userPageContextRewrite"
+import { useUserPageContext } from "../../../../../context/userPageContext"
 import IUser from "../../../../../interfaces/user"
 import { EditItemContainer, EditItemTitle } from "../styles"
 

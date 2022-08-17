@@ -3,7 +3,7 @@ import { BioContainer, EditInfoBtn, FriendLogicContainer, NameContainer, Profile
 import UserPageNavBar from './../nav-bar/user-page-nav-bar';
 import FriendLogic from '../../shared/friend-logic/friend-logic';
 import EditUserInfo from "./edit/edit-user-info";
-import { useUserPageContext } from "../../../context/userPageContextRewrite";
+import { useUserPageContext } from "../../../context/userPageContext";
 
 const UserInfo = () => {
     const {isCurrentUser, user, profileInfo} = useUserPageContext();

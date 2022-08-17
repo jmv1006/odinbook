@@ -46,7 +46,7 @@ describe('Home Page Main Feed', () => {
         render(
             <TestsContextProvider>
                 <HomePageContext.Provider value={{posts: [], reFetchPosts: jest.fn(), postsLoading: true, suggested: []}}>
-                    <MainFeedContainer timelineUpdate={false} updateTimeline={jest.fn()}/>
+                    <MainFeedContainer timelineUpdate={false} setPaginationPage={jest.fn()} postActions={{updatePostInTimeline: jest.fn(), deletePostInTimeline: jest.fn(), addPostToTimeline: jest.fn()}}/>
                 </HomePageContext.Provider>
             </TestsContextProvider>
         );
@@ -57,7 +57,7 @@ describe('Home Page Main Feed', () => {
         render(
             <TestsContextProvider>
                 <HomePageContext.Provider value={{posts: [mockPost], reFetchPosts: jest.fn(), postsLoading: false, suggested: []}}>
-                    <MainFeedContainer timelineUpdate={false} updateTimeline={jest.fn()}/>
+                    <MainFeedContainer timelineUpdate={false} setPaginationPage={jest.fn()} postActions={{updatePostInTimeline: jest.fn(), deletePostInTimeline: jest.fn(), addPostToTimeline: jest.fn()}}/>
                 </HomePageContext.Provider>
             </TestsContextProvider>
         );
@@ -68,7 +68,7 @@ describe('Home Page Main Feed', () => {
         render(
             <TestsContextProvider>
                 <HomePageContext.Provider value={{posts: [], reFetchPosts: jest.fn(), postsLoading: false, suggested: []}}>
-                    <MainFeedContainer timelineUpdate={false} updateTimeline={jest.fn()}/>
+                    <MainFeedContainer timelineUpdate={false} setPaginationPage={jest.fn()} postActions={{updatePostInTimeline: jest.fn(), deletePostInTimeline: jest.fn(), addPostToTimeline: jest.fn()}}/>
                 </HomePageContext.Provider>
             </TestsContextProvider>
         );

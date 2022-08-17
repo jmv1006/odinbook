@@ -2,7 +2,6 @@ import { useState } from "react";
 import { DeletePostModalContainer, DeletePostModalContentContainer } from "./styles"
 
 const DeletePostModal = ({toggle, post, deleteCB } : any) => {
-
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccessful, setIsSuccessful] = useState(false)
 

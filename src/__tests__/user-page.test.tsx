@@ -17,7 +17,7 @@ let isCurrentUser = true;
 
 const UserPageTestProvider = ({children}: any) => {
     return (
-        <UserPageTestContext.Provider value={{ user: {}, userPosts: [], friends: [], isCurrentUser: false, profileInfo: {}, triggerReload: jest.fn() }}>
+        <UserPageTestContext.Provider value={{ user: {}, userPosts: [], friends: [], isCurrentUser: false, profileInfo: {}, triggerReload: jest.fn(), updatePostsActions: {updatePost: jest.fn(), deletePost: jest.fn(), addPost: jest.fn()} }}>
             {children}
         </UserPageTestContext.Provider>
     )
@@ -46,8 +46,8 @@ const mockUserInfo = {
     Bio: "Test Bio"
 }
 
-jest.mock('../context/userPageContextRewrite', () => ({
-    useUserPageContext: () => ({user: mockUser, userPosts: userPosts, friends: userFriends, isCurrentUser: isCurrentUser, profileInfo: mockUserInfo, triggerReload: jest.fn()})
+jest.mock('../context/userPageContext', () => ({
+    useUserPageContext: () => ({user: mockUser, userPosts: userPosts, friends: userFriends, isCurrentUser: isCurrentUser, profileInfo: mockUserInfo, triggerReload: jest.fn(), updatePostsActions: {updatePost: jest.fn(), deletePost: jest.fn(), addPost: jest.fn()}})
 }));
 
 describe("User Profile Information Component", () => {

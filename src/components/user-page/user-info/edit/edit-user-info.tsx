@@ -4,7 +4,7 @@ import { EditInfoTitle, EditUserInfoContainer, EditUserInfoContentContainer, Pro
 import EditProfilePicture from './profile-picture/edit-profile-picture';
 import EditDisplayName from './display-name/edit-display-name';
 import EditBio from './bio/edit-bio';
-import { useUserPageContext } from "../../../../context/userPageContextRewrite";
+import { useUserPageContext } from "../../../../context/userPageContext";
 
 type EditUserInfoProps = {
     toggle: () => void,

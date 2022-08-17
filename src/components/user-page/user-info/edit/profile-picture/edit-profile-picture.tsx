@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { UserContext } from "../../../../../context/userContext";
-import { useUserPageContext } from "../../../../../context/userPageContextRewrite";
+import { useUserPageContext } from "../../../../../context/userPageContext";
 import { ProfileImgContainer, ProfileImg, EditItemContainer, EditItemTitle } from "../styles"
 
 const EditProfilePicture = ({user} : any) => {

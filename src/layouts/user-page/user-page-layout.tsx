@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { LoadingContainer, NonFriendInfo, UserPageContainer } from "./styles";
 import UserInfo from "../../components/user-page/user-info/user-info";
-import { UserPageProvider, useUserPageContext } from "../../context/userPageContextRewrite";
+import { UserPageProvider, useUserPageContext } from "../../context/userPageContext";
 import { useFriends } from "../../context/userFriendsContext ";
 import IUser from "../../interfaces/user";
 
@@ -25,6 +25,7 @@ const UserPageLayout = () => {
         if(isUserFriend) return true
         return false
     };
+
 
     return(
         <UserPageContainer>

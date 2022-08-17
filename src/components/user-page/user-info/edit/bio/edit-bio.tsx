@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useUserPageContext } from "../../../../../context/userPageContextRewrite";
+import { useUserPageContext } from "../../../../../context/userPageContext";
 import { EditBioTextArea, EditBioTextContainer, EditItemContainer, EditItemTitle } from "../styles"
 
 const EditBio = ({user, text} : any) => {

@@ -5,7 +5,7 @@ export const PostDropDownContainer = styled.div`
 `
 
 export const PostDropDownMenu = styled.div`
-    background-color: wheat;
+    background-color: lightgray;
     position: absolute;
     top: 100%; /* Bottom of button */
     right: 0;

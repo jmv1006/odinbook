@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { useUserPageContext } from "../../../context/userPageContextRewrite"
+import { useUserPageContext } from "../../../context/userPageContext"
 import { UserPageNavBarContainer } from "./styles"
 
 const UserPageNavBar = () => {

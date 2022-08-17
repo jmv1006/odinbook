@@ -11,7 +11,7 @@ export const DeletePostModalContainer = styled.div`
 `
 
 export const DeletePostModalContentContainer = styled.div`
-    background-color: wheat;
+    background-color: white;
     position: absolute;
     top: 30%;
     left: 50%;

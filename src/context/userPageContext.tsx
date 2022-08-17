@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { UserContext } from "./userContext";
 import { useParams } from "react-router-dom";
+import IPost from "../interfaces/post";
 export const UserPageContextRewrite = createContext<any>([]);
 
 
@@ -24,8 +25,7 @@ const UserPageProvider = ({ children }: any) => {
     const { response: profileInfoResponse, reFetch: profileInfoReload, isLoading: profileLoading} = useFetch(`/users/${params.UserId}/profile`);
 
 
-    
-    const [userPosts, setUserPosts] = useState([]);
+    const [userPosts, setUserPosts] = useState<any>([]);
 
     const [user, setUser] = useState(null);
 
@@ -39,7 +39,7 @@ const UserPageProvider = ({ children }: any) => {
 
     useEffect(() => {
         if (userPostsResponse) {
-            setUserPosts(userPosts => userPostsResponse.posts)
+            setUserPosts((userPosts: any) => userPostsResponse.posts)
         };
     }, [userPostsResponse]);
 
@@ -67,11 +67,29 @@ const UserPageProvider = ({ children }: any) => {
         profileInfoReload()
         friendsReFetch()
         userInfoReFetch()
-        userPostsReFetch()
     };
 
+    const addPost = (post: IPost) => {
+        setUserPosts((userPosts: any) => [post, ...userPosts])
+    }
+
+    const updatePost = (post: IPost) => {
+        const postsArr = userPosts;
+        const index = postsArr.findIndex((postInArray: IPost) => postInArray.Id === post.Id)
+        const postToBeUpdated: IPost = postsArr[index];
+        postToBeUpdated.Text = post.Text;
+        setUserPosts([...postsArr])
+    };
+
+    const deletePost = (post: IPost) => {
+        const postsArr = userPosts;
+        const index = postsArr.findIndex((postInArray: IPost) => postInArray.Id === post.Id)
+        postsArr.splice(index, 1);
+        setUserPosts([...postsArr]);
+    }
+
     return (
-        <UserPageContextRewrite.Provider value={{ user: user, userPosts: userPosts, friends: friends, isCurrentUser: isCurrentUser, profileInfo: profileInfo, triggerReload: triggerReload, loading: loading }}>
+        <UserPageContextRewrite.Provider value={{ user: user, userPosts: userPosts, friends: friends, isCurrentUser: isCurrentUser, profileInfo: profileInfo, triggerReload: triggerReload, loading: loading, updatePostsActions: {updatePost: updatePost, deletePost: deletePost, addPost: addPost} }}>
             {children}
         </UserPageContextRewrite.Provider>
     )
