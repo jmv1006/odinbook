@@ -26,7 +26,6 @@ const HomePageLayout = () => {
 
     useEffect(() => {
         if(postsResponse){
-            //setPosts((posts : any) => postsResponse.posts)
             setPosts((posts: any) => [...posts, ...postsResponse.posts])
         } 
     }, [postsResponse]);
@@ -45,25 +44,30 @@ const HomePageLayout = () => {
         };
     }, [socket]);
 
-    useEffect(() => {
-        console.log(posts)
-    }, [posts])
-
-    const updateTimeline = async () => {
-        await postsReFetch();
-        setTimelineUpdate(timelineUpdate => false)
-    };
-
     const addPostToTimeline = (post: IPost) => {
         setPosts((posts: any) => [post, ...posts])
     };
+    
+    const updatePostInTimeline = (post: IPost) => {
+        const postsArr = posts;
+        const index = postsArr.findIndex((postInArray: IPost) => postInArray.Id === post.Id)
+        const postToBeUpdated: IPost = postsArr[index];
+        postToBeUpdated.Text = post.Text;
+        setPosts([...postsArr])
+    };
 
-        
+    const deletePost = (post: IPost) => {
+        const postsArr = posts;
+        const index = postsArr.findIndex((postInArray: IPost) => postInArray.Id === post.Id)
+        postsArr.splice(index, 1);
+        setPosts([...postsArr]);
+    }
+
     return(
         <HomePage>
             <HomePageContext.Provider value={{posts: posts, reFetchPosts: postsReFetch, postsLoading: postsAreLoading, suggested:suggestedFriends}}>
                 <LeftPanelContainer />
-                <MainFeedContainer timelineUpdate={timelineUpdate} addPostToTimeline={addPostToTimeline} setPaginationPage={setPaginationPage} />
+                <MainFeedContainer timelineUpdate={timelineUpdate} postActions={{addPostToTimeline: addPostToTimeline, updatePostInTimeline: updatePostInTimeline, deletePostInTimeline: deletePost}} setPaginationPage={setPaginationPage} />
                 <RightPanelContainer friends={friends}/>
             </HomePageContext.Provider>
         </HomePage>

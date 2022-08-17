@@ -2,8 +2,15 @@ import { useContext, useState } from "react";
 import { CreatePostStyles, CreatePostForm, ProfilePictureContainer, UserImage, CreatePostTextInput, CreatePostBtn } from "./styles";
 import { SocketContext } from "../../../context/SocketContext";
 import { useNavigate } from "react-router-dom";
+import IUser from "../../../interfaces/user";
+import IPost from "../../../interfaces/post";
 
-const CreatePost = ({user, addPost}: any) => {
+type CreatePostProps = {
+    user: IUser,
+    addPost: (post: IPost) => void
+};
+
+const CreatePost = ({user, addPost}: CreatePostProps) => {
     const navigate = useNavigate();
 
     const socket = useContext(SocketContext);
@@ -31,7 +38,7 @@ const CreatePost = ({user, addPost}: any) => {
         setIsLoading(false);
         setPostText("");
         socket.emit('post', user.Id);
-        addPost(responseJSON.createdPost)
+        addPost(responseJSON.createdPost);
     };
 
     const navigateToUserPage = () => {

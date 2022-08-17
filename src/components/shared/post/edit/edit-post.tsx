@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { EditPostForm, EditPostModalContainer, EditPostModalContentContainer, EditPostTextArea } from "./styles"
 
-const EditPost = ({post, toggle} : any) => {
+const EditPost = ({post, toggle, updateCB} : any) => {
 
     const [postText, setPostText] = useState(post.Text);
 
@@ -24,6 +24,8 @@ const EditPost = ({post, toggle} : any) => {
             return 
         }
         
+        const responseJSON = await response.json()
+        updateCB(responseJSON.updatedPost)
         toggle()
     }
 

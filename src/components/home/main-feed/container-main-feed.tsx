@@ -7,25 +7,25 @@ import Post from "../../shared/post/post";
 import UserCard from "../../shared/user-card/user-card";
 import IPost from "../../../interfaces/post";
 
+interface IPostActions {
+    addPostToTimeline: (post: IPost) => void,
+    updatePostInTimeline: (post: IPost) => void,
+    deletePostInTimeline: (post: IPost) => void
+}
+
 type MainFeedContainerProps = {
     timelineUpdate: boolean,
     setPaginationPage: any,
-    addPostToTimeline: (post: IPost) => void,
+    postActions: IPostActions
 };
 
-const MainFeedContainer = ({ setPaginationPage, addPostToTimeline } : MainFeedContainerProps) => {
+const MainFeedContainer = ({ setPaginationPage, postActions } : MainFeedContainerProps) => {
     const { posts, postsLoading, suggested } = useContext(HomePageContext);
     const { user } = useContext<any>(UserContext);
 
     const dummy = useRef<any>(null);
     const [suggestedToggled, setSuggestedToggled] = useState(false);
-
     
-    useEffect(() => {
-        console.log(posts)
-    }, [posts])
-    
-
     useEffect(() => {
         if(suggested && suggested.length > 0) {
             setSuggestedToggled(suggestedToggled => true)
@@ -33,7 +33,7 @@ const MainFeedContainer = ({ setPaginationPage, addPostToTimeline } : MainFeedCo
     }, [suggested])
 
     const mappedPosts = posts.map((post: any) => 
-        <Post key={post.Id} post={post} />
+        <Post key={post.Id} post={post} update={postActions.updatePostInTimeline} deletePost={postActions.deletePostInTimeline}/>
     );
 
     const mappedSuggested = suggested.map((user: any) => 
@@ -42,12 +42,12 @@ const MainFeedContainer = ({ setPaginationPage, addPostToTimeline } : MainFeedCo
 
     const toggleSuggestedBar = () => {
         if(suggestedToggled) return setSuggestedToggled(suggestedToggled => false);
-    }
+    };
 
     return(
         <MainFeedContainerStyles>
             <div ref={dummy} />
-            <CreatePost user={user} addPost={addPostToTimeline}/>
+            <CreatePost user={user} addPost={postActions.addPostToTimeline}/>
             {/*timelineUpdate && <NewPostInFeedNotification onClick={updateTimeline}>New Update</NewPostInFeedNotification>*/}
             {suggestedToggled && 
                 <SuggestedUsersContainer>
@@ -61,7 +61,7 @@ const MainFeedContainer = ({ setPaginationPage, addPostToTimeline } : MainFeedCo
             {posts.length > 0 && mappedPosts}
             {posts.length === 0 && !postsLoading ? "No Posts To Show!" : null}
             {postsLoading && "Loading..."}
-            <button onClick={() => setPaginationPage((paginationPage : any) => paginationPage + 1)}>Load Posts</button>
+            {!postsLoading && <button onClick={() => setPaginationPage((paginationPage : any) => paginationPage + 1)}>Load Posts</button>}
         </MainFeedContainerStyles>
     )
 }

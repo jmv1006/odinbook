@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { DeletePostModalContainer, DeletePostModalContentContainer } from "./styles"
 
-const DeletePostModal = ({toggle, post } : any) => {
+const DeletePostModal = ({toggle, post, deleteCB } : any) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccessful, setIsSuccessful] = useState(false)
@@ -25,6 +25,7 @@ const DeletePostModal = ({toggle, post } : any) => {
         setIsLoading(isLoading => false)
         setIsSuccessful(isSuccessful => true)
         const responseJSON = await res.json()
+        deleteCB(responseJSON.deletedPost);
         toggle();
     }
 
