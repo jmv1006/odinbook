@@ -53,6 +53,7 @@ const HomePageLayout = () => {
         const index = postsArr.findIndex((postInArray: IPost) => postInArray.Id === post.Id)
         const postToBeUpdated: IPost = postsArr[index];
         postToBeUpdated.Text = post.Text;
+        postToBeUpdated.Image = post.Image;
         setPosts([...postsArr])
     };
 

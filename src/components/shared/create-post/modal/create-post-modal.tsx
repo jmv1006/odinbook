@@ -18,7 +18,7 @@ const CreatePostModal = ({user, addPost, toggle}: any) => {
 
     const handleChangeFile = (e: any) => {
         setFile(e.target.files[0])
-    }
+    };
 
     const handleCreatePost = async (e: any) => {
         setIsLoading(true)
