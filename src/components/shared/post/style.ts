@@ -49,6 +49,13 @@ export const PostTextContainer = styled.div`
     min-height: 2.5rem;
 `
 
+export const PostImageContainer = styled.div`
+    width: 75%;
+`
+export const PostImage = styled.img`
+    width: 100%;
+`
+
 export const PostBottomContainer = styled.div`
     width: 100%;
     display: flex;

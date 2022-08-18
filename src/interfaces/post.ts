@@ -9,6 +9,7 @@ interface IPost {
     Id: string,
     Text: string,
     Date: string,
+    Image: string | null,
     Users: IPostUser
 }
 export default IPost;

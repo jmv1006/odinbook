@@ -3,7 +3,7 @@ import useFetch from "../../../hooks/useFetch";
 import PostComments from "../comments/container-comments";
 import { UserContext } from "../../../context/userContext";
 import { Link } from "react-router-dom";
-import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer, LikeContainer, LikeBtn, PostUserName, CommentContainer, PostTopLeft, PostTopRight } from "./style";
+import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer, LikeContainer, LikeBtn, PostUserName, CommentContainer, PostTopLeft, PostTopRight, PostImageContainer, PostImage } from "./style";
 import IPost from "../../../interfaces/post";
 import IComment from '../../../interfaces/comment';
 import { SocketContext } from "../../../context/SocketContext";
@@ -111,6 +111,9 @@ const Post = ({ post, update, deletePost }: postPropTypes) => {
                 <PostTextContainer>
                     {post.Text}
                 </PostTextContainer>
+                {post.Image &&  <PostImageContainer>
+                    <PostImage src={post.Image} />
+                </PostImageContainer>}
                 <PostBottomContainer>
                     <PostInfoBar>
                         <div>
