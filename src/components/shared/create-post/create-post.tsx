@@ -27,9 +27,7 @@ const CreatePost = ({user, addPost}: CreatePostProps) => {
 
     return(
         <>
-        {isToggled ?
-            <CreatePostModal user={user} addPost={addPost} toggle={toggleModal}/>
-            :
+            {isToggled && <CreatePostModal user={user} addPost={addPost} toggle={toggleModal}/>}
             <CreatePostStyles>
                 <ProfilePictureContainer>
                     {user.ProfileImg && <UserImage src={user.ProfileImg} onClick={() => navigateToUserPage()}/>}
@@ -39,7 +37,6 @@ const CreatePost = ({user, addPost}: CreatePostProps) => {
                     <CreatePostBtn>Post</CreatePostBtn>
                 </CreatePostForm>
             </CreatePostStyles>
-        }
         </>
     )
 }
