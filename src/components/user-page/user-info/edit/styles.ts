@@ -47,10 +47,11 @@ export const EditItemTitle = styled.div`
 
 export const ProfileImgContainer = styled.div`
     width: 13rem;
+    border-radius: 50%;
+    object-fit: cover;
 `
 export const ProfileImg = styled.img`
     width: 100%;
-    border-radius: 10%;
 `
 
 export const EditBioTextArea = styled.textarea`

@@ -3,8 +3,7 @@ import DeletePostModal from "../delete/delete-post-modal";
 import EditPost from "../edit/edit-post";
 import { useState } from "react";
 
-const PostDropDown = ({ post, update, deletePost } : any) => {
-
+const PostDropDown = ({ post, update, deletePost, toggle } : any) => {
     const [deleteToggled, setDeleteToggled] = useState(false)
     const [editToggled, setEditToggled] = useState(false);
 

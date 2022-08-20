@@ -7,6 +7,8 @@ import Header from "../components/header/header";
 import { io } from "socket.io-client";
 import { SocketContext } from "../context/SocketContext";
 import { UserFriendsProvider } from "../context/userFriendsContext ";
+import { NotificationsProvider } from "../context/notificationsContext";
+
 import useFetch from "../hooks/useFetch";
 
 function App() {
@@ -32,8 +34,10 @@ function App() {
           {user ? 
             <SocketContext.Provider value={socket}>
               <UserFriendsProvider>
-                <Header />
-                <Outlet />
+                <NotificationsProvider>
+                  <Header />
+                  <Outlet />
+                </NotificationsProvider>
               </UserFriendsProvider>
             </SocketContext.Provider>
           :

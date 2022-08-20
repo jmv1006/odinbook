@@ -4,6 +4,7 @@ import { CommentInputContainer, UserImageContainer, CommentInputForm, UserImage,
 const CommentInput = ({ user, postId, reFetchComments } : any) => {
 
     const [text, setText] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (e: any) => {
         setText(text => e.target.value)
@@ -11,6 +12,7 @@ const CommentInput = ({ user, postId, reFetchComments } : any) => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+        setIsLoading(isLoading => true)
 
         const res = await fetch(`/comments/${postId}/${user.Id}`, {
             method: "POST",
@@ -20,9 +22,10 @@ const CommentInput = ({ user, postId, reFetchComments } : any) => {
             body: JSON.stringify({Text: text})
         });
 
-        if(!res.ok) return console.log('Error posting comment')
+        if(!res.ok) return setIsLoading(isLoading => false)
 
         setText(text => "");
+        setIsLoading(isLoading => false)
         reFetchComments();       
     }
 
@@ -33,10 +36,10 @@ const CommentInput = ({ user, postId, reFetchComments } : any) => {
             </UserImageContainer>
             <CommentInputForm onSubmit={handleSubmit}>
                 <TextInputBox type="text" placeholder="Your Comment" value={text} onChange={handleChange} maxLength={1000} required/>
-                <PostCommentBtn type="submit">Post</PostCommentBtn>
+                <PostCommentBtn type="submit">{isLoading ? "Posting..." : "Post"}</PostCommentBtn>
             </CommentInputForm>
         </CommentInputContainer>
     )
 }
 
-export default CommentInput
+export default CommentInput;

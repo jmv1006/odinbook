@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { SocketContext } from "../../../../context/SocketContext";
 import { CreatePostFormContainer, CreatePostFormFile, CreatePostFormText, CreatePostModalStyle, ModalBackground } from "./style";
 
 const CreatePostModal = ({user, addPost, toggle}: any) => {
-    const navigate = useNavigate();
 
     const socket = useContext(SocketContext);
     const [postText, setPostText] = useState('');
@@ -54,7 +52,7 @@ const CreatePostModal = ({user, addPost, toggle}: any) => {
                 <h2>Create A Post</h2>
                 {!isLoading ? 
                     <CreatePostFormContainer onSubmit={handleCreatePost}>
-                        <CreatePostFormText onChange={handleChange} value={postText} placeholder="Text Here" required />
+                        <CreatePostFormText onChange={handleChange} value={postText} placeholder="Text Here" autoFocus required />
                         Add Image:
                         <CreatePostFormFile type="file" accept="image/*" onChange={handleChangeFile} />
                         <button type="submit">Post</button>

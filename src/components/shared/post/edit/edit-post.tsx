@@ -1,7 +1,14 @@
 import { useState } from "react"
-import { EditPostForm, EditPostImage, EditPostImageContainer, EditPostModalContainer, EditPostModalContentContainer, EditPostTextArea } from "./styles"
+import IPost from "../../../../interfaces/post"
+import { EditPostForm, EditPostImage, EditPostImageContainer, EditPostModalContainer, EditPostModalContentContainer, EditPostTextArea, EditPostTopContainer } from "./styles"
 
-const EditPost = ({post, toggle, updateCB} : any) => {
+type EditPostProps = {
+    post: IPost,
+    toggle: () => void,
+    updateCB: any,
+};
+
+const EditPost = ({post, toggle, updateCB} : EditPostProps) => {
 
     const [postText, setPostText] = useState(post.Text);
     const [image, setImage] = useState<any>(post.Image);
@@ -47,7 +54,30 @@ const EditPost = ({post, toggle, updateCB} : any) => {
         const responseJSON = await response.json()
         updateCB(responseJSON.updatedPost)
         toggle()
-    }
+    };
+
+    const handleSubmitRemoveImage = async () => {
+        setIsLoading(isLoading => true)
+        const formData = new FormData()
+
+        formData.append('Text', postText);
+        formData.append('deleteImage', 'true')
+
+        const response = await fetch(`/posts/${post.Id}`, {
+            method: "PUT",
+            body: formData
+        });
+
+        if(!response.ok) {
+            const responseJSON = await response.json()
+            setIsLoading(isLoading => false)
+            return 
+        }
+        
+        const responseJSON = await response.json()
+        updateCB(responseJSON.updatedPost)
+        toggle()
+    };
 
     const toggleAddImage = () => {
         setFile(null)
@@ -57,28 +87,33 @@ const EditPost = ({post, toggle, updateCB} : any) => {
 
     return(
         <EditPostModalContainer>
-            {isLoading ? "Loading..." :
-                <EditPostModalContentContainer>
-                    Edit Post Here
-                    <EditPostForm onSubmit={handleSubmit}>
-                        <EditPostTextArea value={postText} onChange={handleChange} />
-                    </EditPostForm>
-                    {image ?
-                        <EditPostImageContainer>
-                            Post Image:
-                            <EditPostImage src={image} />
-                            <input type="file" onChange={handleChangeImage}/>
-                        </EditPostImageContainer>
-                        :
-                        <>
-                            {!addImgToggled && <button onClick={toggleAddImage}>Add Image</button>}
-                            {addImgToggled && <input type="file" onChange={handleChangeImage}/>} 
-                        </>
-                    }
-                    <button onClick={handleSubmit}>Save</button>
-                    <button onClick={toggle}>X</button>  
-                </EditPostModalContentContainer>
-            }
+            <EditPostModalContentContainer>
+                {isLoading ? "Loading" : 
+                    <>
+                        <EditPostTopContainer>
+                            <button onClick={toggle}>X</button>
+                        </EditPostTopContainer>
+                        <strong>Edit Post Here</strong>
+                        <EditPostForm onSubmit={handleSubmit}>
+                            <EditPostTextArea value={postText} onChange={handleChange} />
+                        </EditPostForm>
+                        {image ?
+                            <EditPostImageContainer>
+                                Post Image:
+                                <EditPostImage src={image} />
+                                <input type="file" onChange={handleChangeImage}/>
+                                <button onClick={handleSubmitRemoveImage}>Remove Image From Post</button>
+                            </EditPostImageContainer>
+                            :
+                            <>
+                                {!addImgToggled && <button onClick={toggleAddImage}>Add Image</button>}
+                                {addImgToggled && <input type="file" onChange={handleChangeImage}/>} 
+                            </>
+                        }
+                        <button onClick={handleSubmit}>Save</button>
+                    </>
+                } 
+            </EditPostModalContentContainer>
         </EditPostModalContainer>
     )
 }

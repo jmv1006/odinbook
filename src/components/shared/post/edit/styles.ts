@@ -15,7 +15,7 @@ export const EditPostModalContainer = styled.div`
 
 export const EditPostModalContentContainer = styled.div`
     background-color: white;
-    width: 30rem;
+    width: 20rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,6 +23,11 @@ export const EditPostModalContentContainer = styled.div`
     gap: .5rem;
     padding: .5rem;
     border-radius: .25rem;
+`
+
+export const EditPostTopContainer = styled.div`
+    width: 100%;
+    text-align: right;
 `
 
 export const EditPostForm = styled.form`
@@ -34,7 +39,7 @@ export const EditPostForm = styled.form`
     gap: .5rem;
 `
 export const EditPostImageContainer = styled.div`
-    width: 90%;
+    width: 85%;
     display: flex;
     flex-direction: column;
 `

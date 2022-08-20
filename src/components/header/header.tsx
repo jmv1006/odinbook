@@ -4,11 +4,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import HeaderDropDown from "../header-dropdown/header-dropdown";
 
+
 const Header = () => {
     const [searchIsToggled, setSearchIsToggled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-
-
 
     const toggleSearchBar = () => {
         if(searchIsToggled) return setSearchIsToggled(searchIsToggled => false)
@@ -24,10 +23,11 @@ const Header = () => {
         <HeaderContainer>
             <HeaderLeftSide>
                 <Link to="/" style={{ textDecoration: 'none', color: "black" }}><HeaderTitle>Odinbook</HeaderTitle></Link>
-                {!searchIsToggled && <button onClick={toggleSearchBar}>Q</button>}
+                {!searchIsToggled && <button onClick={toggleSearchBar}>Search</button>}
                 {searchIsToggled && <SearchBar toggle={toggleSearchBar}/>}
             </HeaderLeftSide>
             <HeaderRightSide>
+                <button>N</button>
                 <DropdownButton onClick={toggleIsOpen}>...</DropdownButton>
                 {isOpen && <HeaderDropDown toggle={toggleIsOpen}/>}
             </HeaderRightSide>

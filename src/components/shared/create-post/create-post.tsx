@@ -33,7 +33,7 @@ const CreatePost = ({user, addPost}: CreatePostProps) => {
                     {user.ProfileImg && <UserImage src={user.ProfileImg} onClick={() => navigateToUserPage()}/>}
                 </ProfilePictureContainer>
                 <CreatePostForm onClick={toggleModal}>
-                    <CreatePostTextInput placeholder="What's On Your Mind?" required />
+                    <CreatePostTextInput placeholder="What's On Your Mind?" />
                     <CreatePostBtn>Post</CreatePostBtn>
                 </CreatePostForm>
             </CreatePostStyles>
