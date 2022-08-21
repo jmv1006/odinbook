@@ -17,11 +17,7 @@ const UserFriendsProvider = ({children} : any) => {
     }, [user, response])
 
     useEffect(() => {
-        if(socket) {
-            socket.on('notification', (notification: any) => {
-                if(notification.type === 'friend-update') return reFetch()
-            })
-        }
+
     }, [socket])
 
     return(

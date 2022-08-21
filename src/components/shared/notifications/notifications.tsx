@@ -1,15 +1,19 @@
-import { useEffect } from "react"
 import { useNotifications } from "../../../context/notificationsContext"
-
+import INotification from "../../../interfaces/notification";
+import NotificationBar from "./individual/notification-bar";
+import { NotificationsContainer } from "./styles";
 const Notifications = () => {
-    const {notifications} = useNotifications();
+    const {notifications, deleteNotification} = useNotifications();
 
-    useEffect(() => {
-        console.log(notifications)
-    }, [notifications])
+    const mappedNotifications = notifications.map((notification: INotification) => 
+        <NotificationBar key={notification.Id} notification={notification} deleteMe={deleteNotification}/>
+    );
 
     return(
-        <div>Notifications</div>
+        <NotificationsContainer>
+            {mappedNotifications}
+            {mappedNotifications.length === 0 && "No Notifications"}
+        </NotificationsContainer>
     )
 }
 

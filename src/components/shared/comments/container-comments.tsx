@@ -3,15 +3,17 @@ import { UserContext } from "../../../context/userContext"
 import { CommentsContainerStyle } from "./style"
 import CommentInput from './input/comment-input'
 import Comment from './individual-comment/comment';
+import IPost from "../../../interfaces/post";
 
 interface PropsComments {
     comments: Array<any>,
     amount: number
     postId: string,
-    reFetchComments: () => void
+    reFetchComments: () => void,
+    post: IPost
 };
 
-const CommentsContainer = ({ comments, postId, reFetchComments } : PropsComments) => {
+const CommentsContainer = ({ comments, postId, reFetchComments, post } : PropsComments) => {
     const { user } = useContext<any>(UserContext);
 
     const mappedComments = comments.map((comment: any) =>
@@ -21,7 +23,7 @@ const CommentsContainer = ({ comments, postId, reFetchComments } : PropsComments
     return(
         <CommentsContainerStyle>
             {mappedComments}
-            <CommentInput user={user} postId={postId} reFetchComments={reFetchComments}/>
+            <CommentInput user={user} reFetchComments={reFetchComments} post={post}/>
         </CommentsContainerStyle>
     )
 }

@@ -65,8 +65,8 @@ const Post = ({ post, update, deletePost }: postPropTypes) => {
         });
 
         if(res.ok) {
+            if(!userHasLiked) socket.emit('notification', post.Users.Id, user.Id);
             likesReFetch();
-            socket.emit('notification', post.Users.Id, 'like', post.Id);
         };
     };
 
@@ -137,7 +137,7 @@ const Post = ({ post, update, deletePost }: postPropTypes) => {
             :
             "Loading Post..."
             }
-            {commentsAreToggled && <PostComments comments={comments} amount={commentsAmount} postId={post.Id} reFetchComments={commentsReFetch}/>}
+            {commentsAreToggled && <PostComments comments={comments} amount={commentsAmount} postId={post.Id} reFetchComments={commentsReFetch} post={post}/>}
         </PostStyles>
     )
 };

@@ -5,8 +5,9 @@ export const LeftPanelContainerStyles = styled.div`
     width: 25%;
     height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     @media (max-width: 1250px) {
         display: none;
     }

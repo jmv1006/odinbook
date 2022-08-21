@@ -88,7 +88,6 @@ const AddFriend = ({user}: AddFriendProps) => {
             return
         }
         reFetchFriends();
-        socket.emit('notification', user.Id, 'friend-update', null)
     }
 
     const declineRequest = async () => {
@@ -103,7 +102,6 @@ const AddFriend = ({user}: AddFriendProps) => {
             return
         }
         reFetch();
-        socket.emit('notification', user.Id, 'friend-update', null)
     }
 
 

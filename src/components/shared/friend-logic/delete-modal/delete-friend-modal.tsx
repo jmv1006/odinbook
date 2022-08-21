@@ -1,13 +1,10 @@
 import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { SocketContext } from "../../../../context/SocketContext";
 import { useFriends } from "../../../../context/userFriendsContext ";
 import { DeleteFriendModalContainer, DeleteFriendModalContentContainer } from "./styles"
 
 const DeleteFriendModal = ({toggle, user, currentUser} : any) => {
     const naigate = useNavigate();
-
-    const socket = useContext(SocketContext);
 
     const {reFetchFriends} = useFriends();
 
@@ -27,7 +24,6 @@ const DeleteFriendModal = ({toggle, user, currentUser} : any) => {
             return
         }
         
-        await socket.emit('notification', user.Id, 'friend-update', null)
         await reFetchFriends()
         naigate(`/user/${currentUser.Id}`)
     };

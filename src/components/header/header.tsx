@@ -2,12 +2,15 @@ import { DropdownButton, HeaderContainer, HeaderLeftSide, HeaderRightSide, Heade
 import SearchBar from "../search-bar/search-bar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import HeaderDropDown from "../header-dropdown/header-dropdown";
-
+import HeaderDropDown from "./header-dropdown/header-dropdown";
+import NotificationsDropDown from "./notifications-dropdown/notifications-dropdown";
+import { useNotifications } from "../../context/notificationsContext";
 
 const Header = () => {
+    const {notifications} = useNotifications();
     const [searchIsToggled, setSearchIsToggled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [notificationsOpen, setNotificationsOpen] = useState(false);
 
     const toggleSearchBar = () => {
         if(searchIsToggled) return setSearchIsToggled(searchIsToggled => false)
@@ -19,6 +22,11 @@ const Header = () => {
         setIsOpen(isOpen => true)
     };
 
+    const toggleNotifications = () => {
+        if(notificationsOpen) return setNotificationsOpen(notificationsOpen => false)
+        setNotificationsOpen(notificationsOpen => true)
+    }
+
     return(
         <HeaderContainer>
             <HeaderLeftSide>
@@ -27,7 +35,8 @@ const Header = () => {
                 {searchIsToggled && <SearchBar toggle={toggleSearchBar}/>}
             </HeaderLeftSide>
             <HeaderRightSide>
-                <button>N</button>
+                <button onClick={toggleNotifications}>{notifications.length === 0 ? "N" : `N (${notifications.length})`}</button>
+                {notificationsOpen && <NotificationsDropDown toggle={toggleNotifications} />}
                 <DropdownButton onClick={toggleIsOpen}>...</DropdownButton>
                 {isOpen && <HeaderDropDown toggle={toggleIsOpen}/>}
             </HeaderRightSide>

@@ -1,7 +1,16 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { CommentInputContainer, UserImageContainer, CommentInputForm, UserImage, TextInputBox, PostCommentBtn } from "./style"
+import { SocketContext } from "../../../../context/SocketContext";
+import IUser from "../../../../interfaces/user";
+import IPost from "../../../../interfaces/post";
 
-const CommentInput = ({ user, postId, reFetchComments } : any) => {
+type CommentInputProps = {
+    user: IUser,
+    post: IPost, 
+    reFetchComments: () => void
+}
+const CommentInput = ({ user, reFetchComments, post } : CommentInputProps) => {
+    const socket = useContext(SocketContext);
 
     const [text, setText] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +23,7 @@ const CommentInput = ({ user, postId, reFetchComments } : any) => {
         e.preventDefault();
         setIsLoading(isLoading => true)
 
-        const res = await fetch(`/comments/${postId}/${user.Id}`, {
+        const res = await fetch(`/comments/${post.Id}/${user.Id}`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -24,6 +33,7 @@ const CommentInput = ({ user, postId, reFetchComments } : any) => {
 
         if(!res.ok) return setIsLoading(isLoading => false)
 
+        socket.emit('notification', post.Users.Id, user.Id)
         setText(text => "");
         setIsLoading(isLoading => false)
         reFetchComments();       

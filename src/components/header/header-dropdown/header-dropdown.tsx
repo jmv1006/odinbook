@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom";
-import { UserContext } from "../../context/userContext"
+import { UserContext } from "../../../context/userContext"
 import { HeaderDropDownContainer, HeaderDropDownItem } from "./styles"
 
 const HeaderDropDown = ({toggle} : any) => {
