@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { CreatePostStyles, CreatePostForm, ProfilePictureContainer, UserImage, CreatePostTextInput, CreatePostBtn } from "./styles";
-import { SocketContext } from "../../../context/SocketContext";
 import { useNavigate } from "react-router-dom";
 import CreatePostModal from "./modal/create-post-modal";
 import IUser from "../../../interfaces/user";
@@ -34,7 +33,7 @@ const CreatePost = ({user, addPost}: CreatePostProps) => {
                 </ProfilePictureContainer>
                 <CreatePostForm onClick={toggleModal}>
                     <CreatePostTextInput placeholder="What's On Your Mind?" />
-                    <CreatePostBtn>Post</CreatePostBtn>
+                    <CreatePostBtn onClick={toggleModal} type="button">Post</CreatePostBtn>
                 </CreatePostForm>
             </CreatePostStyles>
         </>

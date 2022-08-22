@@ -42,7 +42,7 @@ export const BioContainer = styled.div`
 
 export const EditInfoBtn = styled.button`
     width: 40%;
-    background-color: #457b9d;
+    background-color: #7FB77E;
     color: white;
     border: none;
     padding: .25rem;

@@ -26,7 +26,9 @@ export const CreatePostTextInput = styled.input`
 
 export const CreatePostBtn = styled.button`
     height: 100%;
-    width: 14%;
+    width: 13.25%;
+    background-color: #7FB77E;
+    border: none;
 `
 
 export const ProfilePictureContainer = styled.div`

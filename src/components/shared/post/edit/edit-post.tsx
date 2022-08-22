@@ -6,9 +6,10 @@ type EditPostProps = {
     post: IPost,
     toggle: () => void,
     updateCB: any,
+    dropDownToggle: () => void
 };
 
-const EditPost = ({post, toggle, updateCB} : EditPostProps) => {
+const EditPost = ({post, toggle, updateCB, dropDownToggle} : EditPostProps) => {
 
     const [postText, setPostText] = useState(post.Text);
     const [image, setImage] = useState<any>(post.Image);
@@ -54,6 +55,7 @@ const EditPost = ({post, toggle, updateCB} : EditPostProps) => {
         const responseJSON = await response.json()
         updateCB(responseJSON.updatedPost)
         toggle()
+        dropDownToggle()
     };
 
     const handleSubmitRemoveImage = async () => {
@@ -77,6 +79,7 @@ const EditPost = ({post, toggle, updateCB} : EditPostProps) => {
         const responseJSON = await response.json()
         updateCB(responseJSON.updatedPost)
         toggle()
+        dropDownToggle()
     };
 
     const toggleAddImage = () => {

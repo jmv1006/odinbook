@@ -8,7 +8,6 @@ import { io } from "socket.io-client";
 import { SocketContext } from "../context/SocketContext";
 import { UserFriendsProvider } from "../context/userFriendsContext ";
 import { NotificationsProvider } from "../context/notificationsContext";
-
 import useFetch from "../hooks/useFetch";
 
 function App() {
@@ -22,7 +21,7 @@ function App() {
 
   useEffect(() => {
     if(user) {
-      const newSocket = io('https://jmv1006-odinbook-api.herokuapp.com/');
+      const newSocket = io('http://localhost:7000/');
       setSocket(newSocket)
       newSocket.emit('user-identify', user.Id)
     }

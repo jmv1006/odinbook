@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { SocketContext } from "../../../../context/SocketContext";
-import { CreatePostFormContainer, CreatePostFormFile, CreatePostFormText, CreatePostModalStyle, ModalBackground } from "./style";
+import { CreatePostBtn, CreatePostFormContainer, CreatePostFormFile, CreatePostFormText, CreatePostModalStyle, CreatePostModalTop, ExitModalBtn, ModalBackground } from "./style";
 
 const CreatePostModal = ({user, addPost, toggle}: any) => {
 
@@ -49,14 +49,16 @@ const CreatePostModal = ({user, addPost, toggle}: any) => {
     return(
         <ModalBackground>
             <CreatePostModalStyle>
+                <CreatePostModalTop>
+                    {!isLoading && <ExitModalBtn onClick={toggle}>X</ExitModalBtn>}
+                </CreatePostModalTop>
                 <h2>Create A Post</h2>
                 {!isLoading ? 
                     <CreatePostFormContainer onSubmit={handleCreatePost}>
                         <CreatePostFormText onChange={handleChange} value={postText} placeholder="Text Here" autoFocus required />
                         Add Image:
                         <CreatePostFormFile type="file" accept="image/*" onChange={handleChangeFile} />
-                        <button type="submit">Post</button>
-                        <button onClick={toggle}>X</button>
+                        <CreatePostBtn type="submit">Create Post</CreatePostBtn>
                     </CreatePostFormContainer>
                 : "Loading"}
             </CreatePostModalStyle>

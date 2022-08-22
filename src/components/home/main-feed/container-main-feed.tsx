@@ -61,7 +61,7 @@ const MainFeedContainer = ({ setPaginationPage, postActions } : MainFeedContaine
             {posts.length > 0 && mappedPosts}
             {posts.length === 0 && !postsLoading ? "No Posts To Show!" : null}
             {postsLoading && "Loading..."}
-            {!postsLoading && <button onClick={() => setPaginationPage((paginationPage : any) => paginationPage + 1)}>Load Posts</button>}
+            {!postsLoading && <button onClick={() => setPaginationPage((paginationPage : any) => paginationPage + 1)}>Load More</button>}
         </MainFeedContainerStyles>
     )
 }

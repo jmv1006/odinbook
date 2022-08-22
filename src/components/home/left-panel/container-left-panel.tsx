@@ -9,6 +9,8 @@ const LeftPanelContainer = () => {
     return(
         <LeftPanelContainerStyles>
             <h3>Hello, {user.DisplayName}</h3>
+            Here's Whats Happening:
+            <div>Notifications:</div>
             <Notifications />
         </LeftPanelContainerStyles>
     )

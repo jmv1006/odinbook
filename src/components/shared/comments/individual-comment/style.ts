@@ -49,5 +49,10 @@ export const CommentText = styled.div`
 `
 
 export const DeleteCommentBtn = styled.button`
-    
+    background-color: white;
+    border: none;
+    :hover{
+        cursor: pointer;
+        font-weight: bold;
+    }
 `

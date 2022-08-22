@@ -72,6 +72,15 @@ export const PostInfoBar = styled.div`
     color: gray;
 `
 
+export const DropDownBtn = styled.button`
+    background-color: white;
+    border: none;
+    font-size: 1.25rem;
+    :hover{
+        cursor: pointer;
+    }
+`
+
 export const LikeAndCommentContainer = styled.div`
     width: 100%;
     height: 2.5rem;
@@ -82,10 +91,18 @@ export const LikeAndCommentContainer = styled.div`
 `
 
 export const LikeContainer = styled.div`
-    width: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    height: 80%;
+    :hover{
+        text-decoration: underline;
+        background-color: #F0F2F5;
+    }
 `
 export const LikeBtn = styled.button`
-    background-color: lightgray;
+    background-color: transparent;
     width: 100%;
     border: none;
     padding: .3rem;
@@ -93,13 +110,29 @@ export const LikeBtn = styled.button`
     :hover{
         text-decoration: underline;
         cursor: pointer;
+        background-color: #F0F2F5;
+    }
+`
+
+export const CommentsAmountButton = styled.div`
+    background-color: transparent;
+    border: none;
+    :hover{
+        cursor: pointer;
+        text-decoration: underline;
     }
 `
 
 export const CommentContainer = styled.div`
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    height: 80%;
     :hover{
         text-decoration: underline;
+        cursor: pointer;
+        background-color: #F0F2F5;
     }
 `
 

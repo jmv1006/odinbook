@@ -3,7 +3,7 @@ import useFetch from "../../../hooks/useFetch";
 import PostComments from "../comments/container-comments";
 import { UserContext } from "../../../context/userContext";
 import { Link } from "react-router-dom";
-import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer, LikeContainer, LikeBtn, PostUserName, CommentContainer, PostTopLeft, PostTopRight, PostImageContainer, PostImage } from "./style";
+import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer, LikeContainer, LikeBtn, PostUserName, CommentContainer, PostTopLeft, PostTopRight, PostImageContainer, PostImage, DropDownBtn, CommentsAmountButton } from "./style";
 import IPost from "../../../interfaces/post";
 import IComment from '../../../interfaces/comment';
 import { SocketContext } from "../../../context/SocketContext";
@@ -104,7 +104,7 @@ const Post = ({ post, update, deletePost }: postPropTypes) => {
                         {handlePostDate()}
                     </PostTopLeft>
                     <PostTopRight>
-                        {isCurrentUser() && <button onClick={toggleDropDown}>...</button>}
+                        {isCurrentUser() && <DropDownBtn onClick={toggleDropDown}>...</DropDownBtn>}
                         {dropDownIsOpen && <PostDropDown toggle={toggleDropDown} post={post} update={update} deletePost={deletePost}/>}
                     </PostTopRight>
                 </PostTopContainer>
@@ -119,9 +119,9 @@ const Post = ({ post, update, deletePost }: postPropTypes) => {
                         <div>
                             {likes} {likes > 1 || likes === 0 ? "Likes" : "Like"}
                         </div>
-                        <CommentContainer onClick={toggleComments}>
+                        <CommentsAmountButton onClick={toggleComments}>
                             {commentsAmount} {commentsAmount > 1 || commentsAmount === 0 ? "Comments" : "Comment"}
-                        </CommentContainer>
+                        </CommentsAmountButton>
                     </PostInfoBar>
                     <LikeAndCommentContainer>
                         <LikeContainer>

@@ -23,7 +23,7 @@ const PostDropDown = ({ post, update, deletePost, toggle } : any) => {
                 <div onClick={toggleEditModal}>Edit Post</div>
                 <div onClick={toggleDeleteModal}>Delete Post</div>
                 {deleteToggled && <DeletePostModal toggle = {toggleDeleteModal} post={post} deleteCB = {deletePost}/>}
-                {editToggled && <EditPost toggle={toggleEditModal} post={post} updateCB={update} />}
+                {editToggled && <EditPost toggle={toggleEditModal} post={post} updateCB={update} dropDownToggle={toggle} />}
             </PostDropDownMenu>
         </PostDropDownContainer>
     )
