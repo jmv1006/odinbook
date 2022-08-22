@@ -4,7 +4,8 @@ export const SearchBarContainer = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    background-color: wheat;
+    background-color: white;
+    border: 1px solid gray;
     width: 40%;
     height: 40rem;
     display: flex;

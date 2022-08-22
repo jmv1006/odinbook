@@ -9,6 +9,7 @@ import UserFriends from './components/user-page/friends/user-friends';
 import SearchPage from './layouts/search-page/search-page-layout';
 import FriendRequests from './components/user-page/friends/requests/friend-requests';
 import ErrorPage from './layouts/error-page/error-page';
+import PostPage from './layouts/post-page/post-page-layout';
 import './index.css';
 
 const root = ReactDOM.createRoot(
@@ -25,6 +26,7 @@ root.render(
             <Route path='/user/:UserId/friends' element={<UserFriends />} />
             <Route path='/user/:UserId/friends/requests' element={<FriendRequests />} />
         </Route>
+        <Route path='/post/:PostId' element={<PostPage />} />
         <Route path='/search' element={<SearchPage />} />
         <Route path='/search/:SearchParams' element={<SearchPage />} />
         <Route path="/error" element={<ErrorPage />} />

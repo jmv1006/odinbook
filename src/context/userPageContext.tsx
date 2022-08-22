@@ -13,7 +13,7 @@ const UserPageProvider = ({ children }: any) => {
     const { user: currentUser } = useContext<any>(UserContext);
 
     //User's Posts
-    const { response: userPostsResponse, reFetch: userPostsReFetch, isLoading: postsLoading } = useFetch(`/posts/${params.UserId}`);
+    const { response: userPostsResponse, reFetch: userPostsReFetch, isLoading: postsLoading } = useFetch(`/posts/user/${params.UserId}`);
 
     //User's basic info such as name and ID
     const { response: userInfoResponse, reFetch: userInfoReFetch, isLoading: infoLoading } = useFetch(`/users/${params.UserId}`);

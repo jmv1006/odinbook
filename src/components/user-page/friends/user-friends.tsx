@@ -16,11 +16,11 @@ const UserFriends = () => {
     return(
         <UserFriendsContainer>
             Friends:
-            {isCurrentUser && <Link to={`/user/${params.UserId}/friends/requests`}>Requests</Link>}
             <CardsContainer>
                 {mappedFriends}
                 {friends.length === 0 && "User Has No Friends!"}
             </CardsContainer>
+            {isCurrentUser && <Link to={`/user/${params.UserId}/friends/requests`}>Requests</Link>}
         </UserFriendsContainer>
     )
 }

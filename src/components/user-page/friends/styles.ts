@@ -22,6 +22,5 @@ export const CardsContainer = styled.div`
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 1.5rem;
-    border: 2px solid blue;
     overflow-y: auto;
 `

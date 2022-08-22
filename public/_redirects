@@ -1,0 +1,9 @@
+/auth/* https://jmv1006-odinbook-api.herokuapp.com/auth/:splat 200
+/posts/* https://jmv1006-odinbook-api.herokuapp.com/posts/:splat 200
+/likes/* https://jmv1006-odinbook-api.herokuapp.com/likes/:splat 200
+/comments/* https://jmv1006-odinbook-api.herokuapp.com/comments/:splat 200
+/users/* https://jmv1006-odinbook-api.herokuapp.com/users/:splat 200
+/friend-requests/* https://jmv1006-odinbook-api.herokuapp.com/friend-requests/:splat 200
+/friendships/* https://jmv1006-odinbook-api.herokuapp.com/friendships/:splat 200
+/notifications/* https://jmv1006-odinbook-api.herokuapp.com/notifications/:splat 200
+/* /index.html 200
