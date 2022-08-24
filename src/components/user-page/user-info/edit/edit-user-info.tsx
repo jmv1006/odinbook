@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "../../../../context/userContext";
-import { EditInfoTitle, EditUserInfoContainer, EditUserInfoContentContainer, ProfileImg, ProfileImgContainer } from "./styles";
+import { EditInfoCloseBtn, EditInfoTitle, EditInfoTopContainer, EditUserInfoContainer, EditUserInfoContentContainer, ProfileImg, ProfileImgContainer } from "./styles";
 import EditProfilePicture from './profile-picture/edit-profile-picture';
 import EditDisplayName from './display-name/edit-display-name';
 import EditBio from './bio/edit-bio';
@@ -18,11 +18,12 @@ const EditUserInfo = ({toggle} : EditUserInfoProps) => {
     return(
         <EditUserInfoContainer>
             <EditUserInfoContentContainer>
-                <EditInfoTitle>Edit Profile</EditInfoTitle>
+                <EditInfoTopContainer>
+                    <EditInfoCloseBtn onClick={() => toggle()}>x</EditInfoCloseBtn>
+                </EditInfoTopContainer>
                 <EditProfilePicture user={user}/>
                 <EditDisplayName user={user} updateUser={updateUser} />
                 <EditBio user={user} text={profileInfo.Bio}/>
-                <button onClick={() => toggle()}>x</button>
             </EditUserInfoContentContainer>
         </EditUserInfoContainer>
     )

@@ -20,8 +20,25 @@ export const EditUserInfoContentContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
-    gap: .5rem;
+    padding: .5rem;
+    gap: .25rem;
+    border-radius: 0.5rem;
+`
+export const EditInfoCloseBtn = styled.button`
+    background-color: transparent;
+    border: none;
+    font-size: 1.4rem;
+    font-weight: normal;
+    :hover{
+        cursor: pointer;
+    }
+`
+
+export const EditInfoTopContainer = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 `
 
 export const EditInfoTitle = styled.div`
@@ -36,7 +53,6 @@ export const EditItemContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid black;
     padding: .25rem;
 `
 export const EditItemTitle = styled.div`
@@ -46,12 +62,14 @@ export const EditItemTitle = styled.div`
 `
 
 export const ProfileImgContainer = styled.div`
-    width: 13rem;
-    border-radius: 50%;
-    object-fit: cover;
+    width: 12.5rem;
+    height: 12.5rem;
 `
 export const ProfileImg = styled.img`
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 `
 
 export const EditBioTextArea = styled.textarea`

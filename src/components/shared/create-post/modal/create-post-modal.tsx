@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { SocketContext } from "../../../../context/SocketContext";
-import { CreatePostBtn, CreatePostFormContainer, CreatePostFormFile, CreatePostFormText, CreatePostModalStyle, CreatePostModalTop, ExitModalBtn, ModalBackground } from "./style";
+import { CreatePostBtn, CreatePostFormContainer, CreatePostFormFile, CreatePostFormText, CreatePostModalStyle, CreatePostModalTitle, CreatePostModalTop, ExitModalBtn, ModalBackground } from "./style";
 
 const CreatePostModal = ({user, addPost, toggle}: any) => {
 
@@ -52,7 +52,7 @@ const CreatePostModal = ({user, addPost, toggle}: any) => {
                 <CreatePostModalTop>
                     {!isLoading && <ExitModalBtn onClick={toggle}>X</ExitModalBtn>}
                 </CreatePostModalTop>
-                <h2>Create A Post</h2>
+                <CreatePostModalTitle>Create Post</CreatePostModalTitle>
                 {!isLoading ? 
                     <CreatePostFormContainer onSubmit={handleCreatePost}>
                         <CreatePostFormText onChange={handleChange} value={postText} placeholder="Text Here" autoFocus required />

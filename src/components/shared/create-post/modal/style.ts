@@ -15,11 +15,16 @@ export const ModalBackground = styled.div`
 
 export const CreatePostModalStyle = styled.div`
     width: 70%;
-    height: 35%;
+    height: 30%;
     background-color: white;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: .75rem;
+`
+
+export const CreatePostModalTitle = styled.div`
+    font-size: 1.25rem;
+    font-weight: bold;
 `
 
 export const CreatePostModalTop = styled.div`

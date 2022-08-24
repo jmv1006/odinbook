@@ -1,6 +1,7 @@
 import { UserContext } from "./userContext";
 import { SocketContext } from "./SocketContext";
 import { UserFriendsProvider } from "./userFriendsContext ";
+import { NotificationsProvider } from "./notificationsContext";
 import { BrowserRouter } from "react-router-dom";
 import IUser from "../interfaces/user";
 
@@ -29,7 +30,9 @@ const TestsContextProvider = ({children} : any) => {
             <UserContext.Provider value={{user: mockUser, updateUser: jest.fn()}}>
                 <SocketContext.Provider value={mockSocket}>
                     <UserFriendsProvider>
-                        {children}
+                        <NotificationsProvider>
+                            {children}
+                        </NotificationsProvider>
                     </UserFriendsProvider>
                 </SocketContext.Provider>
             </UserContext.Provider>

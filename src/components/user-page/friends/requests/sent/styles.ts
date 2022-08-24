@@ -1,13 +1,22 @@
 import styled from "styled-components";
 
+export const SentRequestsBackground = styled.div`
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
 export const SentRequestsModal = styled.div`
-    background-color: wheat;
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    width: 65%;
-    height: 35%;
-    transform: translate(-50%, 0);
+    background-color: white;
+    width: 70%;
+    height: 20%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -41,5 +50,9 @@ export const RequestsContainer = styled.div`
 `
 
 export const CloseBtn = styled.button`
-
+    background-color: transparent;
+    border: none;
+    :hover{
+        cursor: pointer;
+    }
 `

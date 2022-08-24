@@ -13,14 +13,15 @@ export const HeaderContainer = styled.div`
 
 export const HeaderTitle = styled.div`
     font-size: 1.5rem;
-    color: black;
     :hover{
         text-decoration: underline;
+        cursor: pointer;
     }
 `
 
 export const HeaderLeftSide = styled.div`
     display: flex;
+    margin-left: 0.5rem;
 `
 
 export const SearchButton = styled.button`
@@ -33,8 +34,26 @@ export const SearchButton = styled.button`
 `
 export const HeaderRightSide = styled.div`
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-end;
+`
+
+export const SearchImgContainer = styled.div`
+    width: 1.1rem;
+    height: 1.1rem;
+`
+
+export const SearchImg = styled.img`
+    width: 100%;
+`
+
+export const NotificationBellContainer = styled.div`
+    width: 1.4rem;
+    height: 1.4rem;
+`
+
+export const NotificationBell = styled.img`
+    width: 100%;
 `
 
 export const DropdownButton = styled.button`
@@ -50,12 +69,11 @@ export const DropdownButton = styled.button`
 `
 
 export const NotificationsBtn = styled.button`
-    font-size: .95rem;
-    font-weight: normal;
     background-color: transparent;
+    display: flex;
+    align-items: center;
     border: none;
     :hover{
         cursor: pointer;
-        text-decoration: underline;
     }
 `

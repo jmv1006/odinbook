@@ -1,10 +1,12 @@
-import { DropdownButton, HeaderContainer, HeaderLeftSide, HeaderRightSide, HeaderTitle, NotificationsBtn, SearchButton } from "./styles";
+import { DropdownButton, HeaderContainer, HeaderLeftSide, HeaderRightSide, HeaderTitle, NotificationBell, NotificationBellContainer, NotificationsBtn, SearchButton, SearchImg, SearchImgContainer } from "./styles";
 import SearchBar from "../search-bar/search-bar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import HeaderDropDown from "./header-dropdown/header-dropdown";
 import NotificationsDropDown from "./notifications-dropdown/notifications-dropdown";
 import { useNotifications } from "../../context/notificationsContext";
+import notificationBellUrl from '../../assets/notification.png';
+import searchImgUrl from '../../assets/search-interface-symbol.png';
 
 const Header = () => {
     const {notifications} = useNotifications();
@@ -31,11 +33,22 @@ const Header = () => {
         <HeaderContainer>
             <HeaderLeftSide>
                 <Link to="/" style={{ textDecoration: 'none', color: "black" }}><HeaderTitle>Odinbook</HeaderTitle></Link>
-                {!searchIsToggled && <SearchButton onClick={toggleSearchBar}>Q</SearchButton>}
+                {!searchIsToggled && 
+                    <SearchButton onClick={toggleSearchBar}>
+                        <SearchImgContainer>
+                            <SearchImg src={searchImgUrl} alt="Search"/>
+                        </SearchImgContainer>
+                    </SearchButton>
+                }
                 {searchIsToggled && <SearchBar toggle={toggleSearchBar}/>}
             </HeaderLeftSide>
             <HeaderRightSide>
-                <NotificationsBtn onClick={toggleNotifications}>{notifications.length === 0 ? "Notifications" : `Notifications (${notifications.length})`}</NotificationsBtn>
+                <NotificationsBtn onClick={toggleNotifications}>
+                    <NotificationBellContainer>
+                        <NotificationBell src={notificationBellUrl} alt="Notifications"/>
+                    </NotificationBellContainer>
+                    {notifications.length > 0 ? `(${notifications.length})` : null}
+                </NotificationsBtn>
                 {notificationsOpen && <NotificationsDropDown toggle={toggleNotifications} />}
                 <DropdownButton onClick={toggleIsOpen}>...</DropdownButton>
                 {isOpen && <HeaderDropDown toggle={toggleIsOpen}/>}

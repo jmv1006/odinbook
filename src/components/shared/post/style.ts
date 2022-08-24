@@ -50,7 +50,7 @@ export const PostTextContainer = styled.div`
 `
 
 export const PostImageContainer = styled.div`
-    width: 75%;
+    width: 100%;
 `
 export const PostImage = styled.img`
     width: 100%;

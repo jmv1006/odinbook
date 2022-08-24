@@ -49,7 +49,7 @@ const EditDisplayName = ({user, updateUser} : EditDisplayNameProps) => {
 
     return(
         <EditItemContainer>
-            <EditItemTitle>Display Name</EditItemTitle>
+            <EditItemTitle>Edit Display Name</EditItemTitle>
             {!isEditing && currentDisplayName}
             {!isEditing && <button onClick={toggleEditing}>Edit</button>}
             {isEditing ? 

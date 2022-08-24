@@ -12,35 +12,37 @@ export const CreatePostStyles = styled.div`
 `
 
 export const CreatePostForm = styled.form`
-    width: 88%;
+    width: 85%;
     height: 55%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 `
 
 export const CreatePostTextInput = styled.input`
     height: 86%;
-    width: 85%;
+    width: 82%;
 `
 
 export const CreatePostBtn = styled.button`
     height: 100%;
-    width: 13.25%;
+    width: 15%;
     background-color: #7FB77E;
     border: none;
+    color: white;
 `
 
 export const ProfilePictureContainer = styled.div`
-    width: 3.8rem;
+    width: 3.25rem;
+    height: 3.25rem;
     display: flex;
     justify-content: center;
     align-items: center;
 `
 
 export const UserImage = styled.img`
-    width: 3.25rem;
-    height: 3.25rem;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 50%;
     cursor: pointer;

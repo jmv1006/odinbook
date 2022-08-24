@@ -3,7 +3,7 @@ import { UserContext } from "../../../../../context/userContext"
 import useFetch from "../../../../../hooks/useFetch"
 import IUser from "../../../../../interfaces/user"
 import UserBar from "../../../../shared/user-bar/user-bar"
-import { CloseBtn, RequestsContainer, SentRequestsModal, SentRequestsTitle, SentRequestsTopContainer } from "./styles"
+import { CloseBtn, RequestsContainer, SentRequestsBackground, SentRequestsModal, SentRequestsTitle, SentRequestsTopContainer } from "./styles"
 
 interface SentRequest {
     Id: string,
@@ -31,16 +31,18 @@ const SentRequests = ({toggle} : any) => {
     );
 
     return(
-        <SentRequestsModal>
-            <SentRequestsTopContainer>
-                <SentRequestsTitle>Sent Requests:</SentRequestsTitle>
-                <CloseBtn onClick={() => toggle()}>X</CloseBtn>
-            </SentRequestsTopContainer>
-            <RequestsContainer>
-                {mappedRequests.length === 0 && "No Sent Requests!"}
-                {mappedRequests}
-            </RequestsContainer>
-        </SentRequestsModal>
+        <SentRequestsBackground>
+            <SentRequestsModal>
+                <SentRequestsTopContainer>
+                    <SentRequestsTitle>Sent Requests:</SentRequestsTitle>
+                    <CloseBtn onClick={() => toggle()}>X</CloseBtn>
+                </SentRequestsTopContainer>
+                <RequestsContainer>
+                    {mappedRequests.length === 0 && "No Sent Requests!"}
+                    {mappedRequests}
+                </RequestsContainer>
+            </SentRequestsModal>
+        </SentRequestsBackground>
     )
 }
 
