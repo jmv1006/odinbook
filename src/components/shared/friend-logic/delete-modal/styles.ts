@@ -14,7 +14,8 @@ export const DeleteFriendModalContainer = styled.div`
 `
 
 export const DeleteFriendModalContentContainer = styled.div`
-    background-color: wheat;
+    background-color: white;
+    padding: .5rem;
     width: 65%;
     height: 4rem;
     display: flex;

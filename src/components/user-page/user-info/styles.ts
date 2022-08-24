@@ -19,12 +19,20 @@ export const UserInfoWrapper = styled.div`
 
 export const ProfileImgContainer = styled.div`
     width: 14.5rem;
+    @media (max-width: 850px) {
+        width: 11rem;
+        height: 11rem;
+    }
 `
 export const ProfileImg = styled.img`
     width: 13.5rem;
     height: 13.5rem;
     object-fit: cover;
     border-radius: 50%;
+    @media (max-width: 850px) {
+        width: 11rem;
+        height: 11rem;
+    }
 `
 
 export const NameContainer = styled.div`

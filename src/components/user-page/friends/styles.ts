@@ -14,7 +14,7 @@ export const UserFriendsContainer = styled.div`
 `
 
 export const CardsContainer = styled.div`
-    width: 95%;
+    width: 100%;
     height: 90%;
     display: flex;
     flex-direction: row;

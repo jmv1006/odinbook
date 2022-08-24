@@ -40,7 +40,6 @@ const DeletePostModal = ({toggle, post, deleteCB } : any) => {
                     Are You Sure You Want To Delete This Post?
                     <button onClick={deletePost}>Yes</button>
                     <button onClick={toggle}>No</button>
-                    <button onClick={toggle}>X</button>
                 </>
                 }
                 {isSuccessful && "Successfully Deleted Post"}

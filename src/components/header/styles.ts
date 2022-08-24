@@ -23,9 +23,17 @@ export const HeaderLeftSide = styled.div`
     display: flex;
 `
 
+export const SearchButton = styled.button`
+    background-color: transparent;
+    border: none;
+    :hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+`
 export const HeaderRightSide = styled.div`
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-end;
 `
 
@@ -38,5 +46,16 @@ export const DropdownButton = styled.button`
     border: none;
     :hover{
         cursor: pointer;
+    }
+`
+
+export const NotificationsBtn = styled.button`
+    font-size: .95rem;
+    font-weight: normal;
+    background-color: transparent;
+    border: none;
+    :hover{
+        cursor: pointer;
+        text-decoration: underline;
     }
 `

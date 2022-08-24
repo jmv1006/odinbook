@@ -29,6 +29,14 @@ export const EditPostTopContainer = styled.div`
     width: 100%;
     text-align: right;
 `
+export const EditPostCloseBtn = styled.button`
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    :hover{
+        cursor: pointer;
+    }
+`
 
 export const EditPostForm = styled.form`
     width: 95%;
@@ -42,6 +50,13 @@ export const EditPostImageContainer = styled.div`
     width: 85%;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+`
+
+export const ImageActionsContainer = styled.div`
+    display: flex;
+    width: 100%;
 `
 
 export const EditPostImage = styled.img`
@@ -52,4 +67,13 @@ export const EditPostTextArea = styled.textarea`
     width: 85%;
     height: 7rem;
     resize: none;
+`
+export const SavePostButton = styled.button`
+    background-color: #7FB77E;
+    border: none;
+    padding: 0.35rem;
+    :hover {
+        cursor: pointer;
+        text-decoration: underline
+    }
 `

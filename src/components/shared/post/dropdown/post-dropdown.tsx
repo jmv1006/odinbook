@@ -1,4 +1,4 @@
-import { PostDropDownContainer, PostDropDownMenu } from "./styles"
+import { PostDropDownContainer, PostDropDownMenu, PostDropDownMenuItem } from "./styles"
 import DeletePostModal from "../delete/delete-post-modal";
 import EditPost from "../edit/edit-post";
 import { useState } from "react";
@@ -20,8 +20,8 @@ const PostDropDown = ({ post, update, deletePost, toggle } : any) => {
     return(
         <PostDropDownContainer id="PostDropDown">
             <PostDropDownMenu>
-                <div onClick={toggleEditModal}>Edit Post</div>
-                <div onClick={toggleDeleteModal}>Delete Post</div>
+                <PostDropDownMenuItem onClick={toggleEditModal}>Edit Post</PostDropDownMenuItem>
+                <PostDropDownMenuItem onClick={toggleDeleteModal}>Delete Post</PostDropDownMenuItem>
                 {deleteToggled && <DeletePostModal toggle = {toggleDeleteModal} post={post} deleteCB = {deletePost}/>}
                 {editToggled && <EditPost toggle={toggleEditModal} post={post} updateCB={update} dropDownToggle={toggle} />}
             </PostDropDownMenu>

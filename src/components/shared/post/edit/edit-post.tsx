@@ -1,6 +1,6 @@
 import { useState } from "react"
 import IPost from "../../../../interfaces/post"
-import { EditPostForm, EditPostImage, EditPostImageContainer, EditPostModalContainer, EditPostModalContentContainer, EditPostTextArea, EditPostTopContainer } from "./styles"
+import { EditPostCloseBtn, EditPostForm, EditPostImage, EditPostImageContainer, EditPostModalContainer, EditPostModalContentContainer, EditPostTextArea, EditPostTopContainer, ImageActionsContainer, SavePostButton } from "./styles"
 
 type EditPostProps = {
     post: IPost,
@@ -94,9 +94,9 @@ const EditPost = ({post, toggle, updateCB, dropDownToggle} : EditPostProps) => {
                 {isLoading ? "Loading" : 
                     <>
                         <EditPostTopContainer>
-                            <button onClick={toggle}>X</button>
+                            <EditPostCloseBtn onClick={toggle}>X</EditPostCloseBtn>
                         </EditPostTopContainer>
-                        <strong>Edit Post Here</strong>
+                        <strong>Edit Post</strong>
                         <EditPostForm onSubmit={handleSubmit}>
                             <EditPostTextArea value={postText} onChange={handleChange} />
                         </EditPostForm>
@@ -104,16 +104,18 @@ const EditPost = ({post, toggle, updateCB, dropDownToggle} : EditPostProps) => {
                             <EditPostImageContainer>
                                 Post Image:
                                 <EditPostImage src={image} />
-                                <input type="file" onChange={handleChangeImage}/>
-                                <button onClick={handleSubmitRemoveImage}>Remove Image From Post</button>
+                                <ImageActionsContainer>
+                                    <input type="file" onChange={handleChangeImage} />
+                                    <button onClick={handleSubmitRemoveImage}>Remove Image</button>
+                                </ImageActionsContainer>
                             </EditPostImageContainer>
                             :
                             <>
                                 {!addImgToggled && <button onClick={toggleAddImage}>Add Image</button>}
-                                {addImgToggled && <input type="file" onChange={handleChangeImage}/>} 
+                                {addImgToggled && <input type="file" onChange={handleChangeImage} />} 
                             </>
                         }
-                        <button onClick={handleSubmit}>Save</button>
+                        <SavePostButton onClick={handleSubmit}>Save Changes</SavePostButton>
                     </>
                 } 
             </EditPostModalContentContainer>

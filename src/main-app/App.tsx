@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     if(user) {
-      const newSocket = io('http://localhost:7000/');
+      const newSocket = io('https://jmv1006-odinbook-api.herokuapp.com/');
       setSocket(newSocket)
       newSocket.emit('user-identify', user.Id)
     }
