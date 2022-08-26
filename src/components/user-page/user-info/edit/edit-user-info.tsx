@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "../../../../context/userContext";
-import { EditInfoCloseBtn, EditInfoTitle, EditInfoTopContainer, EditUserInfoContainer, EditUserInfoContentContainer, ProfileImg, ProfileImgContainer } from "./styles";
+import { EditInfoCloseBtn, EditInfoTopContainer, EditUserInfoContainer, EditUserInfoContentContainer } from "./styles";
 import EditProfilePicture from './profile-picture/edit-profile-picture';
 import EditDisplayName from './display-name/edit-display-name';
 import EditBio from './bio/edit-bio';

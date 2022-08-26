@@ -1,9 +1,16 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { SocketContext } from "../../../../context/SocketContext";
+import IPost from "../../../../interfaces/post";
+import IUser from "../../../../interfaces/user";
 import { CreatePostBtn, CreatePostFormContainer, CreatePostFormFile, CreatePostFormText, CreatePostModalStyle, CreatePostModalTitle, CreatePostModalTop, ExitModalBtn, ModalBackground } from "./style";
 
-const CreatePostModal = ({user, addPost, toggle}: any) => {
+type CreatePostModalProps = {
+    user: IUser,
+    addPost: (post: IPost) => void,
+    toggle: () => void
+}
+const CreatePostModal = ({user, addPost, toggle}: CreatePostModalProps) => {
 
     const socket = useContext(SocketContext);
     const [postText, setPostText] = useState('');

@@ -1,7 +1,12 @@
 import { useState } from "react";
+import IUser from "../../../interfaces/user";
 import { SignInBtn, SignInErrorMsg, SignInForm, SignInInput } from "./styles";
 
-const SignIn = ({setUser} : any) => {
+type SignInProps = {
+    setUser: (user: IUser) => void
+}
+
+const SignIn = ({setUser} : SignInProps) => {
 
     const [authInfo, setAuthInfo] = useState({
         Email: '',
@@ -46,10 +51,10 @@ const SignIn = ({setUser} : any) => {
     return(
         <>
             <SignInForm onSubmit={handleSubmit}>
+                <SignInErrorMsg>{errorMessage && errorMessage}</SignInErrorMsg>
                 <SignInInput type="email" placeholder="Username (E-Mail)" name="Email" onChange={handleChange} value={authInfo.Email} required/>
                 <SignInInput type="password" placeholder="Password" name="Password" onChange={handleChange} value={authInfo.Password} required/>
                 <SignInBtn type="submit">{buttonText}</SignInBtn>
-                <SignInErrorMsg>{errorMessage && errorMessage}</SignInErrorMsg>
             </SignInForm>
         </>
     )

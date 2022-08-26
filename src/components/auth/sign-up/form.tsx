@@ -1,7 +1,12 @@
 import { SignUpForm } from "./styles";
 import { useState } from "react";
 
-const SignUpFormPage = ({setAccountCreated, setCreatedUser} : any) => {
+type SignUpFormPageProps = {
+    setAccountCreated: (value: any) => void,
+    setCreatedUser: (value: any) => void
+}
+
+const SignUpFormPage = ({setAccountCreated, setCreatedUser} : SignUpFormPageProps) => {
 
     const [formValues, setFormValues] = useState({
         Email: "",

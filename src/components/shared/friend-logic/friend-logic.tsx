@@ -1,10 +1,15 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../../../context/userContext";
 import { useFriends } from "../../../context/userFriendsContext ";
+import IUser from "../../../interfaces/user";
 import AddFriend from "./add-friend/add-friend";
 import DeleteFriendModal from "./delete-modal/delete-friend-modal";
 
-const FriendLogic = ({user} : any) => {
+type FriendLogicProps = {
+    user: IUser
+}
+
+const FriendLogic = ({user} : FriendLogicProps) => {
 
     const { user: currentUser } = useContext<any>(UserContext);
 

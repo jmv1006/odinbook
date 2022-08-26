@@ -3,7 +3,12 @@ import SignUpFormPage from "./form";
 import { ExitBtnContainer, SignUpModal, SignUpTitle, SignUpTopContainer } from "./styles"
 import ProfileInfoSetUp from "./profile-info";
 
-const SignUp = ({toggle, setUser} : any) => {
+type SignUpProps = {
+    toggle: () => void,
+    setUser: (user: any) => void
+}
+
+const SignUp = ({toggle, setUser} : SignUpProps) => {
 
     const [accountCreated, setAccountCreated] = useState(false);
 

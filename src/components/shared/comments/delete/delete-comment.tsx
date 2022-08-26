@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import {DeleteCommentModalContainer, DeleteCommentModalContentContainer} from './styles'
 import IComment from '../../../../interfaces/comment';
+import IUser from '../../../../interfaces/user';
 
 type DeleteCommentProps = {
-    user: any, 
+    user: IUser, 
     comment: IComment,
     toggle: () => void,
     reload: () => void

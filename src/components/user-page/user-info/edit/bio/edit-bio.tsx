@@ -1,8 +1,14 @@
 import { useState } from "react"
 import { useUserPageContext } from "../../../../../context/userPageContext";
+import IUser from "../../../../../interfaces/user";
 import { EditBioTextArea, EditBioTextContainer, EditItemContainer, EditItemTitle } from "../styles"
 
-const EditBio = ({user, text} : any) => {
+type EditBioProps = {
+    user: IUser,
+    text: string
+}
+
+const EditBio = ({user, text} : EditBioProps) => {
 
     const [bioText, setBioText] = useState(text);
     const [isEditing, setIsEditing] = useState(false);

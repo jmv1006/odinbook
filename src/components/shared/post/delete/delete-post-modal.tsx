@@ -1,7 +1,14 @@
 import { useState } from "react";
+import IPost from "../../../../interfaces/post";
 import { DeletePostModalContainer, DeletePostModalContentContainer } from "./styles"
 
-const DeletePostModal = ({toggle, post, deleteCB } : any) => {
+type DeletePostModalProps = {
+    toggle: () => void,
+    post: IPost,
+    deleteCB: (post: IPost) => void
+}
+
+const DeletePostModal = ({toggle, post, deleteCB } : DeletePostModalProps) => {
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccessful, setIsSuccessful] = useState(false)
 

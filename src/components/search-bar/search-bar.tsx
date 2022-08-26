@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import { ResultsContainer, SearchBarContainer } from "./styles"
 import UserBar from "../shared/user-bar/user-bar";
 
-const SearchBar = ({toggle} : any) => {
+type SearchBarProps = {
+    toggle: () => void
+}
+
+const SearchBar = ({toggle} : SearchBarProps) => {
 
     const [results, setResults] = useState([])
     const [search, setSearch] = useState("");

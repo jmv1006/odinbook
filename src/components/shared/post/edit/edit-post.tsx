@@ -5,7 +5,7 @@ import { EditPostCloseBtn, EditPostForm, EditPostImage, EditPostImageContainer, 
 type EditPostProps = {
     post: IPost,
     toggle: () => void,
-    updateCB: any,
+    updateCB: (post: IPost) => void,
     dropDownToggle: () => void
 };
 

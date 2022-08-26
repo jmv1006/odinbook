@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { RightPanelContainerStyles } from "./styles";
 import UserBar from "../../shared/user-bar/user-bar";
+import IUser from "../../../interfaces/user";
 
-const RightPanelContainer= ({friends}: any) => {
+type RightPanelContainerProps = {
+    friends: Array<IUser>
+};
+
+const RightPanelContainer= ({friends}: RightPanelContainerProps) => {
     const [search, setSearch] = useState("");
 
     const handleChange = (e: any) => {

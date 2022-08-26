@@ -4,6 +4,7 @@ import { UserContext } from "../../../../context/userContext";
 import { useFriends } from "../../../../context/userFriendsContext ";
 import useFetch from "../../../../hooks/useFetch";
 import IUser from "../../../../interfaces/user";
+
 type AddFriendProps = {
     user: IUser
 }

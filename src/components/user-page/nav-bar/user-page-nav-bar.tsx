@@ -5,7 +5,6 @@ import { UserPageNavBarContainer } from "./styles"
 const UserPageNavBar = () => {
     const { user } = useUserPageContext()
 
-
     return(
         <UserPageNavBarContainer>
             <Link to={`/user/${user.Id}`}>Posts</Link>

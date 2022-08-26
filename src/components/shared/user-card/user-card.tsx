@@ -1,9 +1,6 @@
-import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { UserContext } from "../../../context/userContext"
 import { UserCardContainer, UserImg, UserImgContainer, UserNameContainer } from "./styles"
 import IUser from "../../../interfaces/user"
-import DeleteFriendModal from '../friend-logic/delete-modal/delete-friend-modal';
 import FriendLogic from '../friend-logic/friend-logic';
 
 type UserCardPropTypes = {
@@ -12,8 +9,6 @@ type UserCardPropTypes = {
 }
 
 const UserCard = ({ user } : UserCardPropTypes) => {
-    const [isOpen, setIsOpen] = useState(false);
-
     return(
         <UserCardContainer>
             <Link to={`/user/${user.Id}`} style={{ textDecoration: 'none', color: "black" }}>

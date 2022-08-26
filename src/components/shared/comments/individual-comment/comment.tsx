@@ -2,8 +2,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { IndividualComment, UserImgContainer, UserImg, CommentText, NameAndTextContainer, CommentName, DeleteCommentBtn } from "./style"
 import DeleteComment from "../delete/delete-comment";
+import IUser from "../../../../interfaces/user";
 
-const Comment = ({comment, user, currentUser, reload} : any) => {
+type CommentProps = {
+    comment: any,
+    user: IUser,
+    currentUser: IUser,
+    reload: () => void
+}
+
+const Comment = ({comment, user, currentUser, reload} : CommentProps) => {
     const navigate = useNavigate();
 
     const [deleteToggled, setDeleteToggled] = useState(false);

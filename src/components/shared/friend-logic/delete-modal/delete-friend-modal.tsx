@@ -1,9 +1,16 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { useFriends } from "../../../../context/userFriendsContext ";
+import IUser from "../../../../interfaces/user";
 import { DeleteFriendModalContainer, DeleteFriendModalContentContainer } from "./styles"
 
-const DeleteFriendModal = ({toggle, user, currentUser} : any) => {
+type DeleteFriendModalProps = {
+    toggle: () => void,
+    user: IUser,
+    currentUser: IUser
+}
+
+const DeleteFriendModal = ({toggle, user, currentUser} : DeleteFriendModalProps) => {
     const naigate = useNavigate();
 
     const {reFetchFriends} = useFriends();

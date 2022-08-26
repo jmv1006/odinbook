@@ -2,6 +2,7 @@ import { useNotifications } from "../../../context/notificationsContext"
 import INotification from "../../../interfaces/notification";
 import NotificationBar from "./individual/notification-bar";
 import { NotificationsContainer } from "./styles";
+
 const Notifications = () => {
     const {notifications, deleteNotification} = useNotifications();
 

@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../../context/userContext"
 import { HeaderDropDownContainer, HeaderDropDownItem } from "./styles"
 
-const HeaderDropDown = ({toggle} : any) => {
+type HeaderDropDownProps = {
+    toggle: () => void
+}
+
+const HeaderDropDown = ({toggle} : HeaderDropDownProps) => {
 
     const { user, updateUser } = useContext<any>(UserContext);
 

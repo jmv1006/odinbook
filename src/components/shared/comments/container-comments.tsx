@@ -7,7 +7,7 @@ import IPost from "../../../interfaces/post";
 
 interface PropsComments {
     comments: Array<any>,
-    amount: number
+    amount: number,
     postId: string,
     reFetchComments: () => void,
     post: IPost

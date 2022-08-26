@@ -2,8 +2,16 @@ import { PostDropDownContainer, PostDropDownMenu, PostDropDownMenuItem } from ".
 import DeletePostModal from "../delete/delete-post-modal";
 import EditPost from "../edit/edit-post";
 import { useState } from "react";
+import IPost from "../../../../interfaces/post";
 
-const PostDropDown = ({ post, update, deletePost, toggle } : any) => {
+type PostDropDownProps = {
+    post: IPost,
+    update: (post: IPost) => void,
+    deletePost: (post: IPost) => void,
+    toggle: () => void
+}
+
+const PostDropDown = ({ post, update, deletePost, toggle } : PostDropDownProps) => {
     const [deleteToggled, setDeleteToggled] = useState(false)
     const [editToggled, setEditToggled] = useState(false);
 

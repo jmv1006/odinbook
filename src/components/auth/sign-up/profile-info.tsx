@@ -1,10 +1,14 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom";
+import IUser from "../../../interfaces/user";
 import { BioTextArea, ProfileInfoContainer, ProfileInfoForm } from "./styles";
 
-const ProfileInfoSetUp = ({setUploadingInfo, createdUser, setUser} : any) => {
+type ProfileInfoSetUpProps = {
+    setUploadingInfo: (value: any) => void,
+    createdUser: IUser,
+    setUser: (value: any) => void
+}
 
-    const navigate = useNavigate();
+const ProfileInfoSetUp = ({setUploadingInfo, createdUser, setUser} : ProfileInfoSetUpProps) => {
 
     const [selectedFile, setSelectedFile] = useState<any>(null);
     const [bioText, setBioText] = useState("");
