@@ -1,12 +1,12 @@
-import { DropdownButton, HeaderContainer, HeaderLeftSide, HeaderRightSide, HeaderTitle, NotificationBell, NotificationBellContainer, NotificationsBtn, SearchButton, SearchImg, SearchImgContainer } from "./styles";
-import SearchBar from "../search-bar/search-bar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNotifications } from "../../context/notificationsContext";
+import SearchBar from "../search-bar/search-bar";
 import HeaderDropDown from "./header-dropdown/header-dropdown";
 import NotificationsDropDown from "./notifications-dropdown/notifications-dropdown";
-import { useNotifications } from "../../context/notificationsContext";
 import notificationBellUrl from '../../assets/notification.png';
 import searchImgUrl from '../../assets/search-interface-symbol.png';
+import { DropdownButton, HeaderContainer, HeaderLeftSide, HeaderRightSide, HeaderTitle, NotificationBell, NotificationBellContainer, NotificationsBtn, SearchButton, SearchImg, SearchImgContainer } from "./styles";
 
 const Header = () => {
     const {notifications} = useNotifications();

@@ -5,7 +5,7 @@ import UserBar from "../../components/shared/user-bar/user-bar";
 
 const SearchPage = () => {
 
-    const {response: allUsersResponse, isLoading: allUsersLoading, reFetch: allUsersRefetch} = useFetch('/users/all');
+    const {response: allUsersResponse} = useFetch('/users/all');
 
     const [users, setUsers] = useState([]);
     const [search, setSearch] = useState("");

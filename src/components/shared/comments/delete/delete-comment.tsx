@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import {DeleteCommentModalContainer, DeleteCommentModalContentContainer} from './styles'
 import IComment from '../../../../interfaces/comment';
 import IUser from '../../../../interfaces/user';
+import {DeleteCommentModalContainer, DeleteCommentModalContentContainer} from './styles'
 
 type DeleteCommentProps = {
     user: IUser, 

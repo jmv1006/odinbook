@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { CreatePostStyles, CreatePostForm, ProfilePictureContainer, UserImage, CreatePostTextInput, CreatePostBtn } from "./styles";
 import { useNavigate } from "react-router-dom";
 import CreatePostModal from "./modal/create-post-modal";
 import IUser from "../../../interfaces/user";
 import IPost from "../../../interfaces/post";
+import { CreatePostStyles, CreatePostForm, ProfilePictureContainer, UserImage, CreatePostTextInput, CreatePostBtn } from "./styles";
 
 type CreatePostProps = {
     user: IUser,

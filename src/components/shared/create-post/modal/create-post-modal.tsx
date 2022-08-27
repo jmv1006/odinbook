@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { SocketContext } from "../../../../context/SocketContext";
 import IPost from "../../../../interfaces/post";
 import IUser from "../../../../interfaces/user";

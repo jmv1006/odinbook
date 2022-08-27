@@ -1,9 +1,9 @@
-import { PostsWrapper, UserPagePostsWrapper } from "./styles";
-import Post from "../../shared/post/post";
-import { useUserPageContext } from "../../../context/userPageContext";
 import { useContext } from "react";
 import { UserContext } from "../../../context/userContext";
+import { useUserPageContext } from "../../../context/userPageContext";
+import Post from "../../shared/post/post";
 import CreatePost from "../../shared/create-post/create-post";
+import { PostsWrapper, UserPagePostsWrapper } from "./styles";
 
 const UserPagePosts = () => {
     const { userPosts, isCurrentUser, updatePostsActions } = useUserPageContext();

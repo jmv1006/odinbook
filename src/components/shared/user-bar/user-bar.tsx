@@ -1,7 +1,7 @@
-import IUser from "../../../interfaces/user";
-import { UserBarContainer, UserImgContainer, UserImg, UserBarFriendLogic } from './styles'
-import FriendLogic from '../friend-logic/friend-logic';
 import { useNavigate } from "react-router-dom";
+import IUser from "../../../interfaces/user";
+import FriendLogic from '../friend-logic/friend-logic';
+import { UserBarContainer, UserImgContainer, UserImg, UserBarFriendLogic } from './styles'
 
 type UserBarProps = {
     user: IUser,

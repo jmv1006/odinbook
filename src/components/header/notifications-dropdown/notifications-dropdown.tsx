@@ -1,5 +1,5 @@
-import { NotificationsDropDownContainer } from "./styles"
 import Notifications from "../../shared/notifications/notifications"
+import { NotificationsDropDownContainer } from "./styles"
 
 type NotificationsDropDownProps = {
     toggle: () => void

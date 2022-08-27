@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { UserContext } from "../../../../context/userContext";
-import { EditInfoCloseBtn, EditInfoTopContainer, EditUserInfoContainer, EditUserInfoContentContainer } from "./styles";
+import { useUserPageContext } from "../../../../context/userPageContext";
 import EditProfilePicture from './profile-picture/edit-profile-picture';
 import EditDisplayName from './display-name/edit-display-name';
 import EditBio from './bio/edit-bio';
-import { useUserPageContext } from "../../../../context/userPageContext";
+import { EditInfoCloseBtn, EditInfoTopContainer, EditUserInfoContainer, EditUserInfoContentContainer } from "./styles";
 
 type EditUserInfoProps = {
     toggle: () => void,

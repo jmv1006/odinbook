@@ -1,7 +1,7 @@
 import { useState } from "react"
 import SignUpFormPage from "./form";
-import { ExitBtnContainer, SignUpModal, SignUpTitle, SignUpTopContainer } from "./styles"
 import ProfileInfoSetUp from "./profile-info";
+import { ExitBtnContainer, SignUpModal, SignUpTitle, SignUpTopContainer } from "./styles"
 
 type SignUpProps = {
     toggle: () => void,

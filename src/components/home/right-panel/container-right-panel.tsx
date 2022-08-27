@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { RightPanelContainerStyles } from "./styles";
 import UserBar from "../../shared/user-bar/user-bar";
 import IUser from "../../../interfaces/user";
+import { RightPanelContainerStyles } from "./styles";
 
 type RightPanelContainerProps = {
     friends: Array<IUser>

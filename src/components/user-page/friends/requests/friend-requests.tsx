@@ -1,10 +1,10 @@
-import { RequestsContainer } from "./styles"
-import useFetch from "../../../../hooks/useFetch";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../../context/userContext";
+import useFetch from "../../../../hooks/useFetch";
 import IUser from "../../../../interfaces/user";
 import UserCard from "../../../shared/user-card/user-card";
 import SentRequests from "./sent/sent-requests";
+import { RequestsContainer } from "./styles"
 
 interface Request {
     Id: string,

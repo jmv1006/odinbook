@@ -1,7 +1,7 @@
-import { CardsContainer, UserFriendsContainer } from "./styles"
+import { Link, useParams } from "react-router-dom";
 import UserCard from "../../shared/user-card/user-card"
 import { useUserPageContext } from "../../../context/userPageContext"
-import { Link, useParams } from "react-router-dom";
+import { CardsContainer, UserFriendsContainer } from "./styles"
 
 const UserFriends = () => {
     const params = useParams();

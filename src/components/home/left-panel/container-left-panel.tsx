@@ -1,7 +1,7 @@
-import { LeftPanelContainerStyles } from "./styles";
 import { useContext } from "react";
 import { UserContext } from "../../../context/userContext";
 import Notifications from "../../shared/notifications/notifications";
+import { LeftPanelContainerStyles } from "./styles";
 
 const LeftPanelContainer = () => {
     const { user } = useContext<any>(UserContext);

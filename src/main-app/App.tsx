@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { MainApp } from "./styles";
-import { UserContext } from "../context/userContext";
-import AuthPageLayout from "../layouts/auth-page/auth-page.layout";
 import { Outlet } from "react-router-dom";
-import Header from "../components/header/header";
 import { io } from "socket.io-client";
 import { SocketContext } from "../context/SocketContext";
 import { UserFriendsProvider } from "../context/userFriendsContext ";
 import { NotificationsProvider } from "../context/notificationsContext";
+import { UserContext } from "../context/userContext";
+import AuthPageLayout from "../layouts/auth-page/auth-page.layout";
+import Header from "../components/header/header";
 import useFetch from "../hooks/useFetch";
+import { MainApp } from "./styles";
 
 function App() {
   const [user, setUser] = useState<any>(null);

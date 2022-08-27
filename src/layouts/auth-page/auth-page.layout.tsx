@@ -1,9 +1,8 @@
 import { useState } from "react";
+import useFetch from "../../hooks/useFetch";
 import SignIn from "../../components/auth/sign-in/sign-in";
 import SignUp from "../../components/auth/sign-up/sign-up";
 import { AuthPageContainer, GuestSignInButton, SignUpButton } from "./styles";
-import useFetch from "../../hooks/useFetch";
-import IUser from "../../interfaces/user";
 
 type AuthPageLayoutProps = {
     setUser: (user: any) => void
@@ -20,7 +19,7 @@ const AuthPageLayout = ({setUser}: AuthPageLayoutProps) => {
     };
 
     const signInGuest = () => {
-        setUser((user: any) => guestCredentials.user)
+        setUser(guestCredentials.user)
     };
 
     return(

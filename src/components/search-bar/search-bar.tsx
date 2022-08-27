@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
-import { ResultsContainer, SearchBarContainer } from "./styles"
 import UserBar from "../shared/user-bar/user-bar";
+import { ResultsContainer, SearchBarContainer } from "./styles"
 
 type SearchBarProps = {
     toggle: () => void

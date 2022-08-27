@@ -1,12 +1,11 @@
-import { MainFeedContainerStyles, NewPostInFeedNotification, SuggestedUsersBar, SuggestedUsersContainer, SuggestedUsersTop} from "./styles";
-import CreatePost from "../../shared/create-post/create-post";
+import { useContext, useEffect, useRef, useState } from "react";
 import { HomePageContext } from "../../../context/homePageContext";
 import { UserContext } from "../../../context/userContext";
-import { useContext, useEffect, useRef, useState } from "react";
+import CreatePost from "../../shared/create-post/create-post";
 import Post from "../../shared/post/post";
 import UserCard from "../../shared/user-card/user-card";
 import IPost from "../../../interfaces/post";
-
+import { MainFeedContainerStyles, SuggestedUsersBar, SuggestedUsersContainer, SuggestedUsersTop} from "./styles";
 interface IPostActions {
     addPostToTimeline: (post: IPost) => void,
     updatePostInTimeline: (post: IPost) => void,

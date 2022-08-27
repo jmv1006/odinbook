@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import { UserCardContainer, UserImg, UserImgContainer, UserNameContainer } from "./styles"
 import IUser from "../../../interfaces/user"
 import FriendLogic from '../friend-logic/friend-logic';
+import { UserCardContainer, UserImg, UserImgContainer, UserNameContainer } from "./styles"
 
 type UserCardPropTypes = {
     user: IUser,

@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { SocketContext } from "../../../context/SocketContext";
+import { UserContext } from "../../../context/userContext";
 import useFetch from "../../../hooks/useFetch";
 import PostComments from "../comments/container-comments";
-import { UserContext } from "../../../context/userContext";
-import { Link } from "react-router-dom";
-import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer, LikeContainer, LikeBtn, PostUserName, CommentContainer, PostTopLeft, PostTopRight, PostImageContainer, PostImage, DropDownBtn, CommentsAmountButton } from "./style";
 import IPost from "../../../interfaces/post";
 import IComment from '../../../interfaces/comment';
-import { SocketContext } from "../../../context/SocketContext";
 import PostDropDown from "./dropdown/post-dropdown";
+import { PostStyles, PostTopContainer, PostTextContainer, PostBottomContainer, ProfilePhotoContainer, UserImage, PostInfoBar, LikeAndCommentContainer, LikeContainer, LikeBtn, PostUserName, CommentContainer, PostTopLeft, PostTopRight, PostImageContainer, PostImage, DropDownBtn, CommentsAmountButton } from "./style";
 
 type postPropTypes = {
     post: IPost,

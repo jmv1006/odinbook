@@ -1,8 +1,8 @@
 import { useContext, useState } from "react"
-import { CommentInputContainer, UserImageContainer, CommentInputForm, UserImage, TextInputBox, PostCommentBtn } from "./style"
 import { SocketContext } from "../../../../context/SocketContext";
 import IUser from "../../../../interfaces/user";
 import IPost from "../../../../interfaces/post";
+import { CommentInputContainer, UserImageContainer, CommentInputForm, UserImage, TextInputBox, PostCommentBtn } from "./style"
 
 type CommentInputProps = {
     user: IUser,

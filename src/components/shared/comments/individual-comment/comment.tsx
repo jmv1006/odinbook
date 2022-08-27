@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import { IndividualComment, UserImgContainer, UserImg, CommentText, NameAndTextContainer, CommentName, DeleteCommentBtn } from "./style"
 import DeleteComment from "../delete/delete-comment";
 import IUser from "../../../../interfaces/user";
+import { IndividualComment, UserImgContainer, UserImg, CommentText, NameAndTextContainer, CommentName, DeleteCommentBtn } from "./style"
 
 type CommentProps = {
     comment: any,

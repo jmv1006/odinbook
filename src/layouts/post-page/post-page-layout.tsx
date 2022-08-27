@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import IPost from "../../interfaces/post"
 import Post from "../../components/shared/post/post";
 import useFetch from "../../hooks/useFetch";
-import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { PostPageContainer } from "./styles";
 
 const PostPage = () => {

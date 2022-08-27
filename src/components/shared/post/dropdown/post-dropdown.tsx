@@ -1,8 +1,8 @@
-import { PostDropDownContainer, PostDropDownMenu, PostDropDownMenuItem } from "./styles"
+import { useState } from "react";
 import DeletePostModal from "../delete/delete-post-modal";
 import EditPost from "../edit/edit-post";
-import { useState } from "react";
 import IPost from "../../../../interfaces/post";
+import { PostDropDownContainer, PostDropDownMenu, PostDropDownMenuItem } from "./styles"
 
 type PostDropDownProps = {
     post: IPost,

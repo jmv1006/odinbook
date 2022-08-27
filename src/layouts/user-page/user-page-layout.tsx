@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
-import { LoadingContainer, NonFriendInfo, UserPageContainer } from "./styles";
-import UserInfo from "../../components/user-page/user-info/user-info";
 import { UserPageProvider, useUserPageContext } from "../../context/userPageContext";
 import { useFriends } from "../../context/userFriendsContext ";
+import UserInfo from "../../components/user-page/user-info/user-info";
 import IUser from "../../interfaces/user";
+import { LoadingContainer, NonFriendInfo, UserPageContainer } from "./styles";
 
 const UserPageLayoutContainer = () => {
     return(

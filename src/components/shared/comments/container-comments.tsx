@@ -1,9 +1,9 @@
-import { useContext } from "react"
-import { UserContext } from "../../../context/userContext"
-import { CommentsContainerStyle } from "./style"
-import CommentInput from './input/comment-input'
+import { useContext } from "react";
+import { UserContext } from "../../../context/userContext";
+import CommentInput from './input/comment-input';
 import Comment from './individual-comment/comment';
 import IPost from "../../../interfaces/post";
+import { CommentsContainerStyle } from "./style";
 
 interface PropsComments {
     comments: Array<any>,

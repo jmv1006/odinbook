@@ -19,6 +19,7 @@ export const CreatePostModalStyle = styled.div`
     background-color: white;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     padding: .75rem;
 `
 
@@ -45,6 +46,7 @@ export const CreatePostFormContainer = styled.form`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    width: 100%;
     height: 80%;
     gap: .5rem;
 `
@@ -52,7 +54,7 @@ export const CreatePostFormContainer = styled.form`
 export const CreatePostFormText = styled.textarea`
     border: 2px solid black;
     resize: none;
-    width: 100%;
+    width: 98%;
     height: 50%;
     font-family: 'Source Sans Pro', sans-serif;
 `

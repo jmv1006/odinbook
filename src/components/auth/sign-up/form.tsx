@@ -1,5 +1,5 @@
-import { SignUpForm } from "./styles";
 import { useState } from "react";
+import { SignUpForm } from "./styles";
 
 type SignUpFormPageProps = {
     setAccountCreated: (value: any) => void,
