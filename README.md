@@ -1,18 +1,17 @@
 # Odinbook
 A simple social media site created using React and Styled Components. Utilizes a REST API that can be found [here](https://github.com/jmv1006/odinbook-api).
 
+![Site Screenshot] (https://www.dropbox.com/s/jc8r8cirskhiim7/Screenshot%202022-08-28%20at%201.10.06%20PM.png?dl=0)
 ## Features
 ### User Profile
 - Users can create a profile with a bio and an uploaded profile image of their choice
-
 ### Posts & Comments
-- Users can create posts & comments containing text
-
+- Users can create posts wih text and images
+- Users can comment on posts
 ### Timeline
 - On the homepage, users can see a timeline of all of their and their friend's posts, in chronological order.
 ### Friends
 - Users can add friends, giving them the ability to see their friend's posts and friends, as well as having their friend's posts show up on their timeline
-
 ### Suggested For You
 - Recommended profiles to add as a friend are displayed on the user's timeline. These recommend profiles are found using an algorithm on the backend. Read more about it [here](https://github.com/jmv1006/odinbook-api).
 ### Search
