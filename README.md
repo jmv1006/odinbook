@@ -1,7 +1,7 @@
 # Odinbook
 A simple social media site created using React and Styled Components. Utilizes a REST API that can be found [here](https://github.com/jmv1006/odinbook-api).
 
-![Site Screenshot] (https://www.dropbox.com/s/jc8r8cirskhiim7/Screenshot%202022-08-28%20at%201.10.06%20PM.png?dl=0)
+![Site Screenshot] (docs/images/homescreen.png)
 ## Features
 ### User Profile
 - Users can create a profile with a bio and an uploaded profile image of their choice
