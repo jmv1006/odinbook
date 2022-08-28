@@ -5,6 +5,8 @@ A simple social media site created using React and Styled Components. Utilizes a
 ## Features
 ### User Profile
 - Users can create a profile with a bio and an uploaded profile image of their choice
+![Site Screenshot](/docs/images/userpage.png)
+
 ### Posts & Comments
 - Users can create posts wih text and images
 - Users can comment on posts
