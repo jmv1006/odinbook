@@ -4,6 +4,7 @@ import { UserContext } from "../../../../context/userContext";
 import { useFriends } from "../../../../context/userFriendsContext ";
 import useFetch from "../../../../hooks/useFetch";
 import IUser from "../../../../interfaces/user";
+import { AddFriendBtn } from "./style";
 
 type AddFriendProps = {
     user: IUser
@@ -15,9 +16,9 @@ interface IFriendRequest {
     Is_Accepted: boolean
 }
 
-const AddFriend = ({user}: AddFriendProps) => {
-    const {user: currentUser} = useContext<any>(UserContext);
-    const {reFetchFriends} = useFriends();
+const AddFriend = ({ user }: AddFriendProps) => {
+    const { user: currentUser } = useContext<any>(UserContext);
+    const { reFetchFriends } = useFriends();
 
     const socket = useContext(SocketContext);
 
@@ -26,23 +27,22 @@ const AddFriend = ({user}: AddFriendProps) => {
     const [requestExists, setRequestExists] = useState(false);
     const [request, setRequest] = useState<null | IFriendRequest>(null);
 
-    const {response, reFetch} = useFetch(`/friend-requests/${currentUser.Id}/${user.Id}`)
+    const { response, reFetch } = useFetch(`/friend-requests/${currentUser.Id}/${user.Id}`)
 
     useEffect(() => {
-        if(response){
-            if(response.exists) {
+        if (response) {
+            if (response.exists) {
                 setRequest(response.request)
                 setRequestExists(true)
                 return
-            } 
+            }
             setRequestExists(false)
         }
     }, [response])
 
     const handleExistingRequest = () => {
-        if(request) {
-            if(request.From_uuid === currentUser.Id) {
-                //user sent it
+        if (request) {
+            if (request.From_uuid === currentUser.Id) {
                 return (
                     <>
                         <>Friend Request Sent</>
@@ -68,7 +68,7 @@ const AddFriend = ({user}: AddFriendProps) => {
             }
         });
 
-        if(!response.ok) {
+        if (!response.ok) {
             return
         }
 
@@ -85,7 +85,7 @@ const AddFriend = ({user}: AddFriendProps) => {
             }
         });
 
-        if(!response.ok) {
+        if (!response.ok) {
             return
         }
         reFetchFriends();
@@ -99,17 +99,17 @@ const AddFriend = ({user}: AddFriendProps) => {
             }
         });
 
-        if(!response.ok) {
+        if (!response.ok) {
             return
         }
         reFetch();
     }
 
 
-    return(
+    return (
         <>
             {request && requestExists ? handleExistingRequest() : null}
-            {!requestExists && <button onClick={sendFriendRequest}>{btnText}</button>}
+            {!requestExists && <AddFriendBtn onClick={sendFriendRequest}>{btnText}</AddFriendBtn>}
         </>
     )
 }

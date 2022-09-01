@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { useFriends } from "../../../../context/userFriendsContext ";
 import IUser from "../../../../interfaces/user";
-import { DeleteFriendModalContainer, DeleteFriendModalContentContainer } from "./styles"
+import { DeleteFriendBtn, DeleteFriendBtnsContainer, DeleteFriendModalContainer, DeleteFriendModalContentContainer } from "./styles"
 
 type DeleteFriendModalProps = {
     toggle: () => void,
@@ -10,10 +10,10 @@ type DeleteFriendModalProps = {
     currentUser: IUser
 }
 
-const DeleteFriendModal = ({toggle, user, currentUser} : DeleteFriendModalProps) => {
+const DeleteFriendModal = ({ toggle, user, currentUser }: DeleteFriendModalProps) => {
     const naigate = useNavigate();
 
-    const {reFetchFriends} = useFriends();
+    const { reFetchFriends } = useFriends();
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -27,22 +27,24 @@ const DeleteFriendModal = ({toggle, user, currentUser} : DeleteFriendModalProps)
             },
         });
 
-        if(!response.ok) {
+        if (!response.ok) {
             return
         }
-        
+
         await reFetchFriends()
         naigate(`/user/${currentUser.Id}`)
     };
 
-    return(
+    return (
         <DeleteFriendModalContainer>
             <DeleteFriendModalContentContainer>
-                {isLoading ? "Loading...":
+                {isLoading ? "Loading..." :
                     <>
                         <div>Are you sure you want to remove <strong>{user.DisplayName}</strong> as a friend?</div>
-                        <button onClick={deleteFriendship}>Yes</button>
-                        <button onClick={toggle}>No</button>
+                        <DeleteFriendBtnsContainer>
+                            <DeleteFriendBtn onClick={deleteFriendship}>Yes</DeleteFriendBtn>
+                            <DeleteFriendBtn onClick={toggle}>No</DeleteFriendBtn>
+                        </DeleteFriendBtnsContainer>
                     </>
                 }
             </DeleteFriendModalContentContainer>

@@ -6,16 +6,15 @@ import { CardsContainer, UserFriendsContainer } from "./styles"
 const UserFriends = () => {
     const params = useParams();
 
-    const {friends, isCurrentUser} = useUserPageContext();
+    const { friends, isCurrentUser } = useUserPageContext();
 
-    const mappedFriends = friends.map((friend: any) => 
+    const mappedFriends = friends.map((friend: any) =>
         <UserCard key={friend.Id} user={friend} isCurrentUser={isCurrentUser} />
     );
 
 
-    return(
+    return (
         <UserFriendsContainer>
-            Friends:
             <CardsContainer>
                 {mappedFriends}
                 {friends.length === 0 && "User Has No Friends!"}

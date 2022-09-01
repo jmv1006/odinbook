@@ -6,10 +6,10 @@ import { CommentInputContainer, UserImageContainer, CommentInputForm, UserImage,
 
 type CommentInputProps = {
     user: IUser,
-    post: IPost, 
+    post: IPost,
     reFetchComments: () => void
 }
-const CommentInput = ({ user, reFetchComments, post } : CommentInputProps) => {
+const CommentInput = ({ user, reFetchComments, post }: CommentInputProps) => {
     const socket = useContext(SocketContext);
 
     const [text, setText] = useState("");
@@ -28,25 +28,25 @@ const CommentInput = ({ user, reFetchComments, post } : CommentInputProps) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({Text: text})
+            body: JSON.stringify({ Text: text })
         });
 
-        if(!res.ok) return setIsLoading(isLoading => false)
+        if (!res.ok) return setIsLoading(isLoading => false)
 
         socket.emit('notification', post.Users.Id, user.Id)
         setText(text => "");
         setIsLoading(isLoading => false)
-        reFetchComments();       
+        reFetchComments();
     }
 
-    return(
+    return (
         <CommentInputContainer>
             <UserImageContainer>
                 {user && <UserImage src={user.ProfileImg ? user.ProfileImg : "https://i.stack.imgur.com/l60Hf.png"} />}
             </UserImageContainer>
             <CommentInputForm onSubmit={handleSubmit}>
-                <TextInputBox type="text" placeholder="Your Comment" value={text} onChange={handleChange} maxLength={1000} required/>
-                <PostCommentBtn type="submit">{isLoading ? "Posting..." : "Post"}</PostCommentBtn>
+                <TextInputBox type="text" placeholder="Your Comment" value={text} onChange={handleChange} maxLength={1000} required />
+                {!isLoading && <PostCommentBtn type="submit">Post</PostCommentBtn>}
             </CommentInputForm>
         </CommentInputContainer>
     )
