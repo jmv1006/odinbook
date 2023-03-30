@@ -5,7 +5,6 @@ const useFetch = (url: string | null) => {
     const {user} = useContext<any>(UserContext);
 
     const [response, setResponse] = useState<any>(null);
-    const [isError, setIsError] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false)
     
     useEffect(() => {
